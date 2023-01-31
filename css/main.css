@@ -1,0 +1,247 @@
+:root {
+    --themecolor: #113886;
+    --fonts: 'Open Sans', sans-serif;
+}
+
+body {
+    background-color: #eee;
+
+}
+
+.logo {
+    width: 120px;
+    margin-top: 1.5rem;
+}
+
+.close {
+    display: none !important;
+    position: relative;
+    left: 200px;
+    font-size: 1.8rem;
+    background:transparent;
+    outline: none;
+    border:none;
+    padding: 0 3px;
+    
+}
+
+#side_nav {
+    background: var(--themecolor);
+    min-width: 250px;
+    max-width: 250px;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
+    font-family: var(--fonts);
+    transition: .4s all ease-in;
+    z-index: 999;
+}
+
+.content {
+    min-height: 100vh;
+    width: 100%;
+}
+
+hr .h-color {
+    background-color: #E0FBFC;
+}
+
+.col-ul li {
+    border-radius: 23px;
+    transition: .5s all ease-in-out;
+    
+}
+
+
+.col-ul li.active {
+    background-color: #eee !important;
+    color: #113886 !important;
+}
+
+.col-ul li.active a, .col-ul li.active a:hover {
+    color: var(--themecolor);
+}
+
+.col-ul li a {
+    color: #fff;
+    
+}
+
+.open-btn {
+    display: none !important;
+}
+.space {
+    margin:0 10px;
+}
+
+.link-collapse {
+    display: flex;
+    align-items: center;
+    
+}
+
+.link-collapse, .collapse-design {
+    cursor: pointer;
+}
+
+.caret {
+    margin-left: auto !important;
+    padding: 0 8px 0 0;
+}
+
+.collapse-design {
+    display: flex;
+    flex-direction: column;
+}
+.collapse-design ul li{
+    padding:5px 20px !important;
+}
+.collapse-design ul li a{
+    text-decoration: none;
+}
+
+.panel-title {
+    font-size: 24px;
+}
+.panel-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
+    gap: 12px;
+}
+/* DASHBOARD BOX */
+.dashboard-card {
+    border: none !important; 
+    border-left: 4px solid var(--themecolor) !important;
+}
+
+.dashboard-card, .d-card-body {
+    background-color: #fff;
+    border-radius: 0;
+}
+
+.d-card-body {
+    padding: 0;
+    padding: 6px;
+}
+
+.parent-d {
+
+}
+
+.dashboard-img {
+    width: 50px !important;
+    height: 50px !important;
+}
+.dcontent {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    grid-auto-flow: row;
+    grid-template-areas: 
+        "top top"
+        "left right";
+    padding-right: 5px;
+}
+.dcontent > div {
+    padding: 4px 3px;
+}
+
+.dcontent-top {
+    grid-area: top;
+}
+.dcontent-left {
+    grid-area: left;
+}
+.dcontent-right {
+    grid-area: right;
+}
+
+.dbadge { 
+    border-radius: 3px;
+    background-color: var(--themecolor);
+    color: #fff;
+    margin: 3px 0;
+}
+.badges > div {
+    padding: 0 .7rem;
+}
+.badges div span:nth-child(1) {
+    font-weight: 300;
+}
+.badges div span:nth-child(2) {
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.panel-default{
+    background-color: rgb(253, 253, 253);
+    padding: 20px;
+    height: 100vh;
+}
+
+.shadow-drop-br{-webkit-animation:shadow-drop-br .4s cubic-bezier(.25,.46,.45,.94) both;animation:shadow-drop-br .4s cubic-bezier(.25,.46,.45,.94) both}
+@-webkit-keyframes shadow-drop-br{0%{-webkit-box-shadow:0 0 0 0 transparent;box-shadow:0 0 0 0 transparent}100%{-webkit-box-shadow:12px 12px 20px -12px rgba(0,0,0,.35);box-shadow:12px 12px 20px -12px rgba(0,0,0,.35)}}@keyframes shadow-drop-br{0%{-webkit-box-shadow:0 0 0 0 transparent;box-shadow:0 0 0 0 transparent}100%{-webkit-box-shadow:12px 12px 20px -12px rgba(0,0,0,.35);box-shadow:12px 12px 20px -12px rgba(0,0,0,.35)}}
+
+
+
+.dcontent-text {
+    font-size: 1.8rem;
+}
+
+@media only screen and (max-width: 767px){
+    #side_nav {
+        margin-left: -250px;
+        position: fixed;
+        z-index: 1;
+        min-height: 100vh;
+
+    }
+    #side_nav.active {
+        margin-left: 0;
+    }
+
+    .close, .open-btn {
+        display: initial !important;
+    }
+
+    .logo {
+        margin-top: 0;
+    }
+    .dashboard-card {
+        border: none !important; 
+        border-top: 18px solid var(--themecolor) !important;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 0 auto !important;
+    }
+}
+
+@media only screen and (max-width: 520px){
+    .dashboard-card {
+        width: 80% !important;
+        margin-bottom: 8px !important;
+    }
+}
+
+/* === Scroll Bar ===  */
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #d3d3d3; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #113886; 
+    border-radius: 12px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #0139a9; 
+  }

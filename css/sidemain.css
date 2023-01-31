@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --themebc: #113886;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "sidenav header"
+        "sidenav maincontent"
+    ;
+    height: 100vh;
+}
+
+/* ANIMATION */
+
+
+/* HOVER */
+.header a:hover { 
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+
+/* ================= */
+.content {
+    height: 100vh;
+    width: 100%;
+}
+
+.header {
+    grid-area: header;
+    background-color: rgb(252, 252, 252);
+    height: 55px;
+    display: flex;
+    align-items: center;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.header a {
+    text-decoration: none;
+    background-color: var(--themebc);
+    color:#fff;
+    padding: 3px 12px;
+    border-radius: 5px;
+    margin: 5px;
+    font-size: 1.5rem;
+    transition: .3s all ease;
+    
+}
+.sidebar {
+    grid-area: sidenav;
+    height: 100vh;
+}
+
+.hidden {
+    width: 0;
+}
+.main-content {
+    grid-area: maincontent;
+}
+.sidebar {
+    background-color: #113886;
+    width: 250px;
+    padding: 10px 5px;
+    transition: .3s all ease;
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: auto;
+}
+
+.side-link {
+    display: flex;
+    flex-direction: column;
+}
+.side-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px 0px;
+}
+
+.side-img img {
+    width: 135px;
+
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.links a{
+    text-decoration: none;
+    font-size: 1rem;
+    color: #fff;
+    padding: 5px 10px 5px 5px;
+    text-align: left;
+    border-radius: 17px;
+    transition: .4s all ease-in;
+    cursor: pointer;
+    margin-bottom: .1rem;
+}
+
+.space {
+    margin:0 10px;
+}
+
+.active {
+    background-color: #fff;
+    color: var(--themebc) !important;
+}
+
+.dropdown-btn {
+    border: none;
+}
+
+.dropdown-container {
+    margin-top: 4px;
+    display: none;
+    flex-direction: column;
+    padding-left: 12px;
+}
+
+.links a:hover, .dropdown-container a:hover {
+    background-color: #fff;
+    color: var(--themebc) !important;
+}
+
+.link-below {
+    margin-top: auto;
+}
