@@ -1,6 +1,6 @@
 <div class="side-link">
     <div class="links">
-        <a href="#" class=""><i class="fa-solid fa-house space"></i>Dashboard</a>
+        <a href="dashboard.php" class=""><i class="fa-solid fa-house space"></i>Dashboard</a>
         <a class="dropdown-btn">
             <i class="fa-solid fa-users space"></i>
             Students 
@@ -30,7 +30,7 @@
             <i class="caret fa-solid fa-regular fa-angle-down"></i></span>
         </a>
         <div class="dropdown-container">
-            <a href="#"><i class="space fa-solid fa-file-lines"></i>Clearance Record</a>
+            <a href="clearance_record.php"><i class="space fa-solid fa-file-lines"></i>Clearance Record</a>
             <a href="#"><i class="space fa-solid fa-file-circle-plus"></i>Create Clearance</a>
             <a href="#"><i class="space fa-solid fa-pen-to-square"></i>Modify Clearance</a>
         </div>

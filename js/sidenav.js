@@ -21,7 +21,7 @@ function openSidebar() {
     document.getElementsByClassName("sidebar")[0].style.left = "0";
     isOpen = false;
    }else if(isOpen == false){
-    document.getElementsByClassName("sidebar")[0].style.position = "fixed";
+    document.getElementsByClassName("sidebar")[0].style.position = "absolute";
     document.getElementsByClassName("sidebar")[0].style.left = "-250px";
     isOpen = true;
    }
