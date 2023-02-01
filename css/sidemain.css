@@ -42,7 +42,7 @@
     color:#fff;
     padding: 3px 12px;
     border-radius: 5px;
-    margin: 5px;
+    margin: 5px 15px;
     font-size: 1.5rem;
     transition: .3s all ease;
     
@@ -208,9 +208,13 @@
     font-size: 1.8rem;
 }
 
+.c-scroll {
+    overflow-x: auto !important;
+  }
+
 /* ===Media queries and Scroll bar === */
 
-@media only screen and (max-width: 767px){
+@media only screen and (max-width: 1000px){
     .content {
         flex-direction: row;
         position: absolute;
@@ -218,7 +222,6 @@
     .sidebar {
         position: absolute;
         z-index: 9999;
-        left: -250px;
         display: none;
     }
     .dashboard-card {
@@ -237,22 +240,25 @@
 /* === Scroll Bar ===  */
 /* width */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 2px;
   }
   
   /* Track */
   ::-webkit-scrollbar-track {
     background: #d3d3d3; 
+    width: 2px;
   }
    
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: #113886; 
     border-radius: 12px;
+    width: 2px;
   }
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #0139a9; 
+    width: 2px;
   }
 

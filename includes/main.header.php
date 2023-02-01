@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/sidemain.css?v=1.2">
+    <link rel="stylesheet" href="../css/sidemain.css?v=1.1">
 </head>
 <body>
 <div class="content">
@@ -19,12 +19,13 @@
             <img src="../images/ccc_logo.png" class="logo" alt="">
         </div>
         <!-- Admin SideBar -->
-        <?php include_once 'users/signatory_sidebar.php' ?>
+        <?php include_once 'users/admin_sidebar.php' ?>
     
     </div>
     <div class="main-content">
-        <div class="header">
+        <div class="header d-flex align-items-center">
             <a class="menu-toggle" onclick="openSidebar();" href="javascript:void(0)"><i class="fa-solid fa-bars"></i></a>
+            <h3 class="m-0">CCCWABCMS</h3>
         </div>
         <div class="my-content">
 
