@@ -13,20 +13,21 @@
     <link rel="stylesheet" href="../css/sidemain.css?v=1.1">
 </head>
 <body>
-<div class="content">
-    <div class="sidebar">
-        <div class="side-img">
-            <img src="../images/ccc_logo.png" class="logo" alt="">
+<div class="container-fluid p-0">   
+    <div class="content">
+        <div class="sidebar">
+            <div class="side-img">
+                <img src="../images/ccc_logo.png" class="logo" alt="">
+            </div>
+            <!-- Admin SideBar -->
+            <?php include_once 'users/admin_sidebar.php' ?>
+        
         </div>
-        <!-- Admin SideBar -->
-        <?php include_once 'users/admin_sidebar.php' ?>
-    
-    </div>
-    <div class="main-content">
-        <div class="header d-flex align-items-center">
-            <a class="menu-toggle" onclick="openSidebar();" href="javascript:void(0)"><i class="fa-solid fa-bars"></i></a>
-            <h3 class="m-0">CCCWABCMS</h3>
-        </div>
-        <div class="my-content">
+        <div class="main-content">
+            <div class="header d-flex align-items-center">
+                <a class="menu-toggle" onclick="openSidebar();" href="javascript:void(0)"><i class="fa-solid fa-bars"></i></a>
+                <h3 class="m-0">CCCWABCMS</h3>
+            </div>
+            <div class="my-content">
 
 

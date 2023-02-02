@@ -6,6 +6,7 @@
 
 :root {
     --themebc: #113886;
+    --themgreen: #0AA06E;
 }
 
 .content {
@@ -212,6 +213,18 @@
 .c-scroll {
     overflow-x: auto !important;
   }
+
+
+/* FORM CSS */
+.clearance-card {
+    min-height: 80vh !important;
+}
+
+/* .btn-create {
+    background-color: var(--themgreen);
+    color: #fff;
+} */
+  
 
 /* ===Media queries and Scroll bar === */
 
