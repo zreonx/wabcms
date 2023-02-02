@@ -62,6 +62,7 @@
     transition: .3s all ease;
     overflow-y: auto;
     position: relative;
+    z-index: 9999;
     top: 0;
     bottom: 0;
 }
