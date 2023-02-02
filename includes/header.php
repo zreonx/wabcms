@@ -47,4 +47,4 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid d-flex flex-column">
+    <div class="container d-flex flex-column min-vh-100">
