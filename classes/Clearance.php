@@ -9,13 +9,49 @@ class Clearance  {
 
     public function showClearanceType() {
         try {
-            $sql = "SELECT * FROM clearance_type";
+            $sql = "SELECT * FROM clearance_type;";
             $result = $this->conn->query($sql);
             return $result;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
         
+    }
+
+    public function showBeneficiaries() {
+        try {
+            $sql = "SELECT * FROM beneficiary_type;";
+            $result = $this->conn->query($sql);
+            return $result;
+        }catch (PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+        }
+    }
+
+    public function showClearanceRecord() {
+        try {
+            $sql = "SELECT * FROM clearance;";
+            $result = $this->conn->query($sql);
+            return $result;
+
+        }catch(PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function getClearance($id) {
+        try {
+            $sql = "SELECT * FROM clearance WHERE id=:id ;";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindparam(':id', $id);
+            $stmt->execute();
+            $result = $stmt->fetch();
+            return $result;
+
+        }catch(PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+        }
     }
     public function createClearance($type, $semester, $academic_year, $beneficiaries, $date_issued, $status) {
         try{
@@ -35,6 +71,25 @@ class Clearance  {
             return false;
         }
     }
+
+    public function modifyClearance($id, $type, $semester, $academic_year, $beneficiaries) {
+        try{
+            $sql = "UPDATE clearance SET (type, semester) WHERE id=:id;";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindparam(':id', $id);
+            $stmt->bindparam(':type', $type);
+            $stmt->bindparam(':semester', $semester);
+           
+            $stmt->execute();
+            return true;
+
+        }catch(PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+            return false;
+        }
+    }
+
+
 
 
 }

@@ -1,4 +1,8 @@
-<?php include_once '../includes/main.header.php' ?>
+<?php 
+    include_once '../includes/main.header.php';
+    require_once '../config/connection.php';
+    $result = $clearance->showClearanceRecord();
+?>
 
 <div class="panel p-3">
     <h1 class="panel-title">Clearance</h1>
@@ -16,20 +20,43 @@
                     <td>Status</td>
                     <td>Action</td>
                 </tr>
+
+                <?php while($row = $result->fetch(PDO::FETCH_ASSOC)):  ?>
+                    
+                    
+                
                 <tr>
-                    <td>1</td>
-                    <td>Finals Clearance</td>
-                    <td>2nd</td>
-                    <td>2022-2023</td>
-                    <td>Students</td>
-                    <td>2022-12-25</td>
-                    <td>2022-12-30</td>
-                    <td>Active</td>
+                    <td><?php echo $row['id']; ?></td>
                     <td>
-                        <button class="btn btn-success" type="submit">Activate</button>
-                        <button class="btn btn-danger" type="submit">Deactivate</button>
+                        <?php 
+                        $getType = $clearance->showClearanceType();
+                        $type = $getType->fetch(PDO::FETCH_ASSOC);
+                        echo $type['name'];
+                        ?>
+                    </td>
+                    <td><?php echo $row['semester']; ?></td>
+                    <td><?php echo $row['academic_year']; ?></td>
+
+                    <!-- Beneficiaries -->
+                    <td>
+                        <?php 
+                        $getBeneficiary = $clearance->showBeneficiaries();
+                        $beneficiary_type = $getBeneficiary->fetch(PDO::FETCH_ASSOC);
+                        if($beneficiary_type['id'] == $row['beneficiaries']) {
+                            echo $beneficiary_type['name'];
+                        }
+                        ?>
+                    </td>
+                    <td><?php echo $row['date_issued']; ?></td>
+                    <td><?php echo $row['end_date']; ?></td>
+                    <td><?php echo $row['status']; ?></td>  
+                    <td>
+                        <a href="modify_clearance.php?id=<?php echo $row['id'] ?>" class="btn btn-primary" type="submit" name="submitEdit">Edit</a>
+                        <button class="btn btn-success" type="submit" name="submitActivate">Activate</button>
+                        <button class="btn btn-danger" type="submit" name="submitDeactivate">Deactivate</button>
                     </td>
                 </tr>
+                <?php endwhile ?>
             </table>
         </div>
     </div>
