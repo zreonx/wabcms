@@ -32,7 +32,7 @@
         <div class="dropdown-container">
             <a href="clearance_record.php"><i class="space fa-solid fa-file-lines"></i>Clearance Record</a>
             <a href="create_clearance.php"><i class="space fa-solid fa-file-circle-plus"></i>Create Clearance</a>
-            <a href="#"><i class="space fa-solid fa-pen-to-square"></i>Modify Clearance</a>
+            <!-- <a href="modify_clearance.php"><i class="space fa-solid fa-pen-to-square"></i>Modify Clearance</a> -->
         </div>
         <a class="dropdown-btn">
             <i class="fa-solid fa-square-poll-vertical space"></i>

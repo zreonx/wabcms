@@ -1,11 +1,12 @@
 <?php
     include_once '../includes/main.header.php';
     require_once '../config/connection.php';
-    $result = $clearance->showClearanceType();
+    $clearance_type = $clearance->showClearanceType();
     $beneficiaries = $clearance->showBeneficiaries();
 ?>
 
 <div class="panel p-3">
+<?php if (isset($_GET['error']) == "true") { Errormessage::clearance_create_failed(); } ?>
     <h1 class="panel-title">Clearance</h1>
     <div class="card clearance-card">
         <div class="card-body">
@@ -20,7 +21,7 @@
                             <option value="0">Select</option>
                             <?php
                             while ($row_beneficiary = $beneficiaries->fetch(PDO::FETCH_ASSOC)) { ?>
-                                <option value="<?php echo $row_beneficiary['id']; ?>"><?php echo $row_beneficiary['name'] ?></option>
+                                <option value="<?php echo $row_beneficiary['beneficiary_id']; ?>"><?php echo $row_beneficiary['beneficiary_type'] ?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -33,9 +34,11 @@
                         <select id="disabledSelect" name="clearance_type" class="form-select">
                             <option value="0">Select</option>
                             <?php
-                            while ($row = $result->fetch(PDO::FETCH_ASSOC)) { ?>
-                                <option value="<?php echo $row['id']; ?>"><?php echo $row['name'] ?></option>
-                            <?php } ?>
+                            while ($clearance_row = $clearance_type->fetch(PDO::FETCH_ASSOC)) { ?>
+                                <option value="<?php echo $clearance_row['clearance_type_id']; ?>" ><?php echo $clearance_row['clearance_type'] ?></option>
+                               
+                            <?php } 
+                            ?>
                         </select>
                     </div>
                 </div>
@@ -44,7 +47,7 @@
                         <label class="form-label">Academic Year</label>
                     </div>
                     <div class="col-md-2 ">
-                        <input type="text" class="form-control" name="academic_year">
+                        <input type="text" class="form-control" placeholder="2022-2023" name="academic_year">
                     </div>
                 </div>
                 <div class="row mb-2">
@@ -52,7 +55,7 @@
                         <label class="form-label">Semester</label>
                     </div>
                     <div class="col-md-2 ">
-                        <input type="text" class="form-control" name="semester">
+                        <input type="text" class="form-control" placeholder="1-2" name="semester">
                     </div>
                 </div>
                 <div class="row mb-2">

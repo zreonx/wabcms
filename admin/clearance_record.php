@@ -5,9 +5,11 @@
 ?>
 
 <div class="panel p-3">
+    <?php if (isset($_GET['success']) == "true") { Errormessage::clearance_create_success(); } ?>
     <h1 class="panel-title">Clearance</h1>
     <div class="card c-scroll">
         <div class="card-body">
+           
             <table class="clearance-table table c-scroll">
                 <tr>
                     <td>#</td>
@@ -15,8 +17,8 @@
                     <td>Semester</td>
                     <td>Academic Year</td>
                     <td>Beneficiaries</td>
-                    <td>date_issued</td>
-                    <td>date_end</td>
+                    <td>Date Start</td>
+                    <td>Date End</td>
                     <td>Status</td>
                     <td>Action</td>
                 </tr>
@@ -28,23 +30,18 @@
                 <tr>
                     <td><?php echo $row['id']; ?></td>
                     <td>
+                        <!-- Clearance type -->
                         <?php 
-                        $getType = $clearance->showClearanceType();
-                        $type = $getType->fetch(PDO::FETCH_ASSOC);
-                        echo $type['name'];
+                             echo $row['clearance_type'];
                         ?>
                     </td>
                     <td><?php echo $row['semester']; ?></td>
                     <td><?php echo $row['academic_year']; ?></td>
 
-                    <!-- Beneficiaries -->
+                        <!-- Beneficiaries -->
                     <td>
                         <?php 
-                        $getBeneficiary = $clearance->showBeneficiaries();
-                        $beneficiary_type = $getBeneficiary->fetch(PDO::FETCH_ASSOC);
-                        if($beneficiary_type['id'] == $row['beneficiaries']) {
-                            echo $beneficiary_type['name'];
-                        }
+                            echo $row['beneficiary_type'];
                         ?>
                     </td>
                     <td><?php echo $row['date_issued']; ?></td>

@@ -1,26 +1,24 @@
 <?php
     include_once '../includes/main.header.php';
     require_once '../config/connection.php';
-    $result = $clearance->showClearanceType();
+    $clearance_type = $clearance->showClearanceType();
     $beneficiaries = $clearance->showBeneficiaries();
-    
-    
+   
 
     if(isset($_GET['id'])) {
         //Clearance ID
         $id = $_GET['id'];
         $selected_clearance = $clearance->getClearance($id);
+
     }
 ?>
-
-
 
 <div class="panel p-3">
     <h1 class="panel-title">Clearance</h1>  
     <div class="card clearance-card">
         <div class="card-body">
             <form action="../includes/modify_clearance.inc.php" method="get">
-                <h1 class="fs-2 card-title mb-4">Create Clearance</h1>
+                <h1 class="fs-2 card-title mb-4">Modify Clearance</h1>
                 <input type="hidden" value="<?php if(isset($_GET['id'])){echo $_GET['id'];} ?>" name="id">
                 <div class="row mb-2">
                     <div class="col-md-2 flex-shrink-1 bd-highlight">
@@ -31,7 +29,8 @@
                             <option value="0">Select</option>
                             <?php
                             while ($row_beneficiary = $beneficiaries->fetch(PDO::FETCH_ASSOC)) { ?>
-                                 <option value="<?php echo $row_beneficiary['id']; ?>" <?php if($row_beneficiary['id'] == $selected_clearance['type']) {echo "selected";} ?>> <?php echo $row_beneficiary['name'] ?></option>
+                                 <option value="<?php echo $row_beneficiary['beneficiary_id']; ?>" <?php if ($row_beneficiary['beneficiary_id'] == $selected_clearance['beneficiaries']) {
+                                        echo "selected";} ?> > <?php echo $row_beneficiary['beneficiary_type'] ?> </option>
                             <?php } ?>
                         </select>
                     </div>
@@ -44,8 +43,9 @@
                         <select id="disabledSelect" name="clearance_type" class="form-select">
                             <option value="0">Select</option>
                             <?php
-                            while ($rows = $result->fetch(PDO::FETCH_ASSOC)) { ?>
-                                <option value="<?php echo $rows['id']; ?>" <?php if($rows['id'] == $selected_clearance['id']) {echo "selected";} ?>> <?php echo $rows['name'] ?></option>
+                            while ($clearance_row = $clearance_type->fetch(PDO::FETCH_ASSOC)) { ?>
+                                <option value="<?php echo $clearance_row['clearance_type_id']; ?>"  <?php if($clearance_row['clearance_type_id'] == $selected_clearance['type']) { echo "selected";} ?>><?php echo $clearance_row['clearance_type'] ?></option>
+                               
                             <?php } 
                             ?>
                         </select>

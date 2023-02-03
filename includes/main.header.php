@@ -15,19 +15,24 @@
 <body>
 <div class="container-fluid p-0">   
     <div class="content">
-        <div class="sidebar">
-            <div class="side-img">
-                <img src="../images/ccc_logo.png" class="logo" alt="">
+        <div class="sidebar-back" id="sideplaceholder">
+            <div class="sidebar">
+                <div class="side-img">
+                    <img src="../images/ccc_logo.png" class="logo" alt="">
+                </div>
+                <!-- Admin SideBar -->
+                <?php include_once 'users/admin_sidebar.php' ?>
+            
             </div>
-            <!-- Admin SideBar -->
-            <?php include_once 'users/admin_sidebar.php' ?>
-        
         </div>
         <div class="main-content">
             <div class="header d-flex align-items-center">
-                <a class="menu-toggle" onclick="openSidebar();" href="javascript:void(0)"><i class="fa-solid fa-bars"></i></a>
+                <a href="#" class="menu-toggle-open"><i class="fa-solid fa-bars"></i></a>
+                <!-- <button class="menu-toggle-open" onclick="openSideBar()"> <i class="fa-solid fa-bars"></i></button>
+                <button class="menu-toggle-close"  onclick="closeSidebar()"><i class="fa-solid fa-bars"></i></button> -->
                 <h3 class="m-0">CCCWABCMS</h3>
             </div>
+            
             <div class="my-content">
 
 

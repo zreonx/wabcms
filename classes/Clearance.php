@@ -9,6 +9,8 @@ class Clearance  {
 
     public function showClearanceType() {
         try {
+
+           
             $sql = "SELECT * FROM clearance_type;";
             $result = $this->conn->query($sql);
             return $result;
@@ -30,7 +32,7 @@ class Clearance  {
 
     public function showClearanceRecord() {
         try {
-            $sql = "SELECT * FROM clearance;";
+            $sql = "SELECT * FROM clearance c INNER JOIN clearance_type ct ON c.type = ct.clearance_type_id INNER JOIN beneficiary_type bt ON c.beneficiaries = bt.beneficiary_id ORDER BY c.id";
             $result = $this->conn->query($sql);
             return $result;
 
@@ -72,14 +74,15 @@ class Clearance  {
         }
     }
 
-    public function modifyClearance($id, $type, $semester, $academic_year, $beneficiaries) {
-        try{
-            $sql = "UPDATE clearance SET (type, semester) WHERE id=:id;";
+    public function modifyClearance($type, $sem, $ay, $beneficiaries, $id) {
+        try {
+            $sql = "UPDATE clearance SET type = :type, semester = :semester, academic_year = :academic_year, beneficiaries = :beneficiaries WHERE id = :id ;";
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindparam(':id', $id);
             $stmt->bindparam(':type', $type);
-            $stmt->bindparam(':semester', $semester);
-           
+            $stmt->bindparam(':semester', $sem);
+            $stmt->bindparam(':academic_year', $ay);
+            $stmt->bindparam(':beneficiaries', $beneficiaries);
+            $stmt->bindparam(':id', $id);
             $stmt->execute();
             return true;
 

@@ -15,6 +15,7 @@
         throw new PDOException($e->getMessage());
     }
 
-    require_once '../classes/Clearance.php';
+    include_once '../includes/autoloader.inc.php';
     $clearance = new Clearance($conn);
+    $errors = new Error();
     

@@ -6,9 +6,10 @@ if(isset($_GET['submit'])) {
     $semester = $_GET['semester'];
     $academic_year = $_GET['academic_year'];
     $beneficiaries = $_GET['beneficiaries'];
-    echo $id . '<br>';
+
     require_once '../config/connection.php';
-    $result = $clearance->modifyClearance($id, $clearance_type, $semester, $academic_year, $beneficiaries);
+
+    $result = $clearance->modifyClearance($clearance_type, $semester, $academic_year, $beneficiaries, $id);
 
     //var_dump($clearance->modifyClearance($id, $clearance_type, $semester, $academic_year, $beneficiaries));
     if($result == true) {
