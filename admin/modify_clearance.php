@@ -14,7 +14,8 @@
 ?>
 
 <div class="panel p-3">
-    <h1 class="panel-title">Clearance</h1>  
+    <?php if (isset($_GET['error']) == "true") { Errormessage::clearance_update_failed(); } ?>
+    <h1 class="panel-title">Clearance</h1>
     <div class="card clearance-card">
         <div class="card-body">
             <form action="../includes/modify_clearance.inc.php" method="get">

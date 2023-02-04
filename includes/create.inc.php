@@ -13,7 +13,7 @@ if(isset($_GET['submit'])) {
     require_once '../config/connection.php';
     $result = $clearance->createClearance($clearance_type, $semester, $academic_year, $beneficiaries, $date_issued, $status);
     if($result == true) {
-        header('location: ../admin/create_clearance.php?success=true');
+        header('location: ../admin/create_clearance.php?create=success');
     }else {
         header('location: ../admin/create_clearance.php?error=true');
     }

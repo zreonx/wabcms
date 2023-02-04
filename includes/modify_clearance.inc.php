@@ -13,9 +13,9 @@ if(isset($_GET['submit'])) {
 
     //var_dump($clearance->modifyClearance($id, $clearance_type, $semester, $academic_year, $beneficiaries));
     if($result == true) {
-        header('location: ../admin/clearance_record.php?modification=success');
+        header('location: ../admin/clearance_record.php?modify=success');
     }else {
-        header('location: ../admin/clearance_record.php?modification=error');
+        header('location: ../admin/clearance_record.php?error=true');
     }
 }else {
     header('location: ../login.php');

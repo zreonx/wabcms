@@ -5,8 +5,6 @@
 ?>
 
 <div class="panel p-3">
-    <?php if (isset($_GET['create']) == "success") { Errormessage::clearance_create_success(); } ?>
-    <?php if (isset($_GET['modify']) == "success") { Errormessage::clearance_update_success(); } ?>
     <h1 class="panel-title">Clearance</h1>
     <div class="card min-vh-100 c-scroll">
         <div class="card-body d-flex flex-column">
@@ -28,49 +26,21 @@
                     <button class="btn btn-light btn-sm btn-search" onclick="this.blur();" type="submit">Search</button>
                 </form>
             </div>
-           
             <table class="default-table table c-scroll">
                 <tr>
                     <td>#</td>
-                    <td>Type</td>
-                    <td>Semester</td>
-                    <td>Academic Year</td>
-                    <td>Beneficiaries</td>
-                    <td>Date Start</td>
-                    <td>Date End</td>
+                    <td>Student ID</td>
+                    <td>First Name</td>
+                    <td>Middle Name</td>
+                    <td>Last Name</td>
+                    <td>Contact Number</td>
+                    <td>Email</td>
+                    <td>Course</td>
+                    <td>Academic Level</td>
+                    <td>Strand</td>
+                    <td>Year Level</td>
                     <td>Status</td>
-                    <td>Action</td>
                 </tr>
-
-                <?php while($row = $result->fetch(PDO::FETCH_ASSOC)):  ?>
-
-                <tr>
-                    <td><?php echo $row['id']; ?></td>
-                    <td>
-                        <!-- Clearance type -->
-                        <?php 
-                             echo $row['clearance_type'];
-                        ?>
-                    </td>
-                    <td><?php echo $row['semester']; ?></td>
-                    <td><?php echo $row['academic_year']; ?></td>
-
-                        <!-- Beneficiaries -->
-                    <td>
-                        <?php 
-                            echo $row['beneficiary_type'];
-                        ?>
-                    </td>
-                    <td><?php echo $row['date_issued']; ?></td>
-                    <td><?php echo $row['end_date']; ?></td>
-                    <td><?php echo $row['status']; ?></td>  
-                    <td>
-                        <a href="modify_clearance.php?id=<?php echo $row['id'] ?>" class="btn btn-primary btn-sm" type="submit" name="submitEdit">Edit</a>
-                        <button class="btn btn-success btn-sm" type="submit" name="submitActivate">Activate</button>
-                        <button class="btn btn-danger btn-sm" type="submit" name="submitDeactivate">Deactivate</button>
-                    </td>
-                </tr>
-                <?php endwhile ?>
             </table>
             <div class="mt-auto">
                 <nav aria-label="Page navigation example">

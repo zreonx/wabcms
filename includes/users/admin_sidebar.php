@@ -8,7 +8,7 @@
             <i class="caret fa-solid fa-regular fa-angle-down"></i></span>
         </a>
         <div class="dropdown-container">
-            <a href="#"><i class="space fa-solid fa-clipboard-user"></i>Student Record</a>
+            <a href="student_record.php"><i class="space fa-solid fa-clipboard-user"></i>Student Record</a>
             <a href="#"><i class="space fa-solid fa-user-pen"></i>Modify Student</a>
             <a href="#"><i class="space fa-solid fa-cloud-arrow-up"></i>Import Student</a>
         </div>
