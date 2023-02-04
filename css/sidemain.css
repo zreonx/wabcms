@@ -272,7 +272,7 @@
     color: #fff;
 }
 
-.btn-group> ul li.active a, .page-link{
+.btn-group> ul li.active a, .page-link, .btn-theme, .btn-default{
     background-color: var(--themebc) !important;
     color: #fff;
 }
@@ -282,6 +282,11 @@
 }
 .page-link:hover {
     color: #00ff9d;
+}
+
+.btn-default:hover {
+    color: #fff;
+    box-shadow: var(--shadow-lg);
 }
 
 

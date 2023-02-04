@@ -10,7 +10,7 @@
         <div class="dropdown-container">
             <a href="student_record.php"><i class="space fa-solid fa-clipboard-user"></i>Student Record</a>
             <a href="#"><i class="space fa-solid fa-user-pen"></i>Modify Student</a>
-            <a href="#"><i class="space fa-solid fa-cloud-arrow-up"></i>Import Student</a>
+            <a href="import_student.php"><i class="space fa-solid fa-cloud-arrow-up"></i>Import Student</a>
         </div>
         <a class="dropdown-btn">
             <i class="fa-solid fa-person-circle-check space"></i>

@@ -7,6 +7,7 @@
 <div class="panel p-3">
     <?php if (isset($_GET['create']) == "success") { Errormessage::clearance_create_success(); } ?>
     <?php if (isset($_GET['modify']) == "success") { Errormessage::clearance_update_success(); } ?>
+    <?php if (isset($_GET['error']) == "true") { Errormessage::clearance_update_failed(); } ?>
     <h1 class="panel-title">Clearance</h1>
     <div class="card min-vh-100 c-scroll">
         <div class="card-body d-flex flex-column">
@@ -29,7 +30,7 @@
                 </form>
             </div>
            
-            <table class="default-table table c-scroll">
+            <table class="default-table table">
                 <tr>
                     <td>#</td>
                     <td>Type</td>
@@ -63,7 +64,7 @@
                     </td>
                     <td><?php echo $row['date_issued']; ?></td>
                     <td><?php echo $row['end_date']; ?></td>
-                    <td><?php echo $row['status']; ?></td>  
+                    <td><?php echo ucfirst($row['status']);  ?></td>  
                     <td>
                         <a href="modify_clearance.php?id=<?php echo $row['id'] ?>" class="btn btn-primary btn-sm" type="submit" name="submitEdit">Edit</a>
                         <button class="btn btn-success btn-sm" type="submit" name="submitActivate">Activate</button>
@@ -72,18 +73,20 @@
                 </tr>
                 <?php endwhile ?>
             </table>
-            <div class="mt-auto">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination pagination-sm justify-content-end">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
-                </nav>
-            </div>
+            
         </div>
+        
+    </div>
+    <div class="mt-auto">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination pagination-sm justify-content-end mt-2">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>
     </div>
     
 </div>
