@@ -15,7 +15,7 @@ if(isset($_GET['submit'])) {
     if($result == true) {
         header('location: ../admin/clearance_record.php?modify=success');
     }else {
-        header('location: ../admin/clearance_record.php?error=true');
+        header('location: ../admin/clearance_record.php?modify=failed');
     }
 }else {
     header('location: ../login.php');

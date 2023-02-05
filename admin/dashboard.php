@@ -1,6 +1,7 @@
-<?php include_once '../includes/main.header.php' ?>
-
-
+<?php
+    include_once '../includes/main.header.php';
+    require_once '../config/connection.php';
+?>
         <div class="panel p-3">
             <h1 class="panel-title">Dashboard</h1>
             <div class="panel-dashboard">
@@ -17,18 +18,18 @@
                                             <img class="dashboard-img" src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png"/>
                                         </div>
                                         <div class="dcontent-right text-center">
-                                            <span class="dcontent-text">200</span> 
+                                            <span class="dcontent-text"><?php echo $dashboard->countAllStudents(); ?></span> 
                                         </div>
                                     </div>
                                 </div>
                                 <div class="badges">
                                     <div class="d-flex flex-column text-center dbadge">
                                         <span>College</span>
-                                        <span>20</span>
+                                        <span><?php echo $dashboard->countStudCollege(); ?></span>
                                     </div>
                                     <div class="d-flex flex-column text-center dbadge">
                                         <span>SHS</span>
-                                        <span>20</span>
+                                        <span><?php echo $dashboard->countStudSHS(); ?></span>
                                     </div>
                                 </div>
                             </div>

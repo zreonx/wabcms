@@ -17,7 +17,9 @@
 
     include_once '../includes/autoloader.inc.php';
     $clearance = new Clearance($conn);
-    $studentClearance = new StudentClearance($conn);
+    $students = new Student($conn);
     $errors = new Error();
+    $displayPage = new Paging($conn);
+    $dashboard = new Dashboard($conn);
     
     

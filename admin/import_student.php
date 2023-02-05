@@ -7,8 +7,9 @@
     <?php 
         if (isset($_GET['import']) && $_GET['import'] == "success") { Errormessage::import_success(); }
         if (isset($_GET['error']) && $_GET['error'] == "true") { Errormessage::import_failed(); } 
-        if (isset($_GET['import']) && $_GET['import'] == "empty") { Errormessage::import_empty(); } 
-        if (isset($_GET['import']) && $_GET['import'] == "invalid") { Errormessage::import_invalid(); }
+        if (isset($_GET['import']) && $_GET['import'] == "empty") { Errormessage::import_empty(); }
+        if (isset($_GET['import']) && $_GET['import'] == "invalid") {Errormessage::import_invalid();}
+        if (isset($_GET['column']) && $_GET['column'] == "false") { Errormessage::import_column_match(); }
     ?>
     <h1 class="panel-title">Student</h1>
     <div class="card clearance-card">

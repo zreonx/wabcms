@@ -22,10 +22,10 @@
                 <h1 class="fs-2 card-title mb-4">Modify Clearance</h1>
                 <input type="hidden" value="<?php if(isset($_GET['id'])){echo $_GET['id'];} ?>" name="id">
                 <div class="row mb-2">
-                    <div class="col-md-2 flex-shrink-1 bd-highlight">
+                    <div class="col-lg-2 flex-shrink-1 bd-highlight">
                         <label class="form-label">Clearance Beneficiaries</label>
                     </div>
-                    <div class="col-md-2 ">
+                    <div class="col-lg-2 ">
                         <select name="beneficiaries" class="form-select sm-in">
                             <option value="0">Select</option>
                             <?php
@@ -37,10 +37,10 @@
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <div class="col-md-2 flex-shrink-1 bd-highlight">
+                    <div class="col-lg-2 flex-shrink-1 bd-highlight">
                         <label class="form-label">Clearance Type</label>
                     </div>
-                    <div class="col-md-2 ">
+                    <div class="col-lg-2 ">
                         <select id="disabledSelect" name="clearance_type" class="form-select">
                             <option value="0">Select</option>
                             <?php
@@ -53,18 +53,18 @@
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <div class="col-md-2 flex-shrink-1 bd-highlight">
+                    <div class="col-lg-2 flex-shrink-1 bd-highlight">
                         <label class="form-label">Academic Year</label>
                     </div>
-                    <div class="col-md-2 ">
+                    <div class="col-lg-2 ">
                         <input type="text" value="<?php echo $selected_clearance['academic_year'] ?>" class="form-control" name="academic_year">
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <div class="col-md-2 flex-shrink-1 bd-highlight">
+                    <div class="col-lg-2 flex-shrink-1 bd-highlight">
                         <label class="form-label">Semester</label>
                     </div>
-                    <div class="col-md-2 ">
+                    <div class="col-lg-2 ">
                         <input type="text" value="<?php echo $selected_clearance['semester'] ?>" class="form-control" name="semester">
                     </div>
                 </div>

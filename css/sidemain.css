@@ -177,8 +177,13 @@
     margin-left: 19px;
     transition: .3sec all ease-in;
 }
+
 .menu-toggle-close {
     display: none;
+}
+
+.menu-toggle-open:hover, .menu-toggle-close:hover {
+   box-shadow: var(--shadow-lg);
 }
 
 .panel-dashboard {
@@ -284,7 +289,7 @@
     color: #00ff9d;
 }
 
-.btn-default:hover {
+.default-hover:hover .btn-default:hover {
     color: #fff;
     box-shadow: var(--shadow-lg);
 }

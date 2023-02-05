@@ -69,6 +69,14 @@ class Errormessage {
               Invalid file format please select a CSV file.
             </div>";
     }
+    public static function import_column_match()
+    {
+        echo
+            "<div class='alert alert-danger alert-dismissible'>
+              <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+              CSV file columns does not match.
+            </div>";
+    }
 }
 
 

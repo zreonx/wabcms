@@ -27,7 +27,7 @@
         </div>
         <div class="main-content">
             <div class="header d-flex align-items-center">
-                <a href="#" class="menu-toggle-open"><i class="fa-solid fa-bars"></i></a>
+                <a href="#" class="menu-toggle-open default-hover"><i class="fa-solid fa-bars"></i></a>
                 <!-- <button class="menu-toggle-open" onclick="openSideBar()"> <i class="fa-solid fa-bars"></i></button>
                 <button class="menu-toggle-close"  onclick="closeSidebar()"><i class="fa-solid fa-bars"></i></button> -->
                 <h3 class="m-0">CCCWABCMS</h3>

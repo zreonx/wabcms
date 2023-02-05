@@ -9,8 +9,6 @@ class Clearance  {
 
     public function showClearanceType() {
         try {
-
-           
             $sql = "SELECT * FROM clearance_type;";
             $result = $this->conn->query($sql);
             return $result;
@@ -44,26 +42,27 @@ class Clearance  {
 
     public function getClearance($id) {
         try {
+
             $sql = "SELECT * FROM clearance WHERE id=:id ;";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindparam(':id', $id);
             $stmt->execute();
             $result = $stmt->fetch();
             return $result;
-
         }catch(PDOException $e) {
             echo "ERROR: " . $e->getMessage();
         }
     }
-    public function createClearance($type, $semester, $academic_year, $beneficiaries, $date_issued, $status) {
+
+    public function createClearance($type, $semester, $academic_year, $beneficiaries, $date_created, $status) {
         try{
-            $sql = "INSERT INTO clearance(type, semester, academic_year, beneficiaries, date_issued, status) VALUES (:type, :semester, :academic_year, :beneficiaries, :date_issued, :status);";
+            $sql = "INSERT INTO clearance(type, semester, academic_year, beneficiaries, date_created, status) VALUES (:type, :semester, :academic_year, :beneficiaries, :date_created, :status);";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindparam(':type', $type);
             $stmt->bindparam(':semester', $semester);
             $stmt->bindparam(':academic_year', $academic_year);
             $stmt->bindparam(':beneficiaries', $beneficiaries);
-            $stmt->bindparam(':date_issued', $date_issued);
+            $stmt->bindparam(':date_created', $date_created);
             $stmt->bindparam(':status', $status);
             $stmt->execute();
             return true;
