@@ -57,7 +57,7 @@ class Clearance  {
     }
     public function createClearance($type, $semester, $academic_year, $beneficiaries, $date_issued, $status) {
         try{
-            $sql = "INSERT INTO clearance (type, semester, academic_year, beneficiaries, date_issued, status) VALUES (:type, :semester, :academic_year, :beneficiaries, :date_issued, :status);";
+            $sql = "INSERT INTO clearance(type, semester, academic_year, beneficiaries, date_issued, status) VALUES (:type, :semester, :academic_year, :beneficiaries, :date_issued, :status);";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindparam(':type', $type);
             $stmt->bindparam(':semester', $semester);

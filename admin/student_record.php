@@ -5,7 +5,7 @@
 ?>
 
 <div class="panel p-3">
-    <h1 class="panel-title">Clearance</h1>
+    <h1 class="panel-title">Student</h1>
     <div class="card min-vh-100">
         <div class="card-body d-flex flex-column">
             <div class="d-flex search-bar">
@@ -15,6 +15,7 @@
                         Filter by
                     </button>
                     <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">All Student</a></li>
                         <li><a class="dropdown-item" href="#">Course</a></li>
                         <li><a class="dropdown-item" href="#">Strand</a></li>
                         <li><a class="dropdown-item" href="#">SHS</a></li>

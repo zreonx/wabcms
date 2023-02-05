@@ -17,5 +17,7 @@
 
     include_once '../includes/autoloader.inc.php';
     $clearance = new Clearance($conn);
+    $studentClearance = new StudentClearance($conn);
     $errors = new Error();
+    
     

@@ -1,45 +1,35 @@
 <?php 
 
 if(isset($_POST['submit'])) {
-
+   
     $csv = $_FILES['csvfile']['tmp_name'];
 
-    // $lines = file($csv, FILE_SKIP_EMPTY_LINES | FILE_IGNORE_NEW_LINES);
-
-    // //var_dump($csv);
-    if ($_FILES['csvfile']['size'] > 0) {
-        $file = fopen($csv, "r");
-
-        $row = 0;
-        $col = count(fgetcsv($file));
-        while (($column = fgetcsv($file, 0, ",")) !== false) {
-            // $row++;
-            // if ($row == 1) {
-            //      continue;
-            // }
-
-            for ($i = 0; $i < $col; $i++) {
-                echo $column[$i] . " ";
-            }
-            echo "<br>";
-
+        $ext = pathinfo($_FILES['csvfile']['full_path'], PATHINFO_EXTENSION);
+        if ($_FILES['csvfile']['size'] > 0) {
+            $row = 0;
+            if( $ext !== 'csv' ) {
+                header("location: ../admin/import_student.php?import=invalid");
+            }else {
+                    $file = fopen($csv, "r");
+                    require_once '../config/connection.php';
+                    while (($column = fgetcsv($file, 0, ",")) !== false) {
+                        $row++;
+                        if ($row == 1) {
+                             continue;
+                        }
+                        $result = $studentClearance->importStudent(['student_id' => $column[0], 'first_name' => $column[1], 'middle_name' => $column[2], 'last_name' => $column[3], 'contact_number' => $column[4], 'email' => $column[5], 'program_course' => $column[6], 'academic_level' => $column[7], 'strand' => $column[8], 'year_level' => $column[9]]);
+                        
+                        if($result == true) {
+                            header("location: ../admin/import_student.php?import=success");
+                        } else {
+                            header("location: ../admin/import_student.php?error=true");
+                        }
+                    echo "<br>";
+                }
+            } 
+        }else {
+            header("location: ../admin/import_student.php?import=empty");
         }
-
-        //     // while(($column = fgetcsv($file, 10000, ","))) {
-
-        //     //     $sqlInsert = "INSERT INTO data (name, type) VALUES ('" .  $column[0] . "', '". $column[1] ."')";
-        //     //     $result = mysqli_query($conn, $sqlInsert); 
-
-        //     //     if(!empty($result)) {
-        //     //         echo "Data has been inserted successfully";
-        //     //     }else {
-        //     //         echo "Data insertion is unsuccessful";
-        //     //     }
-        //     // }
-        // }
     }
-    
-    }
-    
 
 ?>

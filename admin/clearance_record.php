@@ -18,9 +18,10 @@
                         Filter by
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Course</a></li>
-                        <li><a class="dropdown-item" href="#">Strand</a></li>
-                        <li><a class="dropdown-item" href="#">SHS</a></li>
+                        <li><a class="dropdown-item" href="#">All Clearance</a></li>
+                        <li><a class="dropdown-item" href="#">Semester</a></li>
+                        <li><a class="dropdown-item" href="#">Year</a></li>
+                        <li><a class="dropdown-item" href="#">Type</a></li>
                         <li><a class="dropdown-item" href="#">College</a></li>
                     </ul>
                 </div>
