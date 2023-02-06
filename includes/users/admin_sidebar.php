@@ -19,9 +19,9 @@
             <i class="caret fa-solid fa-regular fa-angle-down"></i></span>
         </a>
         <div class="dropdown-container">
-            <a href="#"><i class="space fa-solid fa-file-contract"></i></i>Signatory Record</a>
-            <a href="#"><i class="space fa-solid fa-plus"></i>Add Signatory</a>
-            <a href="#"><i class="space fa-solid fa-user-pen"></i>Modify Signatory</a>
+            <a href="signatory_record.php"><i class="space fa-solid fa-file-contract"></i></i>Signatory Record</a>
+            <a href="add_signatory.php"><i class="space fa-solid fa-plus"></i>Add Signatory</a>
+            <a href="modify_signatory.php"><i class="space fa-solid fa-user-pen"></i>Modify Signatory</a>
         </div>
         <a class="dropdown-btn">
             <i class="fa-solid fa-file-circle-check space"></i>
@@ -30,8 +30,10 @@
             <i class="caret fa-solid fa-regular fa-angle-down"></i></span>
         </a>
         <div class="dropdown-container">
+        
             <a href="clearance_record.php"><i class="space fa-solid fa-file-lines"></i>Clearance Record</a>
             <a href="create_clearance.php"><i class="space fa-solid fa-file-circle-plus"></i>Create Clearance</a>
+            <a href="clearance_record.php"><i class="space fa-solid fa-rectangle-list"></i></i>Requests List</a>
             <!-- <a href="modify_clearance.php"><i class="space fa-solid fa-pen-to-square"></i>Modify Clearance</a> -->
         </div>
         <a class="dropdown-btn">

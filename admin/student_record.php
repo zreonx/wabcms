@@ -2,17 +2,14 @@
     include_once '../includes/main.header.php';
     require_once '../config/connection.php';
 
-    $numOfRow = $displayPage->rowCount("students");
-    $total_pages = $displayPage->pagination();
+    $studentTable = Paging::getStudentTable();
+    
     $page;
     if(isset($_GET['page'])) {
         $page =$_GET['page'];
    }else {
         $page = 1;
    }
-    $displayPage->startingPage($page);
-    $myResult = $displayPage->setPage("students");
-    
 ?>
 
 <div class="panel p-3">
@@ -31,11 +28,14 @@
                 <li><a class="dropdown-item" href="#">College</a></li>
             </ul>
         </div>
-        <form class="d-flex">
-            <input class="form-control form-control-sm me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-light btn-sm btn-search" onclick="this.blur();" type="submit">Search</button>
+        <form class="d-flex" method="get" action="student_record.php">
+            <input class="form-control form-control-sm me-2" type="search" name="search" id="search" placeholder="Search" aria-label="Search">
+            <div class="list"></div>
+            <button class="btn btn-light btn-sm btn-search" name="submitSearch" type="submit">Search</button>
         </form>
     </div>
+
+    <?php ?>
     <div class="card min-vh-100 c-scroll">
         <div class="card-body d-flex flex-column">
             <table class="default-table table c-scroll text-center">
@@ -55,7 +55,54 @@
                     <td>Action</td>
                 </tr>
 
-                <?php  while($student_row = $myResult->fetch(PDO::FETCH_ASSOC)) : ?>
+                <?php  
+                    if(isset($_GET['submitSearch'])) {
+                        $search = $_GET['search'];
+
+                        $searchData = $searchFilter->searchStudent($search, $studentTable);
+
+                        $displayPage->countSearchedStudent($search, $studentTable);
+
+                        $total_pages = $displayPage->pagination();
+                        $displayPage->startingPage($page);
+                    
+                        while ($row = $searchData->fetch(PDO::FETCH_ASSOC)) {
+                 
+                ?>
+                    <tr>
+                        <td><?php echo $row['id'] ?></td>
+                        <td><?php echo $row['student_id'] ?></td>
+                        <td><?php echo $row['first_name'] ?></td>
+                        <td><?php echo $row['middle_name'] ?></td>
+                        <td><?php echo $row['last_name'] ?></td>
+                        <td><?php echo $row['contact_number'] ?></td>
+                        <td><?php echo $row['email'] ?></td>
+                        <td><?php echo $row['program_course'] ?></td>
+                        <td><?php echo $row['academic_level'] ?></td>
+                        <td><?php echo $row['strand'] ?></td>
+                        <td><?php echo $row['year_level'] ?></td>
+                        <td><?php echo $row['status'] ?></td>
+                        <td>
+                            <a href="#" class="btn btn-primary btn-sm" type="submit" name="submitEdit">
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+                <?php 
+                        }
+                    }else {
+                ?>
+                
+                <?php  
+
+                $numOfRow = $displayPage->rowCount($studentTable);
+                $total_pages = $displayPage->pagination();
+                $displayPage->startingPage($page);
+                $myResult = $displayPage->setPage($studentTable);
+                
+                while($student_row = $myResult->fetch(PDO::FETCH_ASSOC)) : 
+                
+                ?>
                     <tr>
                         <td><?php echo $student_row['id'] ?></td>
                         <td><?php echo $student_row['student_id'] ?></td>
@@ -75,7 +122,7 @@
                             </a>
                         </td>
                     </tr>
-                <?php endwhile ?>
+                <?php endwhile; } ?>
                 
             </table>
         </div>
@@ -93,5 +140,23 @@
     </div>
     
 </div>
+<!-- <script>
+    $(document).ready(function(){
+        $('#search').keyup(function(){
+            var query = $(this).val();
+            if(query != '') {
+                $.ajax({
+                    url: "search.php",
+                    method: "POST",
+                    data: {query:query},
+                    success: function(data) {
+                        $('#list').fadeIn();
+                        $('#list').html(data);
+                    }
+                });
+            }
+        });
+    });
+</script> -->
 
 <?php include_once '../includes/main.footer.php' ?>

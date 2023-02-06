@@ -7,7 +7,7 @@
 // echo date("Y-m-d h:i:sa");
 
 
-// require_once '../config/connection.php';
+require_once '../config/connection.php';
 
 
 //Auto Paging
@@ -17,6 +17,6 @@ echo $displayPage->pagination();
 echo "<br>";
 print_r($displayPage->setPage("students", 1)); */
 
-require_once '../config/connection.php';
+//require_once '../config/connection.php';
 
-echo $dashboard->countAllStudents();
+//echo $dashboard->countAllStudents();

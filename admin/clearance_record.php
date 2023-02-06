@@ -1,8 +1,8 @@
 <?php 
     include_once '../includes/main.header.php';
     require_once '../config/connection.php';
-    
-    $numOfRow = $displayPage->rowCount("clearance");
+    $studentTable = Paging::getClearanceTable();
+    $numOfRow = $displayPage->rowCount($studentTable);
     $total_pages = $displayPage->pagination();
     $page;
     if(isset($_GET['page'])) {
