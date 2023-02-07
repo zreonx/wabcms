@@ -2,7 +2,7 @@
 
 class Paging extends DatabaseTable{
     private $conn;
-    private $page = 12;
+    private $page = 5;
 
     private $startingPage;
     private $total_row;
