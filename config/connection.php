@@ -10,8 +10,10 @@
     $conn = $db->Conn();
     $clearance = new Clearance($conn);
     $students = new Student($conn);
+    $signatories = new Signatory($conn);
     $errors = new Error();
     $displayPage = new Paging($conn);
     $dashboard = new Dashboard($conn);
     $searchFilter = new SearchFilter($conn);
+    $users = new User($conn);
     

@@ -1,6 +1,7 @@
 <div class="side-link">
     <div class="links">
         <a href="dashboard.php" class=""><i class="fa-solid fa-house space"></i>Dashboard</a>
+        <a href="user.php" class=""><i class="fa-solid fa-user space"></i></i>User Record</a>
         <a class="dropdown-btn">
             <i class="fa-solid fa-users space"></i>
             Students 

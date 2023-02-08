@@ -91,6 +91,23 @@ class Clearance  {
         }
     }
 
+    public function startClearance($id, $date_issued) {
+        try {
+            $status = "started";
+            $sql = "UPDATE clearance SET date_issued = :date_issued, status = :status WHERE id = :id ;";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindparam(':date_issued', $date_issued);
+            $stmt->bindparam(':status', $status);
+            $stmt->bindparam(':id', $id);
+            $stmt->execute();
+            return true;
+
+        }catch(PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+            return false;
+        }
+    }
+
 }
 
 

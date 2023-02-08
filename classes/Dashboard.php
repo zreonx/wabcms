@@ -42,4 +42,19 @@ class Dashboard {
             echo "ERROR: " . $e->getMessage();
         }
     }
+
+    public function countSignatories()
+    {
+        try {
+            $sql = "SELECT COUNT(*) FROM signatory_designation";
+            $result = $this->conn->query($sql);
+            $count = $result->fetchColumn();
+            return $count;
+
+        } catch (PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+        }
+
+    }
+
 }

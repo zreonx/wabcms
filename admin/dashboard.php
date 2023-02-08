@@ -48,7 +48,7 @@
                                         <img class="dashboard-img" src="https://cdn-icons-png.flaticon.com/512/3188/3188004.png"/>
                                     </div>
                                     <div class="dcontent-right text-center p-2">
-                                        <span class="dcontent-text">20</span> 
+                                        <span class="dcontent-text"><?php echo $dashboard->countSignatories(); ?></span> 
                                     </div>
                                 </div>
                             </div>

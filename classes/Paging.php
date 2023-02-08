@@ -2,7 +2,7 @@
 
 class Paging extends DatabaseTable{
     private $conn;
-    private $page = 5;
+    private $page = 12;
 
     private $startingPage;
     private $total_row;
@@ -69,6 +69,16 @@ class Paging extends DatabaseTable{
         }
     }
 
+    public function getUsers() {
+        try {
+            $sql = "SELECT * FROM users WHERE user_type != 'admin' LIMIT $this->startingPage ,$this->page";
+            $result = $this->conn->query($sql);
+            return $result;
+        }catch (PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+        }
+    }
+
     public function countSearchedStudent($search, $table_name) {
         try {
             $sql = "SELECT COUNT(*) FROM $table_name WHERE id LIKE '%$search%' OR student_id LIKE '%$search%' OR first_name LIKE '%$search%' OR last_name LIKE '%$search%' OR middle_name LIKE '%$search%' OR email LIKE '%$search%' OR program_course LIKE '%$search%' OR academic_level LIKE '%$search%' OR strand LIKE '%$search%' OR year_level LIKE '%$search%' OR status LIKE '%$search%' ;";
@@ -80,5 +90,7 @@ class Paging extends DatabaseTable{
             echo "ERROR: " . $e->getMessage();
         }
     }
+
+   
 
 }
