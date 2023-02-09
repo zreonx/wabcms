@@ -91,6 +91,25 @@ class Paging extends DatabaseTable{
         }
     }
 
+    public function getSignatory() {
+        try {
+            $selectQuery = "SELECT sd.id, sd.designation as 'sd_designation', sd.signatory_id as 'sd_id', s.first_name, s.middle_name, s.last_name, s.email, s.office_department, (SELECT org_name FROM organizations WHERE id = s.organization) as 'organization', s.status FROM signatory_designation sd INNER JOIN signatories s ON sd.signatory_id = s.id;";
+            $countQuery = "SELECT COUNT(*) FROM signatory_designation sd INNER JOIN signatories s ON sd.signatory_id = s.id;";
+            $result_select = $this->conn->query($selectQuery);
+            $result_count = $this->conn->query($countQuery);
+
+            $count = $result_count->fetchColumn();
+
+            $this->total_row = $count;
+
+            $result = array("count" => $count, "signatory_query" => $result_select);
+
+            return $result;
+        }catch(PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+        }
+    }
+
    
 
 }

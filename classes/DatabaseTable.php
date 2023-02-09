@@ -4,7 +4,9 @@ class DatabaseTable {
     private static array $table_list = [
         "students" => "students",
         "clearance" => "clearance",
-        "users" => "users"
+        "users" => "users",
+        "signatories" => "signatories",
+        "signatory_designation" => "signatory_designation"
     ];
     
     public static function getStudentTable() {
@@ -17,5 +19,13 @@ class DatabaseTable {
 
     public static function getUsersTable() {
         return self::$table_list['users'];
+    }
+
+    public static function getSignatoryTable() {
+        return self::$table_list['signatory_designation'];
+    }
+
+    public static function getSignatoryDesgination() {
+        return self::$table_list['signatory_designation'];
     }
 }

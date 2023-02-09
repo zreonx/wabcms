@@ -30,3 +30,7 @@ print_r($displayPage->setPage("students", 1)); */
 
 
 // $users->setUserPassword();
+
+//print_r($displayPage->getSignatory());
+
+$clearance->insertStudentClearance(1);

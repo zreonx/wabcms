@@ -100,6 +100,10 @@ class Clearance  {
             $stmt->bindparam(':status', $status);
             $stmt->bindparam(':id', $id);
             $stmt->execute();
+
+            $this->addSignatoryColumn();
+           
+
             return true;
 
         }catch(PDOException $e) {
@@ -107,7 +111,55 @@ class Clearance  {
             return false;
         }
     }
+    
 
+    private function addSignatoryColumn() {
+        try{
+            $sql = "SELECT * FROM signatory_designation";
+            $result = $this->conn->query($sql);
+
+            while($signatory_result = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                //create a column name for signatory based on designation
+                $designation =  explode(" ", strtolower($signatory_result['designation']));
+                $final_designation = implode("_", $designation);
+                $signatory_column = "is_" . $final_designation ."_approval";
+
+                //print_r($signatory_result['designation']);
+                $addColumn = "ALTER TABLE student_clearance ADD $signatory_column VARCHAR(255);";
+                $stmt = $this->conn->prepare($addColumn);
+                $stmt->execute();
+                
+            }
+            return $result;
+
+        }catch(PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+        }
+    }
+
+    public function insertStudentClearance($clearance_id) {
+        try{
+            $sql = "SELECT * FROM users WHERE user_type = 'student'";
+            $result = $this->conn->query($sql);
+
+            while($student_user = $result->fetch(PDO::FETCH_ASSOC)) {
+                $id = $student_user['user_id'];
+
+                $insertQuery = "INSERT INTO student_clearance (student_id, clearance_id) VALUES (:stud_id, :clearance_id);";
+                $stmt = $this->conn->prepare($insertQuery);
+
+                $stmt->bindparam(':stud_id', $id);
+                $stmt->bindparam(':clearance_id', $clearance_id);
+                $stmt->execute();
+
+            }
+            return true;
+
+        }catch(PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+        }
+    }
 }
 
 

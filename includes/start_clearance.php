@@ -13,7 +13,12 @@
 
             $account_result = $users->setUserAccount();
             if($account_result == true) {
-                 echo "insert success";
+                 $insertStudentClearaneResult = $clearance->insertStudentClearance($clearance_id);
+                 if($insertStudentClearaneResult == true) {
+                    echo "The clearance has been started fianlly";
+                 }else {
+                    echo "There might be a aproblem";
+                 }
             }else {
                 "Insert Failed";
             }

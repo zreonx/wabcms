@@ -48,6 +48,7 @@ class Signatory {
 
     protected function addSignatoryAssignement($email) {
         try {
+
             $selectSignatory = "SELECT * FROM signatories WHERE email = :email";
 
             $stmt = $this->conn->prepare($selectSignatory);
@@ -75,6 +76,6 @@ class Signatory {
         }
 
     }
-    
+
 
 }

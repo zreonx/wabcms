@@ -80,7 +80,7 @@
                     <td><?php echo ucfirst($row['status']);  ?></td>  
                     <td>
                         <a href="modify_clearance.php?id=<?php echo $row['id'] ?>" class="btn btn-primary btn-sm" type="submit" name="submitEdit">Edit</a>
-                        <a href="../includes/user_account.inc.php?clearance_id=<?php echo $row['id'] ?>" class="btn btn-success btn-sm" type="submit" name="submitStart">Start</a>
+                        <a href="../includes/start_clearance.php?clearance_id=<?php echo $row['id'] ?>" class="btn btn-success btn-sm" type="submit" name="submitStart">Start</a>
                         <button class="btn btn-danger btn-sm" type="submit" name="SubmitEnd">End</button>
                     </td>
                 </tr>
