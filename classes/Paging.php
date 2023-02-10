@@ -1,5 +1,4 @@
 <?php
-
 class Paging extends DatabaseTable{
     private $conn;
     private $page = 12;
@@ -111,5 +110,23 @@ class Paging extends DatabaseTable{
     }
 
    
+    public function getStudentClearance($id=null) {
+        try{
+            $sql = "SELECT * FROM clearance_type ct INNER JOIN student_clearance sc ON sc.clearance_id = ct.clearance_type_id";
+            $sqlCountQuery = "SELECT COUNT(*) FROM clearance_type ct INNER JOIN student_clearance sc ON sc.clearance_id = ct.clearance_type_id";
+            $resultSql =  $this->conn->query($sql);
+            $resultCount = $this->conn->query($sqlCountQuery);
+            $row_count = $resultCount->fetchColumn();
+            $this->total_row = $row_count;
+            $count = $resultSql->columnCount();
+            $result = array("row_count" => $row_count, "count_column" => $count, "sc_query" => $resultSql);
+            return $result;
+            
+
+        }catch(PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+        }
+    }
+
 
 }

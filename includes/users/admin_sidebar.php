@@ -31,7 +31,7 @@
             <i class="caret fa-solid fa-regular fa-angle-down"></i></span>
         </a>
         <div class="dropdown-container">
-        
+            <a href="student_clearance_record.php"><i class="space fa-solid fa-file-lines"></i>Student Clearance</a>
             <a href="clearance_record.php"><i class="space fa-solid fa-file-lines"></i>Clearance Record</a>
             <a href="create_clearance.php"><i class="space fa-solid fa-file-circle-plus"></i>Create Clearance</a>
             <a href="clearance_record.php"><i class="space fa-solid fa-rectangle-list"></i></i>Requests List</a>

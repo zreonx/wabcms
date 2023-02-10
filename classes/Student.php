@@ -37,6 +37,7 @@
                 $column_value = implode("', '", $columns) . "', 'imported'";
                 $sql_column = "($column_name, status)";
 
+                
                 $sql = "INSERT INTO students $sql_column VALUES ('$column_value)";
 
                 $this->conn->exec($sql);

@@ -160,7 +160,10 @@ class Clearance  {
             echo "ERROR: " . $e->getMessage();
         }
     }
-}
+
+    }
+
+
 
 
 ?>
