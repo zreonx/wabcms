@@ -1,7 +1,6 @@
 <?php 
 class Errormessage {
 
-
     //Create Clearance Error Messages
     public static function clearance_create_failed () {
         echo 
@@ -33,6 +32,64 @@ class Errormessage {
         <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
         Clearance has been updated  successfully.
       </div>";
+    }
+
+    //Clearance error message
+    public static function clearance_start()
+    {
+        echo
+            "<div class='alert alert-success alert-dismissible'>
+              <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+             The clearance has been started.
+            </div>";
+    }
+    public static function clearance_end()
+    {
+        echo
+            "<div class='alert alert-success alert-dismissible'>
+              <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+              The clearance has been ended.
+            </div>";
+    }
+    public static function clearance_started()
+    {
+        echo
+            "<div class='alert alert-warning alert-dismissible'>
+              <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+              The clearance has been started already.
+            </div>";
+    }
+    public static function clearance_failed()
+    {
+        echo
+            "<div class='alert alert-danger alert-dismissible'>
+              <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+              There was a problem starting the clearance.
+            </div>";
+    }
+    public static function clearance_end_fail()
+    {
+        echo
+            "<div class='alert alert-danger alert-dismissible'>
+              <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+              There was a problem ending the clearance.
+            </div>";
+    }
+    public static function clearance_ended()
+    {
+        echo
+            "<div class='alert alert-danger alert-dismissible'>
+              <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+              There was a problem in ending the clearance.
+            </div>";
+    }
+    public static function clearance_end_success()
+    {
+        echo
+            "<div class='alert alert-success alert-dismissible'>
+              <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+              The clearance has been ended successfully.
+            </div>";
     }
 
 
@@ -77,6 +134,9 @@ class Errormessage {
               CSV file columns does not match.
             </div>";
     }
+
+
+    
 }
 
 

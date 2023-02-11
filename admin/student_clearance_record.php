@@ -12,7 +12,7 @@
         $page =$_GET['page'];
    }else {
         $page = 1;
-   }yyh  
+   }
 ?>
 
 <div class="panel p-3">

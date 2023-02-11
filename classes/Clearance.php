@@ -111,8 +111,6 @@ class Clearance  {
             return false;
         }
     }
-    
-
     private function addSignatoryColumn() {
         try{
             $sql = "SELECT * FROM signatory_designation";
@@ -137,6 +135,7 @@ class Clearance  {
             echo "ERROR: " . $e->getMessage();
         }
     }
+   
 
     public function insertStudentClearance($clearance_id) {
         try{
@@ -161,9 +160,42 @@ class Clearance  {
         }
     }
 
+    public function getClearanceByColumn($column_name, $variable) {
+        try{
+            $sql = "SELECT * FROM clearance WHERE $column_name = $variable; ";
+
+            $result = $this->conn->query($sql);
+
+            return $result;
+
+        }catch(PDOException $e) {
+            echo "ERROR: ". $e->getMessage();
+        }
     }
 
+    public function endClearance($id, $date_end) {
+        try {
+            $status = "ended";
+            $sql = "UPDATE clearance SET end_date = :date_end, status = :status WHERE id = :id ;";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindparam(':date_end', $date_end);
+            $stmt->bindparam(':status', $status);
+            $stmt->bindparam(':id', $id);
+            $stmt->execute();
+
+            return true;
+
+        }catch(PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    
+    
 
 
+
+    }
 
 ?>

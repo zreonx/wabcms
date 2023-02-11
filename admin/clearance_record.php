@@ -19,6 +19,12 @@
     <?php if (isset($_GET['create']) && $_GET['create'] == "failed") { Errormessage::clearance_create_failed(); } ?>
     <?php if (isset($_GET['modify']) && $_GET['modify'] == "success") { Errormessage::clearance_update_success(); } ?>
     <?php if (isset($_GET['modify']) && $_GET['modify'] == "failed") { Errormessage::clearance_update_success(); } ?>
+    <?php if (isset($_GET['start']) && $_GET['start'] == "started") { Errormessage::clearance_started(); } ?>
+    <?php if (isset($_GET['start']) && $_GET['start'] == "failed") { Errormessage::clearance_failed(); } ?>
+    <?php if (isset($_GET['start']) && $_GET['start'] == "success") { Errormessage::clearance_start(); } ?>
+    <?php if (isset($_GET['start']) && $_GET['start'] == "ended") { Errormessage::clearance_ended(); } ?>
+    <?php if (isset($_GET['start']) && $_GET['start'] == "endfail") { Errormessage::clearance_end_fail(); } ?>
+    <?php if (isset($_GET['start']) && $_GET['start'] == "end") { Errormessage::clearance_end(); } ?>
     <h1 class="panel-title">Clearance</h1>
     <div class="d-flex search-bar mb-2">
         <div class="btn-group">
@@ -80,8 +86,8 @@
                     <td><?php echo ucfirst($row['status']);  ?></td>  
                     <td>
                         <a href="modify_clearance.php?id=<?php echo $row['id'] ?>" class="btn btn-primary btn-sm" type="submit" name="submitEdit">Edit</a>
-                        <a href="../includes/start_clearance.php?clearance_id=<?php echo $row['id'] ?>" class="btn btn-success btn-sm" type="submit" name="submitStart">Start</a>
-                        <button class="btn btn-danger btn-sm" type="submit" name="SubmitEnd">End</button>
+                        <a href="../includes/start_clearance.inc.php?clearance_id=<?php echo $row['id'] ?>" class="btn btn-success btn-sm" type="submit" name="submitStart">Start</a>
+                        <a href="../includes/end_clearance.inc.php?clearance_id=<?php echo $row['id'] ?>" class="btn btn-danger btn-sm"  name="SubmitEnd">End</a>
                     </td>
                 </tr>
                 <?php endwhile ?>
