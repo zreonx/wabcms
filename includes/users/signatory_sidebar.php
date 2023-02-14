@@ -19,6 +19,7 @@
             <i class="caret fa-solid fa-regular fa-angle-down"></i></span>
         </a>
         <div class="dropdown-container">
+            <a href="clearance_list.php"><i class="space fa-solid fa-file-lines"></i>Clearance List</a>
             <a href="clearance_record.php"><i class="space fa-solid fa-file-lines"></i>Student Clearance</a>
         </div>
 
@@ -48,6 +49,6 @@
     <div class="links link-below">
     <hr>
         <a href="#"><i class="fa-solid fa-gear space"></i>Setting</a>
-        <a href="#"><i class="fa-solid fa-right-from-bracket space"></i>Logout</a>
+        <a href="../logout.php"><i class="fa-solid fa-right-from-bracket space"></i>Logout</a>
     </div>
 </div>

@@ -52,6 +52,6 @@
     <div class="links link-below">
     <hr>
         <a href="#"><i class="fa-solid fa-gear space"></i>Setting</a>
-        <a href="#"><i class="fa-solid fa-right-from-bracket space"></i>Logout</a>
+        <a href="../logout.php"><i class="fa-solid fa-right-from-bracket space"></i>Logout</a>
     </div>
 </div>

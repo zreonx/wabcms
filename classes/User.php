@@ -89,6 +89,51 @@ class User{
         }
     }
 
+
+    //check the email and return the usertype
+    public function checkEmail($email) {
+        try {
+            
+            $sql = "SELECT * FROM users WHERE email = :email ;";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindparam(':email', $email);
+            $stmt->execute();
+
+            $result = $stmt->fetch();
+           
+            if(!$result) {
+                return false;
+            }else {
+                return $result['user_type'];
+            }
+
+        }catch(PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+            return false;
+        }
+        
+    }
+
+    public function loginUser($userType, $email, $password) {
+        try {
+            $sql = 'SELECT * FROM users WHERE user_type = :type AND email = :email AND password = :password ;';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindparam(':type', $userType);
+            $stmt->bindparam(':email', $email);
+            $stmt->bindparam(':password', $password);
+            $stmt->execute();
+            $result = $stmt->fetch();
+
+            return $result;
+
+
+        }catch(PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+            return false;
+            
+        }
+    }
+
     
     
 

@@ -1,6 +1,30 @@
 <?php 
 class Errormessage {
 
+    //login error message
+
+    public static function input_empty () {
+      echo 
+  "<div class='alert alert-danger mb-0'>
+     Input was empty.
+    </div>";
+  }
+  public static function email_exist() {
+    echo 
+"<div class='alert alert-danger mb-0'>
+   Account does not exist.
+  </div>";
+}
+
+public static function login_failed() {
+  echo 
+"<div class='alert alert-danger mb-0'>
+ Invalid username or password.
+</div>";
+}
+
+  
+
     //Create Clearance Error Messages
     public static function clearance_create_failed () {
         echo 

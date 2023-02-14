@@ -6,6 +6,8 @@
     define('DB_CHARSET', 'utf8mb4');
 
     include_once '../includes/autoloader.inc.php';
+    include_once '../includes/session.php';
+    
     $db = new DatabaseConnection();
     $conn = $db->Conn();
     $clearance = new Clearance($conn);
@@ -16,4 +18,8 @@
     $dashboard = new Dashboard($conn);
     $searchFilter = new SearchFilter($conn);
     $users = new User($conn);
-    
+
+
+
+
+   

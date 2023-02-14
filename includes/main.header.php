@@ -1,3 +1,4 @@
+<?php  include_once 'session.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,8 +24,19 @@
                 <div class="side-img">
                     <img src="../images/ccc_logo.png" class="logo" alt="">
                 </div>
+                <?php 
+                    
+                    if(isset($_SESSION['user_type']) and $_SESSION['user_type'] == 'admin' ) {
+                        include_once 'users/admin_sidebar.php';
+                    }else if (isset($_SESSION['user_type']) and $_SESSION['user_type'] == 'signatory') {
+                       
+                    }
+                    include_once 'users/signatory_sidebar.php';
+                
+                ?>
                 <!-- Admin SideBar -->
-                <?php include_once 'users/admin_sidebar.php' ?>
+                
+                
             
             </div>
         </div>

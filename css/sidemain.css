@@ -186,7 +186,7 @@
    box-shadow: var(--shadow-lg);
 }
 
-.panel-dashboard {
+.panel-dashboard, .designee-list-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
     gap: 12px;
@@ -300,6 +300,19 @@
     min-height: 100vh !important;
 }
 
+.card-designee {
+    width: 350px;
+    padding: 5px;
+}
+
+.btn-badge {
+    border-radius: 0;
+}
+
+.badge-color {
+    background-color: var(--themebc);
+    color: #fff;
+}
 
 /* ===Media queries and Scroll bar === */
 
@@ -317,14 +330,14 @@
     .sidebar {
         width: 200px;
     }
-    .dashboard-card {
+    .dashboard-card, .card-designee {
         margin:0 auto;
     }
     
 }
 
 @media only screen and (max-width: 520px){
-    .dashboard-card {
+    .dashboard-card, .card-designee {
         width: 80% !important;
         margin-bottom: 8px !important;
     }

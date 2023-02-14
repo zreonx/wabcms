@@ -1,21 +1,29 @@
 <?php
     $title = "Login";
     require_once "includes/header.php";
+    require_once "classes/Errormessage.php";
+    
 ?>
-    <div class="cards animated ">
-        <div class="card-pic wow slideInLeft">
+
+    <div class="cards animated fadeInDown ">
+        <div class="card-pic">
             <img src="images/login.png" class="img-fluid rounded d-block login-photo" alt="">
         </div>
-        <div class="login-card login wow slideInRight">
+        <div class="login-card login  ">
             <div class="card login-b">
-                <div class="card-title ">
+                <div class="card-title mb-0">
                     <h1 class="text-center">CCCWABCMS</h1>
+                    <?php
+                        if(isset($_GET['empty']) and $_GET['empty'] == true) { Errormessage::input_empty() ;}
+                        if(isset($_GET['email']) and $_GET['email'] == "notexist") { Errormessage::email_exist() ;}
+                        if(isset($_GET['login']) and $_GET['login'] == "failed") { Errormessage::login_failed() ;}
+                    ?>
                 </div>
                 <div class="card-body">
-                    <form action="<?php echo htmlentities($_SERVER['PHP_SELF']) ?>" method="POST">
+                    <form action="includes/user_login.inc.php" method="POST">
                         <div class="mb-3">
-                            <label class="form-label">Student ID</label>
-                            <input type="text" name="email" placeholder="Student Id" class="form-control" >
+                            <label class="form-label">Email</label>
+                            <input type="text" name="email" placeholder="Email" class="form-control" >
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Password</label>
