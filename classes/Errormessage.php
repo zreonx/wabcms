@@ -160,6 +160,23 @@ public static function login_failed() {
     }
 
 
+    /* ======SIGNATORY APPROVAL ERROR MESSAGE ======= */
+
+    public static function approve_success () {
+      echo 
+          "<div class='alert alert-success alert-dismissible'>
+              <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+            Student Clearance has been approved.
+            </div>";
+   }
+
+   public static function approve_failed () {
+      echo 
+          "<div class='alert alert-danger alert-dismissible'>
+              <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+            There was an error approving student clearance.
+            </div>";
+ }
     
 }
 

@@ -5,7 +5,7 @@
     $studentTable = Paging::getStudentTable();
     $student_clearance = $displayPage->getStudentClearance();
     $signatoryColumn = $displayPage->getStudentClearance();
-    $keys = array_keys($signatoryColumn['sc_query']->fetch(PDO::FETCH_ASSOC));
+   
     $total_pages = $displayPage->pagination();
 
     if(isset($_GET['page'])) {
@@ -48,8 +48,11 @@
                     <td>Clearance ID</td>
 
                     <?php 
-                            $signatory_column;
-                        for($i = 6; $i < $student_clearance['count_column']; $i++) {
+                   
+                    if($signatoryColumn['row_count'] > 0 ) {
+                        $keys = array_keys($signatoryColumn['sc_query']->fetch(PDO::FETCH_ASSOC));
+                        $signatory_column;
+                        for($i = 3; $i < $student_clearance['count_column']; $i++) {
                             $signatory_column [] = $keys[$i];
                         }
 
@@ -60,8 +63,8 @@
                             echo "<td>$designee </td>";
                            
                         }
-                    
                     ?>
+                            
                 </tr>
 
                 <?php while($rows_sc = $student_clearance['sc_query']->fetch(PDO::FETCH_ASSOC)): ?>
@@ -81,7 +84,7 @@
                     ?>
                     
                 </tr>
-                <?php endwhile ?>
+                <?php endwhile; } ?>
             </table>
         </div>
     </div>

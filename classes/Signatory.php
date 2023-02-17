@@ -69,8 +69,6 @@ class Signatory {
                 $statement->execute();
 
             }
-
-
         }catch(PDOException $e)  {
             echo "ERROR: " . $e->getMessage();
         }

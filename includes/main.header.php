@@ -29,15 +29,11 @@
                     if(isset($_SESSION['user_type']) and $_SESSION['user_type'] == 'admin' ) {
                         include_once 'users/admin_sidebar.php';
                     }else if (isset($_SESSION['user_type']) and $_SESSION['user_type'] == 'signatory') {
-                       
+                        include_once 'users/signatory_sidebar.php';
                     }
-                    include_once 'users/signatory_sidebar.php';
-                
                 ?>
                 <!-- Admin SideBar -->
-                
-                
-            
+
             </div>
         </div>
         <div class="main-content">

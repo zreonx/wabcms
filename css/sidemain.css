@@ -7,6 +7,7 @@
 :root {
     --themebc: #113886;
     --themgreen: #0AA06E;
+    --themorange: #FF8B28;
     --shadow-2xs: 0 1px 2px rgba(134, 144, 162, 0.1);
     --shadow-xs: 0 2px 4px rgba(134, 144, 162, 0.15);
     --shadow-sm: 0 3px 6px rgba(134, 144, 162, 0.2);
@@ -186,7 +187,7 @@
    box-shadow: var(--shadow-lg);
 }
 
-.panel-dashboard, .designee-list-grid {
+.panel-dashboard{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
     gap: 12px;
@@ -300,13 +301,22 @@
     min-height: 100vh !important;
 }
 
+.designee-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
 .card-designee {
-    width: 350px;
     padding: 5px;
 }
 
 .btn-badge {
     border-radius: 0;
+}
+
+.theme-orange {
+    background-color: var(--themorange);
 }
 
 .badge-color {
@@ -330,14 +340,14 @@
     .sidebar {
         width: 200px;
     }
-    .dashboard-card, .card-designee {
+    .dashboard-card{
         margin:0 auto;
     }
     
 }
 
 @media only screen and (max-width: 520px){
-    .dashboard-card, .card-designee {
+    .dashboard-card {
         width: 80% !important;
         margin-bottom: 8px !important;
     }

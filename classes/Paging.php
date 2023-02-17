@@ -109,24 +109,46 @@ class Paging extends DatabaseTable{
         }
     }
 
-   
-    public function getStudentClearance($id=null) {
-        try{
-            $sql = "SELECT * FROM clearance_type ct INNER JOIN student_clearance sc ON sc.clearance_id = ct.clearance_type_id";
-            $sqlCountQuery = "SELECT COUNT(*) FROM clearance_type ct INNER JOIN student_clearance sc ON sc.clearance_id = ct.clearance_type_id";
-            $resultSql =  $this->conn->query($sql);
-            $resultCount = $this->conn->query($sqlCountQuery);
-            $row_count = $resultCount->fetchColumn();
-            $this->total_row = $row_count;
-            $count = $resultSql->columnCount();
-            $result = array("row_count" => $row_count, "count_column" => $count, "sc_query" => $resultSql);
-            return $result;
-            
+//Get all signatory designations of the students
+public function getStudentClearance($id=null) {
+    try{
+        $sql = "SELECT * FROM student_clearance";
+        $sqlCountQuery = "SELECT count(*) FROM student_clearance";
+        $resultSql =  $this->conn->query($sql);
+        $resultCount = $this->conn->query($sqlCountQuery);
+        $row_count = $resultCount->fetchColumn();
+        $this->total_row = $row_count;
+        $count = $resultSql->columnCount();
+        $result = array("row_count" => $row_count, "count_column" => $count, "sc_query" => $resultSql);
+        return $result;
+        
+    }catch(PDOException $e) {
+        echo "ERROR: " . $e->getMessage();
+    }
 
+}
+
+
+    /*======== SIGNATORY PAGINATION ==========*/
+    
+
+    
+    //Select all the column of designation of for approvals
+    public function getSignatoryStudent() {
+        try{
+            $sql = "SELECT * FROM students s INNER JOIN student_clearance sc ON sc.student_id = s.student_id";
+            $sqlCount = "SELECT COUNT(*) FROM students s INNER JOIN student_clearance sc ON sc.student_id = s.student_id";
+            $resultCount = $this->conn->query($sqlCount);
+
+            $count = $resultCount->fetchColumn();
+            $result = $this->conn->query($sql);
+
+            $this->total_row = $count;
+            
+            return array("count" => $count, "query" => $result);
         }catch(PDOException $e) {
             echo "ERROR: " . $e->getMessage();
         }
     }
-
 
 }

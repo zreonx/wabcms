@@ -7,6 +7,8 @@
 
     include_once '../includes/autoloader.inc.php';
     include_once '../includes/session.php';
+
+
     
     $db = new DatabaseConnection();
     $conn = $db->Conn();
@@ -19,6 +21,8 @@
     $searchFilter = new SearchFilter($conn);
     $users = new User($conn);
 
+    // Signatory classes
+    $signatoryClearance = new SignatoryClearance($conn);
 
 
 
