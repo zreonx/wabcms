@@ -6,7 +6,6 @@
         date_default_timezone_set("Asia/Manila");
         $date_issued = date("Y-m-d h:i:sa");
          
-
         require_once '../config/connection.php';
 
         $clearanceQuery = $clearance->getClearanceByColumn("id" , $clearance_id);
@@ -20,20 +19,13 @@
             }else {
                 $start_result = $clearance->startClearance($clearance_id, $date_issued);
                 if($start_result == true) {
-                    
-                    //setup the user accounts
-                    $account_result = $users->setUserAccount();
-                    if($account_result == true) {
-                        //setup student clearance
+                        //Add students to the clearance records 
                          $insertStudentClearaneResult = $clearance->insertStudentClearance($clearance_id);
                          if($insertStudentClearaneResult == true) {
                             header('location: ../admin/clearance_record.php?start=success');
                          }else {
                             header('location: ../admin/clearance_record.php?start=failed');
                          }
-                    }else {
-                        "Insert Failed";
-                    }
                 }else {
                     header('location: ../admin/clearance_record.php?start=failed');
                 }

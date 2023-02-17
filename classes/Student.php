@@ -38,7 +38,7 @@
                 $sql_column = "($column_name, status)";
 
                 
-                $sql = "INSERT INTO students $sql_column VALUES ('$column_value)";
+                $sql = "INSERT INTO students $sql_column VALUES ('$column_value) ON DUPLICATE KEY UPDATE program_course = '$columns[program_course]', academic_level = '$columns[academic_level]', strand = '$columns[strand]', year_level = '$columns[year_level]' ; ";
 
                 $this->conn->exec($sql);
                 //print_r($sql);

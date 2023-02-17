@@ -32,6 +32,9 @@
                 <li><a class="dropdown-item" href="#">Student</a></li>
             </ul>
         </div>
+        <a class="btn btn-success btn-sm" href="../includes/setup_accounts.inc.php">
+            Setup User Accounts
+        </a>
         <form class="d-flex">
             <input class="form-control form-control-sm me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-light btn-sm btn-search" onclick="this.blur();" type="submit">Search</button>
@@ -83,11 +86,11 @@
     <div class="mt-auto">
         <nav aria-label="Page navigation example">
             <ul class="pagination pagination-sm justify-content-end mt-2">
-                <li class="page-item"><a class="page-link" href="clearance_record.php?page=1">First</a></li>
+                <li class="page-item"><a class="page-link" href="user.php?page=1">First</a></li>
                 <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-                    <li class="page-item"><a class="page-link" href="clearance_record.php?page=<?php echo $i ?>"><?php echo $i ?></a></li>
+                    <li class="page-item"><a class="page-link" href="user.php?page=<?php echo $i ?>"><?php echo $i ?></a></li>
                 <?php endfor ?>
-                <li class="page-item"><a class="page-link" href="clearance_record.php?page=<?php echo $total_pages ?>">Last</a></li>
+                <li class="page-item"><a class="page-link" href="user.php?page=<?php echo $total_pages ?>">Last</a></li>
             </ul>
         </nav>
     </div>

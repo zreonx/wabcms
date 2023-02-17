@@ -28,11 +28,15 @@
                 <li><a class="dropdown-item" href="#">ORG</a></li>
             </ul>
         </div>
+        <a class="btn btn-success btn-sm" href="../includes/setup_signatory.inc.php">
+            Setup Signatory
+        </a>
         <form class="d-flex" method="get" action="student_record.php">
             <input class="form-control form-control-sm me-2" type="search" name="search" id="search" placeholder="Search" aria-label="Search">
             <div class="list"></div>
             <button class="btn btn-light btn-sm btn-search" name="submitSearch" type="submit">Search</button>
         </form>
+        
     </div>
 
     <?php ?>
