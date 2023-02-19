@@ -134,9 +134,9 @@ public function getStudentClearance($id=null) {
 
     
     //Select all the column of designation of for approvals
-    public function getSignatoryStudent() {
+    public function getSignatoryStudent($id) {
         try{
-            $sql = "SELECT * FROM students s INNER JOIN student_clearance sc ON sc.student_id = s.student_id";
+            $sql = "SELECT * FROM students s INNER JOIN student_clearance sc ON sc.student_id = s.student_id WHERE sc.clearance_id = $id";
             $sqlCount = "SELECT COUNT(*) FROM students s INNER JOIN student_clearance sc ON sc.student_id = s.student_id";
             $resultCount = $this->conn->query($sqlCount);
 

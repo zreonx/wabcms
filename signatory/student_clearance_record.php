@@ -2,7 +2,7 @@
     include_once '../includes/main.header.php';
     require_once '../config/connection.php';
     
-    $signatoryStudentResult = $displayPage->getSignatoryStudent();
+    $signatoryStudentResult = $displayPage->getSignatoryStudent($_GET['clearance_id']);
     $total_pages = $displayPage->pagination();
 
     $page;
@@ -72,7 +72,7 @@
                     </td>
                     <td><?php echo ucfirst($row[$_GET['designation_column']]);  ?></td>  
                     <td>
-                        <a href="../includes/signatory_approve_clearance.inc.php?student_id=<?php echo $row['student_id'] ?>&designation_column=<?php echo isset($_GET['designation_column']) ? $_GET['designation_column'] : ""; ?>&designation=<?php echo isset($_GET['designation']) ? $_GET['designation'] : ""; ?>" class="btn btn-success btn-sm" type="submit" name="submitStart">Approve</a>
+                        <a href="../includes/signatory_approve_clearance.inc.php?student_id=<?php echo $row['student_id'] ?>&designation_column=<?php echo isset($_GET['designation_column']) ? $_GET['designation_column'] : ""; ?>&designation=<?php echo isset($_GET['designation']) ? $_GET['designation'] : ""; ?>&clearance_id=<?php echo isset($_GET['clearance_id']) ? $_GET['clearance_id'] : ""; ?>" class="btn btn-success btn-sm" type="submit" name="submitStart">Approve</a>
                     </td>
                 </tr>
                 <?php endwhile ?>

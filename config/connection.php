@@ -5,6 +5,12 @@
     define('DB_NAME', 'cccwabcms_db');
     define('DB_CHARSET', 'utf8mb4');
 
+    // define('DB_HOST', 'sql.freedb.tech');
+    // define('DB_USER', 'freedb_zreonsaiver');
+    // define('DB_PASS', 'WBwSC@69pNx82wQ');
+    // define('DB_NAME', 'freedb_cccwabcms_db');
+    // define('DB_CHARSET', 'utf8mb4');
+
     include_once '../includes/autoloader.inc.php';
     include_once '../includes/session.php';
 

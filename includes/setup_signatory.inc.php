@@ -6,12 +6,12 @@
 
     $setupSignatory = $clearance->addSignatoryColumn();
 
-    // if($removeSignatory == true) {
-    //     header('location: ../admin/signatory_record.php?setup=success');
-    //     exit();
-    // }else{
-    //     header('location: ../admin/signatory_record.php?setup=updated');
-    //     exit();
-    // }
+    if($removeSignatory == true) {
+        header('location: ../admin/signatory_record.php?setup=success');
+        exit();
+    }else{
+        header('location: ../admin/signatory_record.php?setup=updated');
+        exit();
+    }
 
 ?>

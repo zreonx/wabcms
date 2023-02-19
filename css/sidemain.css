@@ -280,7 +280,7 @@
 
 .btn-group> ul li.active a, .page-link, .btn-theme, .btn-default{
     background-color: var(--themebc) !important;
-    color: #fff;
+    color: #fff !important;
 }
 .page-link {
     margin: .1px;
@@ -290,10 +290,23 @@
     color: #00ff9d;
 }
 
-.default-hover:hover .btn-default:hover {
-    color: #fff;
-    box-shadow: var(--shadow-lg);
+
+
+/* Default Button */
+.btn-default {
+    background-color: var(--themebc) !important;
+    color: #fff !important;
 }
+
+.default-hover:hover, .btn-default:hover {
+    color: #fff !important;
+    box-shadow: var(--shadow-lg) !important;
+}
+
+.btn-default:focus:not(:focus-visible) {
+    outline: none;
+    border: none;
+  }
 
 
 /* FORM CSS */
@@ -323,6 +336,38 @@
     background-color: var(--themebc);
     color: #fff;
 }
+.circle-btn {
+    background: none !important;
+    color: var(--themebc) !important;
+    font-size: 20px;
+}
+.circle-btn:hover {
+    color: var(--themebc) !important;
+    background-color: rgb(242, 242, 242) !important;
+}
+
+/* Tooltip */
+.custom-tooltip.tooltip > .tooltip-inner{
+    background-color: #113886;
+    color: #fff;
+}
+
+.tooltip.bs-tooltip-top .tooltip-arrow::before {
+    border-top-color: var(--themebc);
+  }
+
+  .tooltip.bs-tooltip-bottom .tooltip-arrow::before {
+    border-bottom-color: var(--themebc);
+  }
+
+  .tooltip.bs-tooltip-start .tooltip-arrow::before {
+    border-left-color:  var(--themebc);
+  }
+
+  .tooltip.bs-tooltip-end .tooltip-arrow::before {
+    border-right-color:  var(--themebc);
+  }
+
 
 /* ===Media queries and Scroll bar === */
 
