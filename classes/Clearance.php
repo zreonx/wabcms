@@ -113,6 +113,12 @@ class Clearance  {
             $sql = "SELECT * FROM signatory_designation";
             $result = $this->conn->query($sql);
 
+            $current_signatory = $this->getCurrentSignatory();
+
+            
+            $count = 0;
+            $latest_signatory = array();
+            
             while($signatory_result = $result->fetch(PDO::FETCH_ASSOC)) {
 
                 //create a column name for signatory based on designation
@@ -120,12 +126,23 @@ class Clearance  {
                 $final_designation = implode("_", $designation);
                 $signatory_column = "is_" . $final_designation ."_approval";
 
-                echo $signatory_column;
+                $latest_signatory[$count] = $signatory_column;
+                
+                $count++;
 
-                $addColumn = "ALTER TABLE student_clearance ADD $signatory_column VARCHAR(255);";
+            }
+
+            //get the difference between two arrays
+            $result = array_diff($latest_signatory, $current_signatory);
+
+            //add each difference in the column of clearance
+            foreach($result as $signatory) {
+                $addColumn = "ALTER TABLE student_clearance ADD $signatory VARCHAR(255);";
                 $stmt = $this->conn->prepare($addColumn);
                 $stmt->execute();
             }
+            
+
 
             return true;
 
@@ -163,7 +180,7 @@ class Clearance  {
         }
     }
 
-    public function removeSignatoryColumns(){
+    public function getCurrentSignatory(){
         try{
             
            //Get all the column of student clearance
@@ -180,25 +197,54 @@ class Clearance  {
                 $signatoryColumnCount++;
             }
 
-            $designationColumn = $this->getDesignationColumn();
+            return $student_clearance_column;
             
-            //check if the column signatory is in the student clearance, if not it will be replaced
-            foreach($student_clearance_column as $designee) {
-                if(in_array($designee, $designationColumn['designations'])){
-                    //print_r($signatory_result['designation']);
-                    $replaceColumn = "ALTER TABLE student_clearance DROP $designee;";
-                    $result = $this->conn->query($replaceColumn);
-                }
-
-            }
-
-            return true;
+            
 
         }catch(PDOException $e) {
             echo "ERROR: " . $e->getMessage();
         }
 
     }
+    
+
+
+    // public function removeSignatoryColumns(){
+    //     try{
+            
+    //        //Get all the column of student clearance
+    //         $getSignatoryColumn = "DESCRIBE student_clearance";
+    //         $countSignatory = "DESCRIBE COUNT(Field) student_clearance";
+
+    //         $rsc = $this->conn->query($getSignatoryColumn);
+            
+    //         //Store the signatory columns in the array
+    //         $signatoryColumnCount= 0;
+    //         $student_clearance_column = array();
+    //         while($row_count = $rsc->fetch(PDO::FETCH_ASSOC)) {
+    //             $student_clearance_column[$signatoryColumnCount] = $row_count['Field'];
+    //             $signatoryColumnCount++;
+    //         }
+
+    //         $designationColumn = $this->getDesignationColumn();
+            
+    //         //check if the column signatory is in the student clearance, if not it will be replaced
+    //         foreach($student_clearance_column as $designee) {
+    //             if(in_array($designee, $designationColumn['designations'])){
+    //                 //print_r($signatory_result['designation']);
+    //                 $replaceColumn = "ALTER TABLE student_clearance DROP $designee;";
+    //                 $result = $this->conn->query($replaceColumn);
+    //             }
+
+    //         }
+
+    //         return true;
+
+    //     }catch(PDOException $e) {
+    //         echo "ERROR: " . $e->getMessage();
+    //     }
+
+    // }
    
 
     public function insertStudentClearance($clearance_id) {

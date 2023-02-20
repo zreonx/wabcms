@@ -44,47 +44,11 @@
             <table class="default-table table c-scroll text-center">
                 <tr>
                     <td>#</td>
-                    <td>Student ID</td>
-                    <td>Clearance ID</td>
-
-                    <?php 
-                   
-                    if($signatoryColumn['row_count'] > 0 ) {
-                        $keys = array_keys($signatoryColumn['sc_query']->fetch(PDO::FETCH_ASSOC));
-                        $signatory_column;
-                        for($i = 3; $i < $student_clearance['count_column']; $i++) {
-                            $signatory_column [] = $keys[$i];
-                        }
-
-                        foreach($signatory_column as $designee) {
-                            // remove is_ and _approval and _
-                            $designee = ucwords(str_replace("_", " ",substr($designee, 3, -9)));
-
-                            echo "<td>$designee </td>";
-                           
-                        }
-                    ?>
-                            
+                    <td>Signatory ID</td>
+                    <td>Name</td>
+                    <td>Designation</td>
+      
                 </tr>
-
-                <?php while($rows_sc = $student_clearance['sc_query']->fetch(PDO::FETCH_ASSOC)): ?>
-
-                <tr>
-                    <td><?php echo $rows_sc['id'] ?></td>
-                    <td><?php echo $rows_sc['student_id'] ?></td>
-                    <td><?php echo $rows_sc['clearance_id'] ?></td>
-                    <?php
-                    
-                    foreach($signatory_column as $designee) {
-                        // remove is_ and _approval and _
-                        echo "<td> " . (($rows_sc[$designee] == 1) ? " <i class='fa-solid fa-check text-success'></i> ": "") . "</td>";
-                       
-                    }
-                    
-                    ?>
-                    
-                </tr>
-                <?php endwhile; } ?>
             </table>
         </div>
     </div>
@@ -99,25 +63,6 @@
             </ul>
         </nav>
     </div>
-    
 </div>
-<!-- <script>
-    $(document).ready(function(){
-        $('#search').keyup(function(){
-            var query = $(this).val();
-            if(query != '') {
-                $.ajax({
-                    url: "search.php",
-                    method: "POST",
-                    data: {query:query},
-                    success: function(data) {
-                        $('#list').fadeIn();
-                        $('#list').html(data);
-                    }
-                });
-            }
-        });
-    });
-</script> -->
 
 <?php include_once '../includes/main.footer.php' ?>

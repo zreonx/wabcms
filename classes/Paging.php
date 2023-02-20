@@ -70,8 +70,16 @@ class Paging extends DatabaseTable{
 
     public function getUsers() {
         try {
-            $sql = "SELECT * FROM users WHERE user_type != 'admin' LIMIT $this->startingPage ,$this->page";
-            $result = $this->conn->query($sql);
+
+            //Prepare and execute the variable first
+            $sql = "
+            SET @counter := 0 ; ";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+
+            //then main query+
+            $result = $this->conn->query("SELECT (@counter := @counter + 1)  AS 'counter', u.* FROM users u WHERE user_type != 'admin' ORDER BY user_type LIMIT $this->startingPage ,$this->page ;");
+
             return $result;
         }catch (PDOException $e) {
             echo "ERROR: " . $e->getMessage();

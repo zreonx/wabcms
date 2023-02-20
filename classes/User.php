@@ -16,7 +16,9 @@ class User{
             $student_result = $this->getStudent();
 
             while($signatories_row = $signatory_result->fetch(PDO::FETCH_ASSOC)) {
-                $sql = "INSERT INTO users (user_type, user_id, email, password, status) VALUES (:type, :uid, :email, :password, :status);";
+                $sql = "INSERT INTO users (user_type, user_id, email, password, status) 
+                VALUES (:type, :uid, :email, :password, :status)
+                ON DUPLICATE KEY UPDATE status= :status ;";
                 $signatory_id = $signatories_row['id'];
                 $signatory_email = $signatories_row['email'];
                 $user_type = "signatory";
@@ -32,7 +34,9 @@ class User{
             }
 
             while($student_row = $student_result->fetch(PDO::FETCH_ASSOC)) {
-                $sql = "INSERT INTO users (user_type, user_id, email, password, status) VALUES (:type, :uid, :email, :password, :status);";
+                $sql = "INSERT INTO users (user_type, user_id, email, password, status) 
+                VALUES (:type, :uid, :email, :password, :status)
+                ON DUPLICATE KEY UPDATE status= :status ;";
                 $student_id = $student_row['student_id'];
                 $student_email = $student_row['email'];
                 $user_type = "student";

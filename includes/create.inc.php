@@ -10,13 +10,20 @@ if(isset($_GET['submit'])) {
     $date_created = date("Y-m-d h:i:sa");
     $status = "initialized";
 
-    require_once '../config/connection.php';
-    $result = $clearance->createClearance($clearance_type, $semester, $academic_year, $beneficiaries, $date_created, $status);
-    if($result == true) {
-        header('location: ../admin/clearance_record.php?create=success');
+    if($clearance_type == 0 && $beneficiaries == 0 && $academic_year == '' && $semester == '') {
+
+        header('location: ../admin/create_clearance.php?input=missing');
+
     }else {
-        header('location: ../admin/clearance_record.php?create=failed');
+        require_once '../config/connection.php';
+        $result = $clearance->createClearance($clearance_type, $semester, $academic_year, $beneficiaries, $date_created, $status);
+        if($result == true) {
+            header('location: ../admin/create_clearance.php?create=success');
+        }else {
+            header('location: ../admin/create_clearance.php?create=failed');
+        }
     }
+
 }else {
     header('location: ../login.php');
     exit();

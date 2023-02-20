@@ -23,6 +23,14 @@ public static function login_failed() {
 </div>";
 }
 
+public static function account_updated() {
+  echo 
+"<div class='alert alert-success alert-dismissible'>
+  <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+ User accounts has been updated
+</div>";
+}
+
   
 
     //Create Clearance Error Messages
@@ -40,6 +48,16 @@ public static function login_failed() {
         Clearance has been created successfully.
       </div>";
     }
+
+    public static function clearance_create_missing() {
+      echo 
+  "<div class='alert alert-danger alert-dismissible'>
+      <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+      There was missing in inputs.
+    </div>";
+  }
+
+  
 
     //Create Clearance Error Messages
     public static function clearance_update_failed()
@@ -161,6 +179,14 @@ public static function login_failed() {
 
 
     /* ======SIGNATORY APPROVAL ERROR MESSAGE ======= */
+
+    public static function designation_updated() {
+      echo 
+          "<div class='alert alert-success alert-dismissible'>
+              <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+            Signatory designations has been updated.
+            </div>";
+    }
 
     public static function approve_success () {
       echo 

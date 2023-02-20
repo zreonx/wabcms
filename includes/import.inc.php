@@ -7,9 +7,9 @@ if(isset($_POST['submit'])) {
         $ext = pathinfo($_FILES['csvfile']['full_path'], PATHINFO_EXTENSION);
         if ($_FILES['csvfile']['size'] > 0) {
             
-            if( $ext !== 'csv' ) {
-                header("location: ../admin/import_student.php?import=invalid");
-            }else {
+            // if( $ext !== 'csv' ) {
+            //     header("location: ../admin/import_student.php?import=invalid");
+            // }else {
                 $file = fopen($csv, "r");
                     require_once '../config/connection.php';
                 if (count(fgetcsv($file)) < 10 || count(fgetcsv($file)) > 10) {
@@ -35,7 +35,7 @@ if(isset($_POST['submit'])) {
                         echo "<br>";
                     }   
                 }
-            } 
+           // } 
         }else {
             header("location: ../admin/import_student.php?import=empty");
         }

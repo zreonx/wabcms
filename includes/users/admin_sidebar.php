@@ -10,7 +10,6 @@
         </a>
         <div class="dropdown-container">
             <a href="student_record.php"><i class="space fa-solid fa-clipboard-user"></i>Student Record</a>
-            <a href="#"><i class="space fa-solid fa-user-pen"></i>Modify Student</a>
             <a href="import_student.php"><i class="space fa-solid fa-cloud-arrow-up"></i>Import Student</a>
         </div>
         <a class="dropdown-btn">
@@ -21,8 +20,8 @@
         </a>
         <div class="dropdown-container">
             <a href="signatory_record.php"><i class="space fa-solid fa-file-contract"></i></i>Signatory Record</a>
+            <a href="signatory_designation.php"><i class="space fa-solid fa-file-contract"></i></i>Designation</a>
             <a href="add_signatory.php"><i class="space fa-solid fa-plus"></i>Add Signatory</a>
-            <a href="modify_signatory.php"><i class="space fa-solid fa-user-pen"></i>Modify Signatory</a>
         </div>
         <a class="dropdown-btn">
             <i class="fa-solid fa-file-circle-check space"></i>
@@ -51,7 +50,7 @@
     
     <div class="links link-below">
     <hr>
-        <a href="#"><i class="fa-solid fa-gear space"></i>Setting</a>
+        <a href="setup_account_setting.php"><i class="fa-solid fa-gear space"></i>Setting</a>
         <a href="../logout.php"><i class="fa-solid fa-right-from-bracket space"></i>Logout</a>
     </div>
 </div>

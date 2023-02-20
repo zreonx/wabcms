@@ -15,8 +15,6 @@
 ?>
 
 <div class="panel p-3">
-    <?php if (isset($_GET['create']) && $_GET['create'] == "success") { Errormessage::clearance_create_success(); } ?>
-    <?php if (isset($_GET['create']) && $_GET['create'] == "failed") { Errormessage::clearance_create_failed(); } ?>
     <?php if (isset($_GET['modify']) && $_GET['modify'] == "success") { Errormessage::clearance_update_success(); } ?>
     <?php if (isset($_GET['modify']) && $_GET['modify'] == "failed") { Errormessage::clearance_update_success(); } ?>
     <?php if (isset($_GET['start']) && $_GET['start'] == "started") { Errormessage::clearance_started(); } ?>

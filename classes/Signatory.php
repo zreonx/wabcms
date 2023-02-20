@@ -24,7 +24,8 @@ class Signatory {
             $signatory_type = implode(", ", $designation);
             $status = "active";
 
-            $sql = "INSERT INTO signatories (designation, first_name, middle_name, last_name, office_department, is_org, organization, email, status) VALUES (:designation, :fname, :mname, :lname, :dept, :is_org, :organization, :email, :status); ";
+            $sql = "INSERT INTO signatories (designation, first_name, middle_name, last_name, office_department, is_org, organization, email, status)
+            VALUES (:designation, :fname, :mname, :lname, :dept, :is_org, :organization, :email, :status); ";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindparam(':designation', $signatory_type);
             $stmt->bindparam(':fname', $firstname);

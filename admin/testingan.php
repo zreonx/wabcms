@@ -33,4 +33,6 @@ print_r($displayPage->setPage("students", 1)); */
 
 //print_r($displayPage->getSignatory());
 
-$clearance->insertStudentClearance(1);
+// $clearance->insertStudentClearance(1);
+
+$displayPage->getUsers();

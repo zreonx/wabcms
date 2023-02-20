@@ -6,7 +6,9 @@
 ?>
 
 <div class="panel p-3">
-<?php if (isset($_GET['error']) == "true") { Errormessage::clearance_create_failed(); } ?>
+    <?php if (isset($_GET['input']) && isset($_GET['input']) == "missing") { Errormessage::clearance_create_missing(); } ?>
+    <?php if (isset($_GET['create']) && $_GET['create'] == "success") { Errormessage::clearance_create_success(); } ?>
+    <?php if (isset($_GET['create']) && $_GET['create'] == "failed") { Errormessage::clearance_create_failed(); } ?>
     <h1 class="panel-title">Clearance</h1>
     <div class="card clearance-card">
         <div class="card-body">
@@ -47,7 +49,7 @@
                         <label class="form-label">Academic Year</label>
                     </div>
                     <div class="col-lg-2 ">
-                        <input type="text" class="form-control" placeholder="2022-2023" name="academic_year">
+                        <input type="text" class="form-control" placeholder="2022-2023" name="academic_year" required>
                     </div>
                 </div>
                 <div class="row mb-2">
@@ -55,7 +57,7 @@
                         <label class="form-label">Semester</label>
                     </div>
                     <div class="col-lg-2 ">
-                        <input type="text" class="form-control" placeholder="1-2" name="semester">
+                        <input type="text" class="form-control" placeholder="1-2" name="semester" required>
                     </div>
                 </div>
                 <div class="row mb-2">

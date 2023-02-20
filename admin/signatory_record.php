@@ -16,6 +16,7 @@
 
 <div class="panel p-3">
     <h1 class="panel-title">Signatories</h1>
+    <?php if (isset($_GET['setup']) && $_GET['setup'] == "success") { Errormessage::designation_updated(); } ?>
     <div class="d-flex search-bar mb-2">
         <div class="btn-group">
             <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -28,9 +29,7 @@
                 <li><a class="dropdown-item" href="#">ORG</a></li>
             </ul>
         </div>
-        <a class="btn btn-success btn-sm" href="../includes/setup_signatory.inc.php">
-            Setup Signatory
-        </a>
+        
         <form class="d-flex" method="get" action="student_record.php">
             <input class="form-control form-control-sm me-2" type="search" name="search" id="search" placeholder="Search" aria-label="Search">
             <div class="list"></div>

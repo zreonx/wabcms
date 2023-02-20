@@ -2,11 +2,10 @@
 
     require_once '../config/connection.php';
 
-    $removeSignatory = $clearance->removeSignatoryColumns();
-
     $setupSignatory = $clearance->addSignatoryColumn();
+    //$setupSignatory = $clearance->addSignatoryColumn();
 
-    if($removeSignatory == true) {
+    if($setupSignatory == true) {
         header('location: ../admin/signatory_record.php?setup=success');
         exit();
     }else{

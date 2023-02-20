@@ -19,6 +19,7 @@
     <?php if (isset($_GET['create']) && $_GET['create'] == "failed") { Errormessage::clearance_create_failed(); } ?>
     <?php if (isset($_GET['modify']) && $_GET['modify'] == "success") { Errormessage::clearance_update_success(); } ?>
     <?php if (isset($_GET['modify']) && $_GET['modify'] == "failed") { Errormessage::clearance_update_success(); } ?>
+    <?php if (isset($_GET['setup']) && $_GET['setup'] == "success") { Errormessage::account_updated(); } ?>
     <h1 class="panel-title">User Accounts</h1>
     <div class="d-flex search-bar mb-2">
         <div class="btn-group">
@@ -32,9 +33,6 @@
                 <li><a class="dropdown-item" href="#">Student</a></li>
             </ul>
         </div>
-        <a class="btn btn-success btn-sm" href="../includes/setup_accounts.inc.php">
-            Setup User Accounts
-        </a>
         <form class="d-flex">
             <input class="form-control form-control-sm me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-light btn-sm btn-search" onclick="this.blur();" type="submit">Search</button>
@@ -56,7 +54,7 @@
                 <?php while($row = $result->fetch(PDO::FETCH_ASSOC)):  ?>
 
                 <tr>
-                    <td><?php echo $row['id']; ?></td>
+                    <td><?php echo $row['counter']; ?></td>
                     <td>
                         <!-- Clearance type -->
                         <?php 
@@ -81,7 +79,9 @@
                 </tr>
                 <?php endwhile ?>
             </table> 
+            
         </div>
+   
     </div>
     <div class="mt-auto">
         <nav aria-label="Page navigation example">
@@ -93,6 +93,7 @@
                 <li class="page-item"><a class="page-link" href="user.php?page=<?php echo $total_pages ?>">Last</a></li>
             </ul>
         </nav>
+    
     </div>
     
 </div>

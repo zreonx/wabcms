@@ -37,6 +37,7 @@ class SignatoryClearance {
     }
 
 
+    //Select the active clearance
     public function selectActiveClearnace() { 
         try{ 
             $sql = "SELECT * FROM clearance WHERE status = 'started' ";
@@ -47,6 +48,7 @@ class SignatoryClearance {
         }
     }
 
+    //Select the clearance type
     public function selectClearanceType($type_id) {
         try {
             $sql = "SELECT * FROM clearance_type WHERE clearance_type_id = $type_id ;";
@@ -55,6 +57,42 @@ class SignatoryClearance {
 
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             
+            return $result;
+
+        }catch(PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+        }
+    }
+
+    //Display all student for deficiency
+    public function showStudents($clearance_id, $signatory) {
+        try {
+            $sql = "SELECT *
+            FROM student_clearance
+            WHERE student_id NOT IN
+                (SELECT student_id 
+                 FROM deficiency WHERE signatory = '$signatory' AND clearance_id = $clearance_id)
+            AND clearance_id = $clearance_id
+            ";
+
+            $result = $this->conn->query($sql);
+            return $result;
+
+        }catch(PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+        }
+    }
+
+    //Display all student with deficiency
+    public function showDeficiencyList($clearance_id, $signatory) {
+        try {
+            $sql = "SELECT *
+            FROM deficiency
+            WHERE clearance_id = $clearance_id
+            AND signatory = '$signatory'
+            ";
+
+            $result = $this->conn->query($sql);
             return $result;
 
         }catch(PDOException $e) {
