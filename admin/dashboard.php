@@ -21,6 +21,7 @@
                                             <span class="dcontent-text"><?php echo $dashboard->countAllStudents(); ?></span> 
                                         </div>
                                     </div>
+                                    
                                 </div>
                                 <div class="badges">
                                     <div class="d-flex flex-column text-center dbadge">

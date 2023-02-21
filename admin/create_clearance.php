@@ -22,7 +22,7 @@
                         <select name="beneficiaries" class="form-select sm-in">
                             <option value="0">Select</option>
                             <?php
-                            while ($row_beneficiary = $beneficiaries->fetch(PDO::FETCH_ASSOC)) { ?>
+                                while ($row_beneficiary = $beneficiaries->fetch(PDO::FETCH_ASSOC)) { ?>
                                 <option value="<?php echo $row_beneficiary['beneficiary_id']; ?>"><?php echo $row_beneficiary['beneficiary_type'] ?></option>
                             <?php } ?>
                         </select>

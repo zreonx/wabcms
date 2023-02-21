@@ -67,12 +67,19 @@ class SignatoryClearance {
     //Display all student for deficiency
     public function showStudents($clearance_id, $signatory) {
         try {
-            $sql = "SELECT *
-            FROM student_clearance
+            $sqlCounter = "
+            SET @counter := 0 ; ";
+            $stmt = $this->conn->prepare($sqlCounter);
+            $stmt->execute();
+
+            $sql = "SELECT (@counter := @counter + 1) AS 'counter' , sc.*
+            FROM student_clearance sc
             WHERE student_id NOT IN
                 (SELECT student_id 
-                 FROM deficiency WHERE signatory = '$signatory' AND clearance_id = $clearance_id)
-            AND clearance_id = $clearance_id
+                 FROM deficiency WHERE signatory = '$signatory' AND clearance_id = $clearance_id) 
+                 AND student_id NOT IN (SELECT student_id 
+                 FROM temp_deficiency WHERE signatory = '$signatory' AND clearance_id = $clearance_id)
+                AND clearance_id = $clearance_id
             ";
 
             $result = $this->conn->query($sql);
@@ -86,8 +93,14 @@ class SignatoryClearance {
     //Display all student with deficiency
     public function showDeficiencyList($clearance_id, $signatory) {
         try {
-            $sql = "SELECT *
-            FROM deficiency
+
+            $sqlCounter = "
+            SET @counter := 0 ; ";
+            $stmt = $this->conn->prepare($sqlCounter);
+            $stmt->execute();
+
+            $sql = "SELECT (@counter := @counter + 1) AS 'counter', d.*
+            FROM deficiency d
             WHERE clearance_id = $clearance_id
             AND signatory = '$signatory'
             ";
@@ -99,6 +112,92 @@ class SignatoryClearance {
             echo "ERROR: " . $e->getMessage();
         }
     }
+    //Display all student with temporary deficiency or in a list
+    public function showTemporaryDeficiency($clearance_id, $signatory) {
+        try {
+            $sqlCounter = "
+            SET @counter := 0 ; ";
+            $stmt = $this->conn->prepare($sqlCounter);
+            $stmt->execute();
+
+            $sql = "SELECT (@counter := @counter + 1) AS 'counter', td.*
+            FROM temp_deficiency td
+            WHERE clearance_id = $clearance_id
+            AND signatory = '$signatory'
+            ";
+
+            $result = $this->conn->query($sql);
+            return $result;
+
+        }catch(PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+        }
+    }
+
+    // Check if student is already have a deficiencies with signatory
+
+    public function checkTempList($student_id, $signatory){
+        try {
+            $sql = "SELECT COUNT(*)
+            FROM temp_deficiency
+            WHERE signatory = '$signatory'
+            AND student_id = '$student_id'; ";
+            
+            $result = $this->conn->query($sql);
+
+            $count = $result->fetchColumn();
+            
+            if($count == 0) {
+                return false;
+            }
+            else {
+                return true;
+            }
+
+        }catch(PDOException $e) {
+                echo "ERROR: ". $e->getMessage();
+            }
+    }
+// Add Student on the list to be restricted
+    public function addTemporaryDeficiency($clearance_id, $signatory_id, $signatory, $student_id) {
+        
+        try{
+            $status = "listed";
+
+            $sql = "INSERT INTO temp_deficiency (clearance_id, signatory_id, signatory, student_id, status) VALUES (:clearance_id, :signatory_id, :signatory, :student_id, :status);";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':clearance_id', $clearance_id);
+            $stmt->bindParam(':signatory_id', $signatory_id);
+            $stmt->bindParam(':signatory', $signatory);
+            $stmt->bindParam(':student_id', $student_id);
+            $stmt->bindParam(':status', $status);
+            $stmt->execute();
+
+            return true;
+
+        }catch(PDOException $e) { 
+            echo "ERROR: ". $e->getMessage();
+            return false;
+        }
+
+    }
+
+    // Delete from temporary list
+    public function deleteTemporaryDeficiency($temp_id) { 
+        try {
+            $sql = "DELETE FROM temp_deficiency WHERE id = :temp_id ;";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':temp_id', $temp_id);
+            $stmt->execute();
+            return true;
+
+        }catch(PDOException $e) {
+            echo "ERROR: ". $e->getMessage();
+        }
+
+
+    }
+
 
     
 

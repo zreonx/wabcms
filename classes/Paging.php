@@ -72,9 +72,9 @@ class Paging extends DatabaseTable{
         try {
 
             //Prepare and execute the variable first
-            $sql = "
+            $sqlCounter = "
             SET @counter := 0 ; ";
-            $stmt = $this->conn->prepare($sql);
+            $stmt = $this->conn->prepare($sqlCounter);
             $stmt->execute();
 
             //then main query+

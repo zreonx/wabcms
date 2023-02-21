@@ -322,6 +322,17 @@
   }
 
 
+
+.deficiency-card {
+    height: calc(60vh) !important;
+    overflow-x: auto;
+}
+
+.add-deficiency-table {
+    max-height: 300px;
+    overflow: auto;
+}
+
 /* FORM CSS */
 .clearance-card {
     min-height: 100vh !important;
@@ -336,6 +347,7 @@
 .card-designee {
     padding: 5px;
 }
+
 
 .btn-badge {
     border-radius: 0;
@@ -407,6 +419,9 @@
     }
     .dashboard-card{
         margin:0 auto;
+    }
+    .deficiency-body{
+        flex-direction: column !important;
     }
     
 }

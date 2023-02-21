@@ -10,7 +10,7 @@
 
 <div class="panel p-3">
     <h1 class="panel-title">Designations</h1>
-    <div class="card min-vh-100 c-scroll">
+    <div class="min-vh-100 c-scroll">
         <div class="card-body d-flex flex-column">
             <div class="designee-list-grid">
 
