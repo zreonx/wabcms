@@ -64,29 +64,38 @@
                             <div class="tab-pane container active" id="home">
                                 <div class="card-body d-flex flex-column">
                                     <div class="add-deficiency-table">
-                                        <table class="table text-center table-light" id="add-deficiency">
-                                            <tr>
-                                                <td>#</td>
-                                                <td>Student ID</td>
-                                                <td>Action</td>
-                                            </tr>
+                                        <form action="../includes/add_deficiency.inc.php" method="GET">
+                                            <table class="table text-center table-light" id="add-deficiency">
+                                                <tr>
+                                                    <td>#</td>
+                                                    <td>Student ID</td>
+                                                    <td>Action</td>
+                                                </tr>
 
-                                            
-                                            <?php while($row_temp_student = $inTempList->fetch(PDO::FETCH_ASSOC)): ?>
-                                            <tr>
-                                                <td><?php echo $row_temp_student['counter'] ?></td>
-                                                <td><?php echo $row_temp_student['student_id'] ?></td>
                                                 
-                                                <td><a href="../includes/delete_temporary_deficiency.inc.php? clearance_id=<?php echo $_GET['clearance_id'] ?>&signatory_id=<?php echo $signatory_id ?>&signatory=<?php echo $signatory ?>&student_id=<?php echo $row_temp_student['student_id'] ?>&temp_id=<?php echo $row_temp_student['id'] ?>" class="btn btn-sm btn-danger rounded-circle"><i class="fa-sharp fa-solid fa-minus"></i></a></td>
-                                            <?php endwhile ?>                
-                                        </table>
-                                    </div>
-                                    <div class="form-outline">
-                                        <label class="form-label" for="form4Example3">Message</label>
-                                        <textarea class="form-control" id="form4Example3" rows="4" style="resize: none;"></textarea>
-                                        <div class="m-0 p-0">
-                                            <button class="mt-3 btn btn-success">Submit Deficiency</button>
-                                        </div>                             
+                                                <?php while($row_temp_student = $inTempList->fetch(PDO::FETCH_ASSOC)): ?>
+                                                <tr>
+                                                    <td><?php echo $row_temp_student['counter'] ?></td>
+                                                    <td><?php echo $row_temp_student['student_id'] ?></td>
+                                                    <td><a href="../includes/delete_temporary_deficiency.inc.php? clearance_id=<?php echo $_GET['clearance_id'] ?>&signatory_id=<?php echo $signatory_id ?>&signatory=<?php echo $signatory ?>&student_id=<?php echo $row_temp_student['student_id'] ?>&temp_id=<?php echo $row_temp_student['id'] ?>" class="btn btn-sm btn-danger rounded-circle"><i class="fa-sharp fa-solid fa-minus"></i></a></td>  
+                                                    
+                                                    <input type="hidden" name="students[]" value="<?php echo $row_temp_student['student_id'] ?>">
+                                                    <input type="hidden" name="def_id[]" value="<?php echo $row_temp_student['id'] ?>">
+                                                <?php endwhile ?>                
+                                            </table>
+                                        </div>
+                                        
+                                        <div class="form-outline">
+                                            <input type="hidden" name="signatory_id" value="<?php echo $signatory_id ?>">
+                                            <input type="hidden" name="signatory" value="<?php echo $signatory ?>">
+                                            <input type="hidden" name="clearance_id" value="<?php echo $_GET['clearance_id'] ?>">
+                                            
+                                            <label class="form-label" >Message</label>
+                                            <textarea class="form-control" name="message" rows="4" style="resize: none;"></textarea>
+                                            <div class="m-0 p-0">
+                                                <button type="submit" name="submitDeficiency" class="mt-3 btn btn-success">Submit Deficiency</button>
+                                            </div>   
+                                        </form>                          
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +116,7 @@
                                                 
                                                 <td>
                                                     <a class="btn btn-sm btn-success rounded-circle"><i class="fa-solid fa-check"></i></a>
-                                                    <a href="../includes/delete_temporary_deficiency.inc.php? clearance_id=<?php echo $_GET['clearance_id'] ?>&signatory_id=<?php echo $signatory_id ?>&signatory=<?php echo $signatory ?>&student_id=<?php echo $row_temp_student['student_id'] ?>&temp_id=<?php echo $row_temp_student['id'] ?>" class="btn btn-sm btn-primary rounded-circle"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                                    <a href="../includes/delete_temporary_deficiency.inc.php?clearance_id=<?php echo $_GET['clearance_id'] ?>&signatory_id=<?php echo $signatory_id ?>&signatory=<?php echo $signatory ?>&student_id=<?php echo $row_temp_student['student_id'] ?>&temp_id=<?php echo $row_temp_student['id'] ?>" class="btn btn-sm btn-primary rounded-circle"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                                                 </td>
                                             <?php endwhile ?>       
                                                 
