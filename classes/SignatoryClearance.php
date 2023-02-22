@@ -76,10 +76,10 @@ class SignatoryClearance {
             FROM student_clearance sc
             WHERE student_id NOT IN
                 (SELECT student_id 
-                 FROM deficiency WHERE signatory = '$signatory' AND clearance_id = $clearance_id) 
+                 FROM deficiency WHERE signatory = '$signatory' AND clearance_id = $clearance_id AND status != 'cleared') 
                  AND student_id NOT IN (SELECT student_id 
-                 FROM temp_deficiency WHERE signatory = '$signatory' AND clearance_id = $clearance_id)
-                AND clearance_id = $clearance_id
+                 FROM temp_deficiency WHERE signatory = '$signatory' AND clearance_id = $clearance_id AND status != 'cleared')
+                AND clearance_id = $clearance_id 
             ";
 
             $result = $this->conn->query($sql);
@@ -102,8 +102,8 @@ class SignatoryClearance {
             $sql = "SELECT (@counter := @counter + 1) AS 'counter', d.*
             FROM deficiency d
             WHERE clearance_id = $clearance_id
-            AND signatory = '$signatory'
-            ";
+            AND signatory = '$signatory' 
+            AND status = 'deficient'";
 
             $result = $this->conn->query($sql);
             return $result;
@@ -196,9 +196,9 @@ class SignatoryClearance {
             echo "ERROR: ". $e->getMessage();
         }
 
-
     }
 
+    //Add student deficiency
     public function inputDeficiency($clearance_id, $signatory, $student_id, $message, $date_messaged) {
         try {
             $status = 'deficient';
@@ -219,7 +219,19 @@ class SignatoryClearance {
         }
     }
 
+    //Update deficiencies
+    public function updateDeficiency($id) {
+        try{
+            
+            $sql = "UPDATE deficiency SET status = 'cleared' WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            return true;
 
-    
+        }catch(PDOException $e){
+            echo "ERROR: ". $e->getMessage();
+        }
+    }
 
 }

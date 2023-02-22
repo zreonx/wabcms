@@ -4,6 +4,7 @@
 
     $signatory_id = $_SESSION['user_id'];
     $signatory = $_GET['signatory'];
+    $clearance_id = $_GET['clearance_id'];
     $notInDeficiency = $signatoryClearance->showStudents($_GET['clearance_id'], $signatory);
     $showWithDeficiency = $signatoryClearance->showDeficiencyList($_GET['clearance_id'], $signatory);
     $inTempList = $signatoryClearance->showTemporaryDeficiency($_GET['clearance_id'], $signatory);
@@ -47,24 +48,23 @@
                                             </tr>
                                             <?php endwhile ?>
                                         </table>
-                                        
                                     </div>
                                 </div>
                                 
                         </div>
                         <div class="card border-0 w-100 flex-fill">
-                        <ul class="nav nav-tabs">
+                        <ul class="nav nav-tabs" id="myTab">
                             <li class="nav-item">
-                                <a class="nav-link active rounded-0" data-bs-toggle="tab" href="#home">Add Deficiency</a>
+                                <a class="nav-link active rounded-0" data-value="1" id="swap1" href="#menu1" data-bs-toggle="tab" href="#home">Add Deficiency</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link rounded-0" data-bs-toggle="tab" href="#menu1">Deficient Students</a>
+                                <a class="nav-link rounded-0" data-bs-toggle="tab" id="swap2" href="#menu2" data-value="2" href="#menu1">Deficient Students</a>
                             </li>
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane container active" id="home">
+                            <div class="tab-pane container active" id="menu1">
                                 <div class="card-body d-flex flex-column">
                                     <div class="add-deficiency-table">
                                         <form action="../includes/add_deficiency.inc.php" method="GET">
@@ -102,35 +102,44 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane container fade" id="menu1">
+                            <div class="tab-pane container fade active" id="menu2">
                                 <div class="card-body d-flex flex-column justify-content-between ">
                                         <div>
-                                            <table class="table text-center table-light">
+                                            <form action="../includes/clear_all_deficiency.inc.php" method="GET">
+                                                <table class="table text-center table-light">
+                                                    <tr>
+                                                        <td>#</td>
+                                                        <td>Student ID</td>
+                                                        <td>Action</td>
+                                                    </tr>
+                                                    
+                                                <?php while($row_def_student = $showWithDeficiency->fetch(PDO::FETCH_ASSOC)): ?>
                                                 <tr>
-                                                    <td>#</td>
-                                                    <td>Student ID</td>
-                                                    <td>Action</td>
-                                                </tr>
-                                                 
-                                            <?php while($row_def_student = $showWithDeficiency->fetch(PDO::FETCH_ASSOC)): ?>
-                                            <tr>
-                                                <td><?php echo $row_def_student['counter'] ?></td>
-                                                <td><?php echo $row_def_student['student_id'] ?></td>
-                                                
-                                                <td>
-                                                    <a class="btn btn-sm btn-success rounded-circle"><i class="fa-solid fa-check"></i></a>
-                                                    <a href="../includes/delete_temporary_deficiency.inc.php?clearance_id=<?php echo $_GET['clearance_id'] ?>&signatory_id=<?php echo $signatory_id ?>&signatory=<?php echo $signatory ?>&student_id=<?php echo $row_temp_student['student_id'] ?>&temp_id=<?php echo $row_temp_student['id'] ?>" class="btn btn-sm btn-primary rounded-circle"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                                                </td>
-                                            <?php endwhile ?>       
-                                                
-                                                
-                                            </table>
-                                        </div>
-                                        <div class="form-outline">
-                                            <div class="m-0 p-0">
-                                                <button class="mt-3 btn btn-success">Clear All</button>
-                                            </div>                             
-                                        </div>
+                                                    <td><?php echo $row_def_student['counter'] ?></td>
+                                                    <td><?php echo $row_def_student['student_id'] ?></td>
+                                                    
+                                                    <td>
+                                                        <a href="../includes/remove_deficiency.inc.php?clearance_id=<?php echo $_GET['clearance_id']?>&signatory_id=<?php echo $signatory_id ?>&signatory=<?php echo $signatory?>&student_id=<?php echo $row_def_student['student_id'] ?>&id=<?php echo $row_def_student['id'] ?>" class="btn btn-sm btn-success rounded-circle"><i class="fa-solid fa-check"></i></a>
+                                                        <a href="../includes/delete_temporary_deficiency.inc.php?clearance_id=<?php echo $_GET['clearance_id'] ?>&signatory_id=<?php echo $signatory_id ?>&signatory=<?php echo $signatory ?>&student_id=<?php echo $row_temp_student['student_id'] ?>&temp_id=<?php echo $row_temp_student['id'] ?>" class="btn btn-sm btn-primary rounded-circle"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                                    </td>
+
+                                                    <input type="hidden" name="students[]" value="<?php echo $row_def_student['student_id'] ?>">
+                                                    <input type="hidden" name="def_id[]" value="<?php echo $row_def_student['id'] ?>">
+                                                <?php endwhile ?>       
+                                                            
+                                                </table>
+
+                                                <input type="hidden" name="signatory_id" value="<?php echo $signatory_id ?>">
+                                                <input type="hidden" name="signatory" value="<?php echo $signatory ?>">
+                                                <input type="hidden" name="clearance_id" value="<?php echo $clearance_id?>">
+                                            
+                                            </div>
+                                            <div class="form-outline">
+                                                <div class="m-0 p-0">
+                                                    <button type="submit" name="clearAllSubmit" class="mt-3 btn btn-success">Clear All</button>
+                                                </div>                             
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -140,8 +149,8 @@
            </div>
         </div>
     </div>
-
-    
+        
+        
 </div>
 
 <?php include_once '../includes/main.footer.php' ?>

@@ -10,8 +10,6 @@ if(isset($_GET['submitDeficiency'])) {
 
     $def_id = $_GET['def_id'];
 
-
-
     //Get the current date
     date_default_timezone_set("Asia/Manila");
     $date_messaged = date("Y-m-d h:i:sa");
@@ -20,7 +18,6 @@ if(isset($_GET['submitDeficiency'])) {
 
     //after migrating to deficency-> delete the list
 
-    
     $countInsert = 0;
     $countDelete = 0;
 
