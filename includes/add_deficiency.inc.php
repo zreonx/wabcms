@@ -19,13 +19,26 @@ if(isset($_GET['submitDeficiency'])) {
     require_once('../config/connection.php');
 
     //after migrating to deficency-> delete the list
-    foreach($def_id as $id) {
-        $delete = $signatoryClearance->deleteTemporaryDeficiency($id);
-    }
-    header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory");
 
     
-   
+    $countInsert = 0;
+    $countDelete = 0;
+
+    foreach($student_id as $sid) {
+        $signatoryClearance->inputDeficiency($clearance_id, $signatory, $sid, $message, $date_messaged);
+        $countInsert++;
+    }
+    foreach($def_id as $id) {
+        $delete = $signatoryClearance->deleteTemporaryDeficiency($id);  
+        $countDelete++;
+    }
+
+    if($countDelete == 0 && $countInsert == 0) {
+        header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory&insert=failed");
+    }else {
+        header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory&insert=success");
+    }
+
     // echo $clearance_id . $signatory_id. $signatory . $message;
     // print_r($student_id);
 

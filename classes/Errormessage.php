@@ -202,7 +202,23 @@ public static function account_updated() {
               <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
             There was an error approving student clearance.
             </div>";
+  }
+
+  public static function deficiency_added() {
+    echo 
+        "<div class='alert alert-success alert-dismissible'>
+            <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+          The student has been successfully added to the list.
+          </div>";
  }
+
+ public static function add_deficiency_fail() {
+  echo 
+      "<div class='alert alert-danger alert-dismissible'>
+          <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+        There was an error in adding student deficiency.
+        </div>";
+}
     
 }
 

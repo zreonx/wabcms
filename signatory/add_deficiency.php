@@ -10,6 +10,9 @@
 ?>
 
 <div class="panel p-3">
+    <?php if(isset($_GET['start']) && $_GET['start'] == "end") { Errormessage::clearance_end(); } ?>
+    <?php  if(isset($_GET['insert']) && $_GET['insert'] == "success"){ Errormessage::deficiency_added(); } ?>
+    <?php  if(isset($_GET['insert']) && $_GET['insert'] == "failed"){ Errormessage::add_deficiency_fail(); } ?>
     <h1 class="panel-title">Deficiency</h1>
     <div class="card min-vh-100 c-scroll">
         <div class="card-body d-flex flex-column">

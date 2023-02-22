@@ -199,6 +199,26 @@ class SignatoryClearance {
 
     }
 
+    public function inputDeficiency($clearance_id, $signatory, $student_id, $message, $date_messaged) {
+        try {
+            $status = 'deficient';
+            $sql = "INSERT INTO deficiency (clearance_id, signatory, student_id, message, date, status) VALUES (:clearance_id, :signatory, :student_id, :message, :date, :status)";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':clearance_id', $clearance_id);
+            $stmt->bindParam(':signatory', $signatory);
+            $stmt->bindParam(':student_id', $student_id);
+            $stmt->bindParam(':message', $message);
+            $stmt->bindParam(':date', $date_messaged);
+            $stmt->bindParam(':status', $status);
+            $stmt->execute();
+            
+            return true;
+            
+        }catch(PDOException $e) {
+            echo "ERROR: ". $e->getMessage();
+        }
+    }
+
 
     
 
