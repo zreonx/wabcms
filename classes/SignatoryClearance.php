@@ -136,12 +136,13 @@ class SignatoryClearance {
 
     // Check if student is already have a deficiencies with signatory
 
-    public function checkTempList($student_id, $signatory){
+    public function checkTempList($clearance_id, $student_id, $signatory){
         try {
             $sql = "SELECT COUNT(*)
             FROM temp_deficiency
             WHERE signatory = '$signatory'
-            AND student_id = '$student_id'; ";
+            AND student_id = '$student_id' 
+            AND clearance_id = $clearance_id; ";
             
             $result = $this->conn->query($sql);
 

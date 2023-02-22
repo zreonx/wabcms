@@ -10,7 +10,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
     echo $clearance_id . ' ' . $signatory . ' ' . $student_id;
     require_once '../config/connection.php';
 
-    $checkOnList = $signatoryClearance->checkTempList($student_id, $signatory);
+    $checkOnList = $signatoryClearance->checkTempList($clearance_id, $student_id, $signatory);
     echo $checkOnList;
     if($checkOnList == false) {
         $addTemp = $signatoryClearance->addTemporaryDeficiency($clearance_id, $signatory_id, $signatory, $student_id);
