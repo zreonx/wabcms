@@ -60,6 +60,7 @@ class Paging extends DatabaseTable{
         try {
             $sql = "SELECT * FROM clearance c INNER JOIN clearance_type ct ON c.type = ct.clearance_type_id INNER JOIN beneficiary_type bt ON c.beneficiaries = bt.beneficiary_id ORDER BY c.id LIMIT $this->startingPage ,$this->page";
         $result = $this->conn->query($sql);
+        
         return $result;
 
         }catch(PDOException $e) {
@@ -116,6 +117,25 @@ class Paging extends DatabaseTable{
             echo "ERROR: " . $e->getMessage();
         }
     }
+
+    public function selectSignatory() {
+        try{
+            
+            $sql = "SELECT * FROM signatories;";
+            $result = $this->conn->query($sql);
+
+            $sqlCount = "SELECT COUNT(*) FROM signatories";
+            $resultCount = $this->conn->query($sqlCount);
+
+            $this->total_row = $resultCount->fetchColumn();
+
+            return $result;
+
+        }catch(PDOException $e) {
+            echo "ERROR: ". $e->getMessage();
+        }
+    }
+
 
 //Get all signatory designations of the students
 public function getStudentClearance($id=null) {

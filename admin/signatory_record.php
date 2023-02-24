@@ -2,8 +2,6 @@
     include_once '../includes/main.header.php';
     require_once '../config/connection.php';
 
-    $signatoryTable = Paging::getSignatoryTable();
-    $sdTable = Paging::getSignatoryDesgination();
     
     $page;
     if(isset($_GET['page'])) {
@@ -53,17 +51,18 @@
                     <td>Action</td>
                 </tr>
                 <?php
-                    $result = $displayPage->getSignatory();
+                    $result = $displayPage->selectSignatory();
                     $total_pages = $displayPage->pagination();
                     $displayPage->startingPage($page);
-                    while($designation_row = $result['signatory_query']->fetch(PDO::FETCH_ASSOC)) {
+                    $count = 1;
+                    while($designation_row = $result->fetch(PDO::FETCH_ASSOC)) {
                 ?>
                 <tr>
+                    <td><?php echo $count; $count++ ?></td>
                     <td><?php echo $designation_row['id'] ?></td>
-                    <td><?php echo $designation_row['sd_id'] ?></td>
                     <td><?php echo $designation_row['first_name'] . " " . $designation_row['middle_name'] . " " . $designation_row['last_name'] ?></td>
                     <td><?php echo $designation_row['email'] ?></td>
-                    <td><?php echo $designation_row['sd_designation'] ?></td>
+                    <td><?php echo $designation_row['designation'] ?></td>
                     <td><?php echo $designation_row['office_department'] ?></td>
                     <td><?php echo $designation_row['organization'] ?></td>
                     <td>

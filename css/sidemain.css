@@ -393,12 +393,25 @@
     border-right-color:  var(--themebc);
   }
 
+.deficiency-body {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between !important;
+    gap: 20px !important;
+}
+
   /* Button Over */
 .btn-over {
     position: fixed !important;
     bottom: 10px;
     left: 245px !important;
     z-index: 999999;
+}
+.tab-nav .nav-item .nav-link{
+   font-size: 12px !important;
+   padding: 0;
+   padding:10px 5px;
+    
 }
 
 /* ===Media queries and Scroll bar === */
@@ -421,7 +434,8 @@
         margin:0 auto;
     }
     .deficiency-body{
-        flex-direction: column !important;
+        display: grid !important;
+        grid-template-columns: 1fr;
     }
     
 }
@@ -430,6 +444,10 @@
     .dashboard-card {
         width: 80% !important;
         margin-bottom: 8px !important;
+    }
+    .deficiency-body{
+        display: grid !important;
+        grid-template-columns: 1fr;
     }
 }
 

@@ -59,10 +59,10 @@
                     <td>Action</td>
                 </tr>
 
-                <?php while($row = $result->fetch(PDO::FETCH_ASSOC)):  ?>
+                <?php $count = 1; while($row = $result->fetch(PDO::FETCH_ASSOC)):  ?>
 
                 <tr>
-                    <td><?php echo $row['id']; ?></td>
+                    <td><?php echo $count; $count++ ?></td>
                     <td>
                         <!-- Clearance type -->
                         <?php 

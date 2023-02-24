@@ -2,12 +2,10 @@
     include_once '../includes/main.header.php';
     require_once '../config/connection.php';
 
-    $studentTable = Paging::getStudentTable();
-    $student_clearance = $displayPage->getStudentClearance();
-    $signatoryColumn = $displayPage->getStudentClearance();
-   
-    $total_pages = $displayPage->pagination();
-
+    $signatoryTable = Paging::getSignatoryTable();
+    $sdTable = Paging::getSignatoryDesgination();
+    
+    $page;
     if(isset($_GET['page'])) {
         $page =$_GET['page'];
    }else {
@@ -49,6 +47,25 @@
                     <td>Designation</td>
       
                 </tr>
+                <?php
+                    $result = $displayPage->getSignatory();
+                    $total_pages = $displayPage->pagination();
+                    $displayPage->startingPage($page);
+                    $count = 1;
+                    while($designation_row = $result['signatory_query']->fetch(PDO::FETCH_ASSOC)) {
+                ?>
+                <tr>
+                    <td><?php echo $count; $count++ ?></td>
+                    <td><?php echo $designation_row['sd_id'] ?></td>
+                    <td><?php echo $designation_row['first_name'] . " " . $designation_row['middle_name'] . " " . $designation_row['last_name'] ?></td>
+                    <td><?php echo $designation_row['sd_designation'] ?></td>
+                    <td>
+                        <a href="#" class="btn btn-primary btn-sm" type="submit" name="submitEdit">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+                <?php } ?>
             </table>
         </div>
     </div>

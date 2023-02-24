@@ -67,10 +67,10 @@
                             
                 </tr>
 
-                <?php while($rows_sc = $student_clearance['sc_query']->fetch(PDO::FETCH_ASSOC)): ?>
+                <?php $count = 1; while($rows_sc = $student_clearance['sc_query']->fetch(PDO::FETCH_ASSOC)): ?>
 
                 <tr>
-                    <td><?php echo $rows_sc['id'] ?></td>
+                    <td><?php echo $count; $count++ ?></td>
                     <td><?php echo $rows_sc['student_id'] ?></td>
                     <td><?php echo $rows_sc['clearance_id'] ?></td>
                     <?php
