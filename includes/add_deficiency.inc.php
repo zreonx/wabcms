@@ -6,6 +6,7 @@ if(isset($_GET['submitDeficiency'])) {
     $clearance_id = $_GET['clearance_id'];
     $signatory_id = $_GET['signatory_id'];
     $signatory= $_GET['signatory'];
+
     $message= $_GET['message'];
 
     $def_id = $_GET['def_id'];
@@ -27,10 +28,11 @@ if(isset($_GET['submitDeficiency'])) {
     }
     foreach($def_id as $id) {
         $delete = $signatoryClearance->deleteTemporaryDeficiency($id);  
+       
         $countDelete++;
     }
 
-    if($countDelete == 0 && $countInsert == 0) {
+    if($countDelete == 0 && $countInsert == 0 && $approve == true) {
         header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory&insert=failed");
     }else {
         header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory&insert=success");

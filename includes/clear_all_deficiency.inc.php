@@ -5,9 +5,15 @@ if(isset($_GET['clearAllSubmit'])) {
         $clearance_id = $_GET['clearance_id'];
         $signatory_id = $_GET['signatory_id'];
         $signatory= $_GET['signatory'];
+        
 
+       
     if(isset($_GET['clearance_id']) && isset($_GET['def_id'])) {
-
+         //create a column name for signatory based on designation
+        $designation =  explode(" ", strtolower($signatory));
+        $final_designation = implode("_", $designation);
+        $signatory_column = "is_" . $final_designation ."_approval";
+        echo $signatory_column;
    
         $student_id = $_GET['students'];
         
@@ -26,6 +32,10 @@ if(isset($_GET['clearAllSubmit'])) {
         foreach($def_id as $id) {
             $signatoryClearance->updateDeficiency($id);
             $countRemove++;
+        }
+
+        foreach($student_id as $id) {
+            $approve = $signatoryClearance->approveClearance($signatory_column, $id, $clearance_id);
         }
 
         if($$countRemove == 0) {
