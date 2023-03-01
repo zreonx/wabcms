@@ -21,10 +21,9 @@
         <div class="card-body d-flex flex-column">
            <div>
                 <div class="">
-                    <div class="d-flex justify-content-between mb-2">
-                        <h3 class="fs-5">Clearance # <?php echo $_GET['clearance_id'] ?></h3>
-                        <h3 class="fs-5 "><mark><?php echo $_GET['signatory'] ?></mark></h3>
-                        <h3 class="fs-5 ">1st Semester</h3>
+                    <div class="d-flex justify-content-between mb-2 title-signatory-def">
+                        <h3 class="fs-5 bg-default "><?php echo $_GET['signatory'] ?></h3>
+                        <h3 class="fs-5 display-6">1st Semester | <?php echo $_GET['type']?> #<?php echo $_GET['clearance_id']?></h3>
                     </div>
                     
                     <div class="deficiency-body">

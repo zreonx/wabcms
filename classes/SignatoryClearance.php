@@ -40,7 +40,7 @@ class SignatoryClearance {
     //Select the active clearance
     public function selectActiveClearnace() { 
         try{ 
-            $sql = "SELECT * FROM clearance WHERE status = 'started' ";
+            $sql = "SELECT c.*, (SELECT clearance_type FROM clearance_type WHERE clearance_type_id = type) as 'type_name' FROM clearance c WHERE status = 'started' ";
             $result = $this->conn->query($sql);
             return $result;
         }catch(PDOException $e) {

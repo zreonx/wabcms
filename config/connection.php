@@ -30,6 +30,10 @@
     // Signatory classes
     $signatoryClearance = new SignatoryClearance($conn);
 
+    //Student classes
+    $studentClearance = new StudentClearance($conn);
+    
+
 
 
    

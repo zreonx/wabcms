@@ -311,6 +311,11 @@
     color: #fff !important;
 }
 
+.btn-default-orange {
+    background-color: var(--themorange) !important;
+    color: #fff !important;
+}
+
 .default-hover:hover, .btn-default:hover {
     color: #fff !important;
     box-shadow: var(--shadow-lg) !important;
@@ -344,10 +349,15 @@
     gap: 20px;
 }
 
+.student-clearance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
 .card-designee {
     padding: 5px;
 }
-
 
 .btn-badge {
     border-radius: 0;
@@ -369,6 +379,19 @@
 .circle-btn:hover {
     color: var(--themebc) !important;
     background-color: rgb(242, 242, 242) !important;
+}
+
+.stclearance-card {
+    background-color: var(--themebc) !important;
+    color: #fff;
+
+}
+
+.title-signatory {
+    background-color: var(--themebc);
+    color: #fff;
+    padding: 5px 50px;
+    border-radius: 25px;
 }
 
 /* Tooltip */
@@ -414,6 +437,8 @@
     
 }
 
+
+
 /* ===Media queries and Scroll bar === */
 
 @media only screen and (max-width: 1000px){
@@ -436,6 +461,11 @@
     .deficiency-body{
         display: grid !important;
         grid-template-columns: 1fr;
+    }
+    .title-signatory-def {
+        justify-content: center !important;
+        align-items: center;
+        flex-direction: column !important;
     }
     
 }

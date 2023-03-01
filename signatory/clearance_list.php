@@ -52,7 +52,7 @@
                                         <i class="fa-solid fa-person-circle-exclamation"></i>
                                     </a> -->
 
-                                    <a class="btn btn-sm rounded-circle circle-btn btn-default " class="btn btn-primary" data-bs-toggle="tooltip" title="Add Deficiency" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" href="add_deficiency.php?clearance_id=<?php echo $active_rows['id'] ?>&signatory=<?php echo $designationRow['designation'] ?>">
+                                    <a class="btn btn-sm rounded-circle circle-btn btn-default " class="btn btn-primary" data-bs-toggle="tooltip" title="Add Deficiency" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" href="add_deficiency.php?clearance_id=<?php echo $active_rows['id'] ?>&signatory=<?php echo $designationRow['designation'] ?>&type=<?php echo $active_rows['type_name'] ?>">
                                         <i class="fa-solid fa-person-circle-exclamation"></i>
                                     </a>
                                     

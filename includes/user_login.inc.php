@@ -30,7 +30,9 @@ if(isset($_POST['submit'])) {
 
                     header("location: ../signatory/dashboard.php");
                 }else if($user_type == 'student') {
-
+                    $_SESSION['user_type'] = $user_type;
+                    $_SESSION['user_id'] = $result['user_id'];
+                    header("location: ../student/clearance_list.php");
                 }else {
 
                     $_SESSION['user_type'] = $user_type;

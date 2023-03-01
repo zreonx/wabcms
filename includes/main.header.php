@@ -31,6 +31,8 @@
                         include_once 'users/admin_sidebar.php';
                     }else if (isset($_SESSION['user_type']) and $_SESSION['user_type'] == 'signatory') {
                         include_once 'users/signatory_sidebar.php';
+                    }else if(isset($_SESSION['user_type']) and $_SESSION['user_type'] == 'student'){
+                        include_once 'users/student_sidebar.php';
                     }
                 ?>
                 <!-- Admin SideBar -->
