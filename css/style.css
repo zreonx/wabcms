@@ -315,3 +315,8 @@ body {
   ::-webkit-scrollbar-thumb:hover {
     background: #0139a9; 
   }
+
+
+.err-img {
+    width: 230px;
+}

@@ -439,6 +439,9 @@
     
 }
 
+.bg-theme {
+    background-color: var(--themebc) !important;
+}
 
 
 /* ===Media queries and Scroll bar === */
@@ -508,4 +511,6 @@
     background: #0139a9; 
     width: 2px;
   }
+
+
 
