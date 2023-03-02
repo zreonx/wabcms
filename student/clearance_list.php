@@ -20,7 +20,7 @@
                         <h3 class="fs-5 display-6"><?php echo $active_clearance['type_name'] ?> <span class="float-end badge bg-success">#<?php echo $active_clearance['id'] ?></span></h3>
                         <h3 class="fs-6 display-6"><?php echo $active_clearance['academic_year'] ?></h3>
                         <h3 class="fs-6 display-6"><?php echo $active_clearance['semester'] ?>st Semester</h3>
-                        <a href="" class="btn btn-default-orange default-hover">View Clearance</a>
+                        <a href="clearance.php?clearance_id=<?php echo $active_clearance['id'] ?>" class="btn btn-default-orange default-hover">View Clearance</a>
                     </div>
                 </div>
             <?php endwhile; ?>    

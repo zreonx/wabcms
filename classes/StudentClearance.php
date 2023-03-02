@@ -16,4 +16,18 @@ class StudentClearance {
             echo $e->getMessage();
         }
     }
+
+    public function getSignatoryClearance($clearance_id, $student_id) {
+         try{
+
+            $sql = "SELECT * FROM student_clearance WHERE student_id = '$student_id' AND clearance_id = $clearance_id;";
+            $result = $this->conn->query($sql);
+            $count = $result->columnCount();
+            
+            return array('count' => $count, 'result' => $result);
+
+         }catch(PDOException $e){
+            echo $e->getMessage();
+         }
+    }
 }

@@ -366,7 +366,9 @@
 .theme-orange {
     background-color: var(--themorange);
 }
-
+.text-orange {
+    color: var(--themorange);
+}
 .badge-color {
     background-color: var(--themebc);
     color: #fff;
