@@ -7,6 +7,7 @@ if(isset($_GET['submitDeficiency'])) {
     $signatory_id = $_GET['signatory_id'];
     $signatory= $_GET['signatory'];
     $type = $_GET['type'];
+    $semester = $_GET['semester'];
 
     $message= $_GET['message'];
 
@@ -34,9 +35,9 @@ if(isset($_GET['submitDeficiency'])) {
     }
 
     if($countDelete == 0 && $countInsert == 0 && $approve == true) {
-        header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&type=$type&signatory=$signatory&insert=failed");
+        header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&type=$type&signatory=$signatory&semester=$semester&insert=failed");
     }else {
-        header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&type=$type&signatory=$signatory&insert=success");
+        header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&type=$type&signatory=$signatory&semester=$semester&insert=success");
     }
 
     // echo $clearance_id . $signatory_id. $signatory . $message;

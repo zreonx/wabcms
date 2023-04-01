@@ -6,6 +6,7 @@ if(isset($_GET['clearAllSubmit'])) {
         $signatory_id = $_GET['signatory_id'];
         $signatory= $_GET['signatory'];
         $type = $_GET['type'];
+        $semester = $_GET['semester'];
         
 
        
@@ -40,13 +41,13 @@ if(isset($_GET['clearAllSubmit'])) {
         }
 
         if($$countRemove == 0) {
-            header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory&type=$type&clear=success");
+            header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory&type=$type&semester=$semester&clear=success");
         }else {
-            header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory&type=$type&clear=cleared");
+            header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory&type=$type&semester=$semester&clear=cleared");
         }
 
     }else {
-        header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory&type=$type");
+        header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory&type=$type&semester=$semester");
     }
 
 }else {

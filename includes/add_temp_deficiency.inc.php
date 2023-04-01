@@ -7,6 +7,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
     $signatory_id = $_GET['signatory_id'];
     $student_id = $_GET['student_id'];
     $type = $_GET['type'];
+    $semester = $_GET['semester'];
 
     echo $clearance_id . ' ' . $signatory . ' ' . $student_id;
     require_once '../config/connection.php';
@@ -16,12 +17,12 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
     if($checkOnList == false) {
         $addTemp = $signatoryClearance->addTemporaryDeficiency($clearance_id, $signatory_id, $signatory, $student_id);
         if($addTemp == true) {  
-            header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory&type=$type");
+            header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory&type=$type&semester=$semester");
         } else {
-            header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory&type=$type&add_temp=false");
+            header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory&type=$type&semester=$semester&add_temp=false");
         }
     }else {
-        header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory&type=$type&add_temp=duplicate");
+        header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory&type=$type&semester=$semester&add_temp=duplicate");
 }
 
     
