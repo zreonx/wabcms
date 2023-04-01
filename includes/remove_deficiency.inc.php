@@ -5,6 +5,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET"){
     $student_id = $_GET['student_id'];
     $signatory_id = $_GET['signatory_id'];
     $signatory = $_GET['signatory'];
+    $type = $_GET['type'];
 
      //create a column name for signatory based on designation
      $designation =  explode(" ", strtolower($signatory));
@@ -20,9 +21,9 @@ if($_SERVER['REQUEST_METHOD'] == "GET"){
     if(($signatoryClearance->updateDeficiency($id)) == true) {  
         //Approve student clearance 
         $approve = $signatoryClearance->approveClearance($signatory_column, $student_id, $clearance_id);
-        header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory");
+        header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory&type=$type");
     } else {
-        header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory&remove_deficiency=failed");
+        header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory&type=$type&remove_deficiency=failed");
     }
     
 }

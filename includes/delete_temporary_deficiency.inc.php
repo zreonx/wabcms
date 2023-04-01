@@ -6,6 +6,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
     $signatory_id = $_GET['signatory_id'];
     $student_id = $_GET['student_id'];
     $temp_id = $_GET['temp_id'];
+    $type = $_GET['type'];
 
     echo $clearance_id;
     echo $signatory;
@@ -17,8 +18,8 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
     $delete_result = $signatoryClearance->deleteTemporaryDeficiency($temp_id);
 
     if($delete_result == true) {  
-        header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory");
+        header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory&type=$type");
     } else {
-        header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory&remove_temp=false");
+        header("Location: ../signatory/add_deficiency.php?clearance_id=$clearance_id&signatory=$signatory&type=$type&remove_temp=false");
     }
 }

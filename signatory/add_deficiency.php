@@ -45,7 +45,7 @@
                                         <tr>
                                             <td><?php echo $row_students['counter'] ?></td>
                                             <td><?php echo $row_students['student_id'] ?></td>
-                                            <td><a href="../includes/add_temp_deficiency.inc.php?clearance_id=<?php echo $_GET['clearance_id'] ?>&signatory_id=<?php echo $signatory_id ?>&signatory=<?php echo $signatory ?>&student_id=<?php echo $row_students['student_id'] ?>" class="btn btn-sm btn-primary btn-add">Select</a></td>
+                                            <td><a href="../includes/add_temp_deficiency.inc.php?clearance_id=<?php echo $_GET['clearance_id'] ?>&signatory_id=<?php echo $signatory_id ?>&signatory=<?php echo $signatory ?>&student_id=<?php echo $row_students['student_id'] ?>&type=<?php echo $_GET['type'] ?>" class="btn btn-sm btn-primary btn-add">Select</a></td>
                                         </tr>
                                         <?php endwhile ?>
                                     </table>
@@ -78,10 +78,11 @@
                                                     <tr>
                                                         <td><?php echo $row_temp_student['counter'] ?></td>
                                                         <td><?php echo $row_temp_student['student_id'] ?></td>
-                                                        <td><a href="../includes/delete_temporary_deficiency.inc.php? clearance_id=<?php echo $_GET['clearance_id'] ?>&signatory_id=<?php echo $signatory_id ?>&signatory=<?php echo $signatory ?>&student_id=<?php echo $row_temp_student['student_id'] ?>&temp_id=<?php echo $row_temp_student['id'] ?>" class="btn btn-sm btn-danger rounded-circle"><i class="fa-sharp fa-solid fa-minus"></i></a></td>  
+                                                        <td><a href="../includes/delete_temporary_deficiency.inc.php? clearance_id=<?php echo $_GET['clearance_id'] ?>&signatory_id=<?php echo $signatory_id ?>&signatory=<?php echo $signatory ?>&student_id=<?php echo $row_temp_student['student_id'] ?>&temp_id=<?php echo $row_temp_student['id'] ?>&type=<?php echo $_GET['type']?>" class="btn btn-sm btn-danger rounded-circle"><i class="fa-sharp fa-solid fa-minus"></i></a></td>  
                                                         
                                                         <input type="hidden" name="students[]" value="<?php echo $row_temp_student['student_id'] ?>">
                                                         <input type="hidden" name="def_id[]" value="<?php echo $row_temp_student['id'] ?>">
+                                                        <input type="hidden" name="type" value="<?php echo $_GET['type'] ?>">
                                                     <?php endwhile ?>                
                                                 </table>
                                             </div>
@@ -90,7 +91,8 @@
                                                 <input type="hidden" name="signatory_id" value="<?php echo $signatory_id ?>">
                                                 <input type="hidden" name="signatory" value="<?php echo $signatory ?>">
                                                 <input type="hidden" name="clearance_id" value="<?php echo $_GET['clearance_id'] ?>">
-                                                
+                                                <input type="hidden" name="type" value="<?php echo $_GET['type'] ?>">
+
                                                 <label class="form-label" >Message</label>
                                                 <textarea class="form-control" name="message" rows="4" style="resize: none;"></textarea>
                                                 <div class="m-0 p-0">
@@ -110,14 +112,14 @@
                                                         <td>Student ID</td>
                                                         <td>Action</td>
                                                     </tr>
-                                                    
+                                                <input type="hidden" name="type" value="<?php echo $_GET['type'] ?>">
                                                 <?php while($row_def_student = $showWithDeficiency->fetch(PDO::FETCH_ASSOC)): ?>
                                                 <tr>
                                                     <td><?php echo $row_def_student['counter'] ?></td>
                                                     <td><?php echo $row_def_student['student_id'] ?></td>
                                                     
                                                     <td>
-                                                        <a href="../includes/remove_deficiency.inc.php?clearance_id=<?php echo $_GET['clearance_id']?>&signatory_id=<?php echo $signatory_id ?>&signatory=<?php echo $signatory?>&student_id=<?php echo $row_def_student['student_id'] ?>&id=<?php echo $row_def_student['id'] ?>" class="btn btn-sm btn-success rounded-circle"><i class="fa-solid fa-check"></i></a>
+                                                        <a href="../includes/remove_deficiency.inc.php?clearance_id=<?php echo $_GET['clearance_id']?>&signatory_id=<?php echo $signatory_id ?>&signatory=<?php echo $signatory?>&student_id=<?php echo $row_def_student['student_id'] ?>&id=<?php echo $row_def_student['id'] ?>&type=<?php echo $_GET['type']?>" class="btn btn-sm btn-success rounded-circle"><i class="fa-solid fa-check"></i></a>
                                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal<?php echo $row_def_student['id'] ?>">
                                                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                                         </button>
@@ -155,14 +157,15 @@
 
                                                     <input type="hidden" name="students[]" value="<?php echo $row_def_student['student_id'] ?>">
                                                     <input type="hidden" name="def_id[]" value="<?php echo $row_def_student['id'] ?>">
-                                                <?php endwhile ?>       
+                                                    <input type="hidden" name="type" value="<?php echo $_GET['type'] ?>">
+                                                    <?php endwhile ?>       
                                                             
                                                 </table>
 
                                                 <input type="hidden" name="signatory_id" value="<?php echo $signatory_id ?>">
                                                 <input type="hidden" name="signatory" value="<?php echo $signatory ?>">
                                                 <input type="hidden" name="clearance_id" value="<?php echo $clearance_id?>">
-                                            
+                                                <input type="hidden" name="type" value="<?php echo $_GET['type'] ?>">
                                         
                                                 <div class="form-outline">
                                                     <div class="m-0 p-0">
