@@ -485,7 +485,64 @@
         grid-template-columns: 1fr;
     }
 }
+  
 
+  .custom-select .select-btn {
+    cursor: pointer;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #cccccc44;
+    box-shadow: var(--shadow-xs);
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .select-btn i {
+    font-size: 20px;
+    transition: .3 ease-in;
+  }
+
+  .select-options {
+    display: none;
+  }
+
+  .custom-select.active-select .select-options {
+    display: block !important;
+  }
+
+  .custom-select.active-select .select-btn i {
+    transform: rotate(-180deg);
+  }
+
+  .custom-select .select-options {
+    position: absolute;
+    z-index: 999;
+    padding: 0;
+    margin-top: 10px;
+    padding: 5px 0;
+    background-color: #fff;
+    box-shadow: 0 0 3px rgba(0,0,0,0.1);
+  }
+
+  .option.active {
+    color: #fff;
+  }
+
+  .select-options .option {
+    display: flex;
+    cursor: pointer;
+    padding: 5px 18px;
+    border-radius: 3px;
+  }
+  .my-list li:hover {
+    background-color: var(--themebc);
+    color: #fff !important;
+  }
+  
 /* === Scroll Bar ===  */
 /* width */
 ::-webkit-scrollbar {

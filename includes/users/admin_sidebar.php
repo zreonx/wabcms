@@ -43,7 +43,7 @@
             <i class="caret fa-solid fa-regular fa-angle-down"></i></span>
         </a>
         <div class="dropdown-container">
-            <a href="#"><i class="space fa-sharp fa-solid fa-file"></i>Clearance Report</a>
+            <a href="clearance_report.php"><i class="space fa-sharp fa-solid fa-file"></i>Clearance Report</a>
             <a href="#"><i class="space fa-sharp fa-solid fa-file"></i>Signatory Report</a>
         </div>
     </div>
