@@ -12,6 +12,8 @@
    }
     $displayPage->startingPage($page);
     $result = $displayPage->getClearancePage();
+
+    $clearanceRecord = $clearance->showClearanceRecord();
 ?>
 
 <div class="panel p-3">
@@ -37,10 +39,25 @@
             <div class="card-body">
                 <h1 class="fs-3 display-6">Generate Report</h1>
                 <div class="row">
+                <div class="col-md-3 mb-2">
+                        <div class="custom-select" >
+                            <div class="select-btn">
+                                <span class="sbtn-text" id="clearanceID">Clearance Reference Number</span>
+                                <i class="bx bx-chevron-down"></i>
+                            </div>
+                            <ul class="select-options my-list" id="yearLevelSelect">
+                                <?php while($clearance_row = $clearanceRecord->fetch(PDO::FETCH_ASSOC)): ?>
+                                    <li class="option">
+                                        <span class="option-text"><?php echo $clearance_row['id']?></span>
+                                    </li>
+                                <?php endwhile; ?>
+                            </ul>
+                        </div>
+                    </div>
                     <div class="col-md-3 mb-2">
                         <div class="custom-select">
                             <div class="select-btn">
-                                <span class="sbtn-text">Year Level</span>
+                                <span class="sbtn-text" id="yearLevelBtn">Year Level</span>
                                 <i class="bx bx-chevron-down"></i>
                             </div>
                             <ul class="select-options my-list" id="yearLevelSelect">
@@ -75,7 +92,7 @@
                     <div class="col-sm-3 mb-2">
                         <div class="custom-select">
                             <div class="select-btn">
-                                <span class="sbtn-text">Clearance Status</span>
+                                <span class="sbtn-text" id="clearanceStatus">Clearance Status</span>
                                 <i class="bx bx-chevron-down"></i>
                             </div>
                             <ul class="select-options my-list">
@@ -92,7 +109,7 @@
 
                 <div class="row mt-1">
                     <div class="col-sm-3">
-                        <button class="btn btn-default">Generate Report</button>
+                        <button class="btn btn-default" id="generateBtn">Generate Report</button>
                     </div>
                 </div>
             </div>
@@ -143,6 +160,57 @@
                 });
    
             </script>
+
+            <div class="card mb-3 " id="reportCard">
+                <div class="card-body" >
+                    <div id="tableReport">
+
+                    </div>
+                    
+                    <script>
+                        $(document).ready(function(){
+                            $('#generateBtn').click(function(){
+
+                                let yearlevel = $('#yearLevelBtn').html();
+                                let clearanceStatus = $('#clearanceStatus').html();
+                                let clearanceId = $('#clearanceID').html();
+
+
+                                var spinner = '<div class="spinner"><div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div> <span>Please wait</span></div>';
+                                $('#generateBtn').html(spinner);
+                                $.ajax({
+                                    type: 'POST',
+                                    url: 'report_page.php',
+                                    data: {
+                                        key: 'report',
+                                        clearance_id: clearanceId,
+                                        year_level: yearlevel,
+                                        clearance_status: clearanceStatus,
+                                    },
+                                    success: function(response){
+                                        setTimeout(function(){
+                                            $('#reportCard').show();
+                                            $('#generateBtn').html('Generate Report');
+                                            $('#tableReport').html(response);
+                                        }, 1000);
+                                      
+                                    },
+                                });
+                                $(this).prop("disabled", true);
+
+                                setTimeout(function() {
+                                $("#generateBtn").prop("disabled", false);
+                                }, 5000);
+                                });
+
+                                
+                                //$('#table').load('report_page.php');
+                            });
+
+
+                    </script>
+                </div>
+            </div>
             
             <!-- <table class="default-table table text-center">
                 <tr>

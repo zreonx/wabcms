@@ -35,4 +35,7 @@ print_r($displayPage->setPage("students", 1)); */
 
 // $clearance->insertStudentClearance(1);
 
-$displayPage->getUsers();
+//$displayPage->getUsers();
+
+$report->getSignatoryColumn();
+

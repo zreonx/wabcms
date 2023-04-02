@@ -26,6 +26,7 @@
     $dashboard = new Dashboard($conn);
     $searchFilter = new SearchFilter($conn);
     $users = new User($conn);
+    $report = new Report($conn);
 
     // Signatory classes
     $signatoryClearance = new SignatoryClearance($conn);

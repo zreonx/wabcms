@@ -443,6 +443,34 @@
     background-color: var(--themebc) !important;
 }
 
+#reportCard {
+    display: none;
+    height: 400px !important;
+    overflow: hidden !important;
+}
+
+.reportBtn {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px);
+ }
+
+
 
 /* ===Media queries and Scroll bar === */
 
@@ -569,5 +597,13 @@
     width: 2px;
   }
 
+
+  /* Printing */
+
+  @media print {
+    .print-only {
+       display: none;
+    }
+ }
 
 
