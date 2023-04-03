@@ -219,6 +219,18 @@ public static function account_updated() {
         There was an error in adding student deficiency.
         </div>";
 }
+
+
+//add signatory
+
+
+public static function add_signatory_message() {
+  echo 
+      "<div class='alert alert-success alert-dismissible'>
+          <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+        Signatory has been added.
+        </div>";
+}
     
 }
 

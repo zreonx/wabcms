@@ -21,11 +21,23 @@ class StudentClearance {
          try{
 
             $sql = "SELECT * FROM student_clearance WHERE student_id = '$student_id' AND clearance_id = $clearance_id;";
+            $sqlColumns = "SELECT * FROM student_clearance WHERE student_id = '$student_id' AND clearance_id = $clearance_id;";
             $result = $this->conn->query($sql);
+            $resultColumns = $this->conn->query($sqlColumns);
+
+            $columns = array();
+
+            $numColumns = $resultColumns->columnCount();
+            for ($i = 0; $i < $numColumns; $i++) {
+                $meta = $resultColumns->getColumnMeta($i);
+                $columns[$i] = $meta['name'];
+            }
+
             $count = $result->columnCount();
             
-            return array('count' => $count, 'result' => $result);
+            return array('count' => $count, 'result' => $result, 'columns' => $columns);
 
+            
          }catch(PDOException $e){
             echo $e->getMessage();
          }

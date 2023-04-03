@@ -14,7 +14,7 @@
 ?>
 
 <div class="panel p-3">
-    <h1 class="panel-title">Student Clearance</h1>
+    <h1 class="panel-title">Signatories</h1>
     <div class="d-flex search-bar mb-2">
         <div class="btn-group">
             <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -45,6 +45,7 @@
                     <td>Signatory ID</td>
                     <td>Name</td>
                     <td>Designation</td>
+                    <td>Action</td>
       
                 </tr>
                 <?php

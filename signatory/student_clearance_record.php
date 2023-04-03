@@ -1,8 +1,9 @@
 <?php 
     include_once '../includes/main.header.php';
     require_once '../config/connection.php';
+    $designation = $_GET['designation'];
     
-    $signatoryStudentResult = $displayPage->getSignatoryStudent($_GET['clearance_id']);
+    $signatoryStudentResult = $displayPage->getSignatoryStudent($_GET['clearance_id'], $designation);
     $total_pages = $displayPage->pagination();
 
     $page;

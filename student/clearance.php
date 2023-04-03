@@ -4,9 +4,8 @@
 
     $student_id = $_SESSION['user_id'];
     $clearance_id = $_GET['clearance_id'];
-    $clearance = $studentClearance->getSignatoryClearance($clearance_id, $student_id);
-    $signatory = $studentClearance->getSignatoryClearance($clearance_id, $student_id);
-    $keys = array_keys($signatory['result']->fetch(PDO::FETCH_ASSOC));
+    $clearanceData = $studentClearance->getSignatoryClearance($clearance_id, $student_id);
+    $keys = $clearanceData['columns'];
 
 ?>
 
@@ -16,10 +15,10 @@
         <div class="card-body d-flex flex-column">
             <div class="student-clearance-grid">
         
-            <?php while($student_clearance = $clearance['result']->fetch(PDO::FETCH_ASSOC)): ?>
+            <?php while($student_clearance = $clearanceData['result']->fetch(PDO::FETCH_ASSOC)): ?>
                 <?php 
                 $signatory_column = array();
-                for($i = 3; $i < $clearance['count']; $i++ ) {
+                for($i = 3; $i < $clearanceData['count']; $i++ ) {
                     $signatory_column [] = $keys[$i];
                 }?>
                 <?php for($i = 0; $i < count($signatory_column); $i++ ):

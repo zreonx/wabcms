@@ -1,6 +1,4 @@
 <?php
 require_once '../config/connection.php';
 
-$result = $studentClearance->getSignatoryClearance(5 ,'20-02858');
-
-print_r($result);
+$result = $studentClearance->getSignatoryClearance(1 ,'20-02858');
