@@ -12,7 +12,7 @@
         
         require_once '../config/connection.php';
 
-         $result = $signatories->createSignatory($designation, $firstname, $middlename, $lastname, $department, $is_org, $organization ,$email);
+        $result = $signatories->createSignatory($designation, $firstname, $middlename, $lastname, $department, $is_org, $organization ,$email);
 
         if($result == true) {
             header("location: ../admin/add_signatory.php?register=success");

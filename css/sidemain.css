@@ -446,7 +446,7 @@
 #reportCard {
     display: none;
     height: 400px !important;
-    overflow: auto !important;
+    overflow: hidden !important;
 }
 
 .reportBtn {
