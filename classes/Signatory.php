@@ -19,19 +19,20 @@ class Signatory {
             echo "ERROR: " . $e->getMessage();
         }
     }
-    public function createSignatory($designation=array(), $firstname, $middlename, $lastname, $dept, $is_org, $organization, $email) {
+    public function createSignatory($designation=array(), $firstname, $middlename, $lastname, $dept, $is_ph, $is_org, $organization, $email) {
         try {
             $signatory_type = implode(", ", $designation);
             $status = "active";
 
-            $sql = "INSERT INTO signatories (designation, first_name, middle_name, last_name, office_department, is_org, organization, email, status)
-            VALUES (:designation, :fname, :mname, :lname, :dept, :is_org, :organization, :email, :status); ";
+            $sql = "INSERT INTO signatories (designation, first_name, middle_name, last_name, office_department, is_program_head, is_org, organization, email, status)
+            VALUES (:designation, :fname, :mname, :lname, :dept, :is_ph, :is_org, :organization, :email, :status); ";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindparam(':designation', $signatory_type);
             $stmt->bindparam(':fname', $firstname);
             $stmt->bindparam(':mname', $middlename);
             $stmt->bindparam(':lname', $lastname);
             $stmt->bindparam(':dept', $dept);
+            $stmt->bindparam(':is_ph', $is_ph);
             $stmt->bindparam(':is_org', $is_org);
             $stmt->bindparam(':organization', $organization);
             $stmt->bindparam(':email', $email);

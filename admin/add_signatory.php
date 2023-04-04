@@ -45,7 +45,26 @@
                         <label class="form-label">Office - Department</label>
                     </div>
                     <div class="col-lg-2 ">
-                        <input type="text" class="form-control" value="<?php echo (isset($_POST['department']) ? $_POST['department'] : "") ?>" placeholder="Department" name="department" required>
+                        <input type="text" class="form-control" value="<?php echo (isset($_POST['department']) ? $_POST['department'] : "") ?>" placeholder="Department" name="department" id="department" required>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-lg-2 flex-shrink-1 bd-highlight">
+                        <label class="form-label">Is Signatory a Program Head?</label>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-check">
+                            <input class="form-check-input" value="1" type="radio" name="is_program_head" id="is_ph_yes">
+                            <label class="form-check-label">
+                                Yes
+                            </label>
+                            </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="0" type="radio" name="is_program_head" id="is_ph_no" checked>
+                            <label class="form-check-label">
+                               No
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div class="row mb-2">
@@ -96,7 +115,7 @@
                         <label class="form-label">Designation</label>
                     </div>
                     <div class="col-lg-2 ">
-                        <input type="text" name="designation[]" placeholder="Designation" class="form-control" required />
+                        <input type="text" name="designation[]" placeholder="Designation" id="designation" class="form-control" required />
                     </div>
                     <div class="col-lg-2">
                         <button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
@@ -119,6 +138,7 @@
                         x++;
                         $("#dynamic-field").append("<div class='row mb-2' id='row"+x+"'><div class='col-lg-2'></div><div class='col-lg-2'><input type='text' name='designation[]' value='<?php echo (isset($_POST['designation']) ? $_POST['desination'] : '') ?>' placeholder='Designation' class='form-control' /></div><div class='col-lg-2'><button type='button' name='remove' id='row"+x+"' class='btn btn-danger btn_remove'><i class='fa-solid fa-trash'></i></button></div></div>");
                         });
+
                         $(document).on('click', '.btn_remove', function(){
                         let button_id = $(this).attr("id"); 
                         $('#'+button_id+'').remove();
@@ -129,6 +149,13 @@
 
                         $(".orgs").hide();
                         $("#orgs" + test).show();
+                        });
+
+                        $("#is_ph_yes").click(function() {
+                            
+                            let department = $('#department').val();
+                            $('#designation').val(department + " Program Head"); 
+
                         });
                     });
             </script>
