@@ -32,11 +32,15 @@ if(isset($_POST['submit'])) {
                 }else if($user_type == 'student') {
                     $_SESSION['user_type'] = $user_type;
                     $_SESSION['user_id'] = $result['user_id'];
+                    
+                    $_SESSION['user_data'] = $users->getUserInfo($result['user_id']);
+
                     header("location: ../student/clearance_list.php");
                 }else {
 
                     $_SESSION['user_type'] = $user_type;
                     $_SESSION['user_id'] = $result['user_id'];
+                    
                     header("location: ../student/dashboard.php");
                     echo "usertype not found";
                 }

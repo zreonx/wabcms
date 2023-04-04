@@ -3,7 +3,8 @@
     require_once '../config/connection.php';
     require_once '../includes/user_check.php';
 
-    $signatory_id = $_SESSION['user_id'];
+    $user_id = $_SESSION['user_id'];
+    
     $activeClearance = $studentClearance->displayClearance();
   
 

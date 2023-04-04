@@ -136,8 +136,24 @@ class User{
             return false;
             
         }
+        
     }
 
+
+    public function getUserInfo($user_id) {
+        try {
+
+            $sql = "SELECT * FROM students WHERE student_id = '$user_id' ";
+            $result = $this->conn->query($sql);
+            $resultQuery = $result->fetch(PDO::FETCH_ASSOC);
+
+            return $resultQuery;
+        }catch(PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+            return false;
+            
+        }
+    }
     
     
 
