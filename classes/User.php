@@ -154,7 +154,79 @@ class User{
             
         }
     }
+
+    public function getAdminInfo($user_id) {
+        try {
+
+            $sql = "SELECT * FROM admins WHERE admin_id = '$user_id' ";
+            $result = $this->conn->query($sql);
+            $resultQuery = $result->fetch(PDO::FETCH_ASSOC);
+
+            return $resultQuery;
+        }catch(PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+            return false;
+            
+        }
+    }
+
+    public function getSignatoryInfo($user_id) {
+        try {
+
+            $sql = "SELECT * FROM signatories WHERE id = $user_id ";
+            $result = $this->conn->query($sql);
+            $resultQuery = $result->fetch(PDO::FETCH_ASSOC);
+
+            return $resultQuery;
+        }catch(PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+            return false;
+            
+        }
+    }
     
+    public function checkUserType($user_id, $user_type) {
+        try {
+            $sql = "SELECT * FROM users WHERE user_id = '$user_id' AND user_type = '$user_type' ;";
+            $result = $this->conn->query($sql);
+
+            $query = $result->fetch(PDO::FETCH_ASSOC);
+
+            return $query;
+
+        }catch(PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function getUserData($user_id, $user_type) {
+        try {
+
+            $userData = $this->checkUserType($user_id, $user_type);
+
+            $userId = $userData['user_id'];
+            $userType = $userData['user_type'];
+
+
+            if($userType == 'student') {
+                $sql = "SELECT * FROM students WHERE student_id = $user_id ;";
+            }else if($userType == 'signatory') {
+                $sql = "SELECT * FROM signatories WHERE id = $user_id ;";
+            }else if($userType == 'admin') {
+                $sql = "SELECT * FROM admins WHERE admin_id = $user_id ;";
+            }
+           
+
+            $result = $this->conn->query($sql);
+            $queryData = $result->fetch(PDO::FETCH_ASSOC);
+            return array('userdata' => $queryData, 'old_pass' => $userData['password']) ;
+
+        }catch(PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+   
     
 
 }

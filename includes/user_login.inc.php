@@ -22,11 +22,13 @@ if(isset($_POST['submit'])) {
                 if($user_type == 'admin') {
                     $_SESSION['user_type'] = $user_type;
                     $_SESSION['user_id'] = $result['user_id'];
+                    $_SESSION['user_data'] = $users->getAdminInfo($result['user_id']);
 
                     header("location: ../admin/dashboard.php");
                 }else if($user_type == 'signatory') {
                     $_SESSION['user_type'] = $user_type;
                     $_SESSION['user_id'] = $result['user_id'];
+                    $_SESSION['user_data'] = $users->getSignatoryInfo($result['user_id']);
 
                     header("location: ../signatory/dashboard.php");
                 }else if($user_type == 'student') {
