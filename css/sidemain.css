@@ -519,7 +519,7 @@
 }
 
 .profile-menu .profile-link a:hover{
-    color: #989898;
+    color: var(--themorange);
 }
 
 .p-icon {
@@ -579,7 +579,7 @@
     }
 }
   
-
+/* Custom Select */
   .custom-select .select-btn {
     cursor: pointer;
     padding: 10px;
