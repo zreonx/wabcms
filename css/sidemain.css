@@ -471,6 +471,71 @@
  }
 
 
+ /* Profile Page CSS */
+
+ .profile-page {
+    margin-right: 12px;
+    padding: 5px 8px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+ }
+
+ .profile-image {
+    padding: 4px;
+    height: 32px;   
+    background-color: #efe8e8; 
+}
+
+.profile-container {
+    width: 200px;
+    background: #fff;
+    box-shadow: var(--shadow-xs);
+    margin: 5px;
+
+    position: absolute;
+    z-index: 1;
+    right: 0;
+
+    display: none;
+}
+
+.profile-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-menu .profile-link {
+    padding: 6px 10px;
+}
+
+.profile-menu .profile-link a{
+    text-decoration: none;
+    color: var(--themebc);
+    transition: all .3s ease-in-out;
+}
+
+.profile-menu .profile-link a:hover{
+    color: #989898;
+}
+
+.p-icon {
+    padding: 8px;
+    margin-right: 3px;
+    background-color: #f3eded;
+    border-radius: 50%;
+    color: #42428e;
+    text-align: center;
+    font-size: 14px;
+}
+
+.active-profile {
+    display: block;
+}
+
 
 /* ===Media queries and Scroll bar === */
 

@@ -13,8 +13,8 @@ if(isset($_POST['key'])) {
 <div class="reportpage" id="reportPage">                 
 <h1 class="fs-3 display-6 text-center">Clearance Summary</h1>
 <h3 class="fs-6">Clearance Reference Number: <?php echo $_POST['clearance_id'] ?></h3>
-<h3 class="fs-6">Clearance Name: <?php echo $clearanceInfo['clearance_type']; ?> </h3>
-<br>
+<h3 class="fs-6">: <?php echo $clearanceInfo['clearance_type']; ?> </h3>
+<br>Clearance Name
 
 <?php
     for($i = 0; $i < count($signatoryColumn); $i++):

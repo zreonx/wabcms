@@ -17,29 +17,82 @@ class StudentClearance {
         }
     }
 
-    public function getSignatoryClearance($clearance_id, $student_id) {
-         try{
+    //This will get all the column name of the student_clearance
 
-            $sql = "SELECT * FROM student_clearance WHERE student_id = '$student_id' AND clearance_id = $clearance_id;";
-            $sqlColumns = "SELECT * FROM student_clearance WHERE student_id = '$student_id' AND clearance_id = $clearance_id;";
+    public function getColumnName() {
+        try {
+
+            $sql = "DESCRIBE student_clearance";
             $result = $this->conn->query($sql);
-            $resultColumns = $this->conn->query($sqlColumns);
+            
+            $designations = array();
 
-            $columns = array();
+            $table_count = 0;
+            $des_count = 0;
 
-            $numColumns = $resultColumns->columnCount();
-            for ($i = 0; $i < $numColumns; $i++) {
-                $meta = $resultColumns->getColumnMeta($i);
-                $columns[$i] = $meta['name'];
+            while($designation_row = $result->fetch(PDO::FETCH_ASSOC)) {
+                if($table_count < 3){
+                    $table_count++;
+                    continue;
+                }else {
+                    $designations[$des_count] = $designation_row['Field'];
+                    $table_count++;
+                    $des_count++;
+                }
+                    
             }
 
-            $count = $result->columnCount();
-            
-            return array('count' => $count, 'result' => $result, 'columns' => $columns);
+            return $designations;
 
-            
-         }catch(PDOException $e){
+        }catch(PDOException $e){
             echo $e->getMessage();
-         }
+        }
     }
+
+    public function getSignatoryClearance($clearance_id, $student_id) {
+        try{
+
+           $designations = $this->getColumnName(); 
+           $designation_text  = implode(', ', $designations);
+           $sql = "SELECT $designation_text FROM student_clearance WHERE student_id = '$student_id' AND clearance_id = $clearance_id;";
+
+           $result = $this->conn->query($sql);
+           
+           return $result;
+           
+        }catch(PDOException $e){
+           echo $e->getMessage();
+        }
+   }
+
+   //Get signatory information and check if they are program head or not
+    public function getDesignationId($designation) {
+        try{
+
+            $sql = "SELECT * FROM signatory_designation WHERE designation = '$designation'";
+            $result = $this->conn->query($sql);
+
+            while($des_row = $result->fetch(PDO::FETCH_ASSOC)) {
+               return $this->desInfo($des_row['signatory_id']);
+            }
+
+        
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public function desInfo($id) {
+        try{
+
+            $sql = "SELECT * FROM signatories WHERE id = $id";
+            $result = $this->conn->query($sql);
+
+            return $result->fetch(PDO::FETCH_ASSOC);
+        
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
 }
