@@ -13,7 +13,10 @@
 ?>
 
 <div class="panel p-3">
-    <h1 class="panel-title">Clearance</h1>
+    <div class="d-flex justify-content-between">
+        <h1 class="panel-title">Clearance</h1>
+    </div>
+    
     <div class="min-vh-100 c-scroll">
         <div class="card-body d-flex flex-column">
             <div class="student-clearance-grid">
@@ -67,6 +70,9 @@
                 
             </div>
         </div>
+    </div>
+    <div id="clearance-download">
+        <button class="btn btn-outline-primary"> <i class="fa-solid fa-cloud-arrow-down"></i> Download Clearance</button>
     </div>
     
 </div>

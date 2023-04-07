@@ -11,7 +11,7 @@
                 <a href="about.php" class="btn btn-lg btn-primary btn-design " onclick="this.blur();">READ MORE</a>
             </div>
             <div class="right-card">
-                <img src="images/index_photo.png" class="img-fluid rounded d-block index-photo" alt="">
+                <img src="images/index_photo.webp" class="img-fluid rounded d-block index-photo" alt="">
             </div>
         </div>
 

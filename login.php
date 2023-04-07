@@ -7,7 +7,7 @@
 
     <div class="cards animated fadeInDown ">
         <div class="card-pic">
-            <img src="images/login.png" class="img-fluid rounded d-block login-photo" alt="">
+            <img src="images/login.webp" class="img-fluid rounded d-block login-photo" alt="">
         </div>
         <div class="login-card login  ">
             <div class="card login-b">

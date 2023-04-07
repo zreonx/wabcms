@@ -698,6 +698,23 @@
     width: 2px;
   }
 
+  /* Download Saving */
+  #clearance-download {
+    position: sticky;
+    z-index: 1;
+    bottom: 12px;
+    transition: all .3s ease;
+  }
+
+  #clearance-download button {
+    transition: all .3s ease;
+  }
+
+  #clearance-download button:hover {
+    font-size: 1.1rem;
+    box-shadow: var(--shadow-xl) ;
+  }
+
 
   /* Printing */
 

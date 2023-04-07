@@ -14,7 +14,7 @@
                 Free Quality Tertiary Education.</p>
         </div>
         <div class="right-card">
-            <img src="images/about.png" class="img-fluid rounded d-block about-photo" alt="">
+            <img src="images/about.webp" class="img-fluid rounded d-block about-photo" alt="">
         </div>
     </div>
 <?php
