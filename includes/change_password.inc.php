@@ -15,14 +15,37 @@
         
 
         if($current_password === $result['old_pass']) {
-            echo "Current password matched.";
             if($new_password === $confirm_password) {
-                echo "Password changed.";
+                $changeStatus = $users->changePassword($userId, $new_password);
+                $result = array(
+                    'password_changed' => 'true',
+                    'message' => '
+                    <div class="alert alert-success mt-3 mx-3" id="error-message">
+                        Password has been changed successfully.
+                    </div>'
+                );
+
             }else {
-                echo "Confirm password does not matched.";
+                $result = array(
+                    'password_changed' => 'cnm',
+                    'message' => '
+                    <div class="alert alert-danger mt-3 mx-3" id="error-message">
+                        Confirm password did not match.
+                    </div>'
+                );
+
             }
         }else {
-            echo "Current password does not matched.";
+            $result = array(
+                'password_changed' => 'olm',
+                'message' => '
+                <div class="alert alert-danger mt-3 mx-3" id="error-message">
+                    The password you entered does not matched to your old password.
+                </div>'
+            );
+            
         }
+
+        echo json_encode($result);
     }
 ?>

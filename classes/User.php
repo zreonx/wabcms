@@ -226,6 +226,22 @@ class User{
         }
     }
 
+    public function changePassword($user_id, $new_password) {
+        try {
+
+            $sql = "UPDATE users SET password = :new_password WHERE user_id = :user_id ;";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindparam(':user_id', $user_id);
+            $stmt->bindparam(':new_password', $new_password);
+            $stmt->execute();
+            return true;
+
+        }catch(PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
    
     
 
