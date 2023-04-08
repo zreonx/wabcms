@@ -12,7 +12,7 @@
 
 <div class="panel p-3">
     <h1 class="panel-title">Clearance</h1>
-    <div class="min-vh-100 c-scroll">
+    <div class="h-100 c-scroll">
         <div class="card-body d-flex flex-column">
             <div class="student-clearance-grid">
 

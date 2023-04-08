@@ -95,4 +95,62 @@ class StudentClearance {
         }
     }
 
+    public function getOrg() {
+        try{
+            $sql = "SELECT * FROM clearance_type";
+            $result = $this->conn->query($sql);
+
+            return $result;
+        
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public function requestClearance($cid, $sid, $message, $date_requested) {
+        try {
+            $status = "pending";
+            $sql = "INSERT INTO clearance_request (clearance_type_id, student_id, reason_of_request, date_requested, status) values (:ct_id, :sid, :message, :date_requested, :status) ;";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindparam(':ct_id', $cid);
+            $stmt->bindparam(':sid', $sid);
+            $stmt->bindparam(':message', $message);
+            $stmt->bindparam(':date_requested', $date_requested);
+            $stmt->bindparam(':status', $status);
+
+            $stmt->execute();
+
+            return true;
+            
+        }catch(PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function getRequest($student_id) {
+        try{
+            $sql = "SELECT * FROM clearance_request cr INNER JOIN clearance_type ct ON cr.clearance_type_id = ct.clearance_type_id WHERE cr.student_id = '$student_id' AND cr.status IN ('pending','issued'); ";
+            $result = $this->conn->query($sql);
+
+            return $result;
+        
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public function cancelRequest($student_id, $request_id) {
+        try{
+            $sql = "UPDATE clearance_request SET status = 'cancelled' WHERE student_id = '$student_id' AND id = '$request_id'; ";
+            $result = $this->conn->query($sql);
+
+            return true;
+        
+        }catch(PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
 }

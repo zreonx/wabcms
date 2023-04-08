@@ -38,7 +38,7 @@
             <button class="btn btn-light btn-sm btn-search" onclick="this.blur();" type="submit">Search</button>
         </form>
     </div>
-    <div class="card min-vh-100 c-scroll">
+    <div class="card c-scroll">
         <div class="card-body d-flex flex-column">
             <table class="default-table table text-center">
                 <tr>
@@ -73,8 +73,8 @@
                     <td><?php echo $row['status']; ?></td>
                     
                     <td>
-                        <a href="#modify_clearance.php?id=<?php //echo $row['id'] ?>" class="btn btn-primary btn-sm" type="submit" name="submitEdit">Edit</a>
-                        <a href="#start_clearance.php?id=<?php //echo $row['id'] ?>" class="btn btn-danger btn-sm" type="submit" name="submitStart">Delete</a>
+                        <a href="#modify_clearance.php?id=<?php //echo $row['id'] ?>" class="btn btn-wrap btn-primary btn-sm" type="submit" name="submitEdit">Edit</a>
+                        <a href="#start_clearance.php?id=<?php //echo $row['id'] ?>" class="btn btn-wrap btn-danger btn-sm" type="submit" name="submitStart">Delete</a>
                     </td>
                 </tr>
                 <?php endwhile ?>

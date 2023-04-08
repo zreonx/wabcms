@@ -33,7 +33,7 @@
             <a href="student_clearance_record.php"><i class="space fa-solid fa-file-lines"></i>Student Clearance</a>
             <a href="clearance_record.php"><i class="space fa-solid fa-file-lines"></i>Clearance Record</a>
             <a href="create_clearance.php"><i class="space fa-solid fa-file-circle-plus"></i>Create Clearance</a>
-            <a href="clearance_record.php"><i class="space fa-solid fa-rectangle-list"></i></i>Requests List</a>
+            <a href="request_list.php"><i class="space fa-solid fa-rectangle-list"></i></i>Requests List</a>
             <!-- <a href="modify_clearance.php"><i class="space fa-solid fa-pen-to-square"></i>Modify Clearance</a> -->
         </div>
         <a class="dropdown-btn">

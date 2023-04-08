@@ -6,7 +6,8 @@ class DatabaseTable {
         "clearance" => "clearance",
         "users" => "users",
         "signatories" => "signatories",
-        "signatory_designation" => "signatory_designation"
+        "signatory_designation" => "signatory_designation",
+        "clearance_request" => "clearance_request"
     ];
     
     public static function getStudentTable() {
@@ -27,5 +28,9 @@ class DatabaseTable {
 
     public static function getSignatoryDesgination() {
         return self::$table_list['signatory_designation'];
+    }
+
+    public static function getRequestClearanceTable() {
+        return self::$table_list['clearance_request'];
     }
 }

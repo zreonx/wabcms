@@ -209,11 +209,11 @@ class User{
 
 
             if($userType == 'student') {
-                $sql = "SELECT * FROM students WHERE student_id = $user_id ;";
+                $sql = "SELECT * FROM students WHERE student_id = '$user_id' ;";
             }else if($userType == 'signatory') {
-                $sql = "SELECT * FROM signatories WHERE id = $user_id ;";
+                $sql = "SELECT * FROM signatories WHERE id = '$user_id' ;";
             }else if($userType == 'admin') {
-                $sql = "SELECT * FROM admins WHERE admin_id = $user_id ;";
+                $sql = "SELECT * FROM admins WHERE admin_id = '$user_id' ;";
             }
            
 

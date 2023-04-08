@@ -5,8 +5,7 @@
     $student_id = $_SESSION['user_id'];
     $clearance_id = $_GET['clearance_id'];
 
-    $student_clearance = $studentClearance->getSignatoryClearance($clearance_id, $student_id);
-    $signatory_designation = $studentClearance->getColumnName();
+   
 
     $user_data = $_SESSION['user_data'];
 
@@ -17,12 +16,15 @@
         <h1 class="panel-title">Clearance</h1>
     </div>
     
-    <div class="min-vh-100 c-scroll">
+    <div class="c-scroll">
         <div class="card-body d-flex flex-column">
             <div class="student-clearance-grid">
 
                 <!-- Show All Program Head -->
-                <?php while($des_row = $student_clearance->fetch(PDO::FETCH_ASSOC)): ?>
+                <?php
+                    $student_clearance = $studentClearance->getSignatoryClearance($clearance_id, $student_id);
+                    $signatory_designation = $studentClearance->getColumnName();
+                     while($des_row = $student_clearance->fetch(PDO::FETCH_ASSOC)): ?>
                     <?php for($i = 0;$i < count($signatory_designation); $i++): 
                         $designee = ucwords(str_replace("_", " ",substr($signatory_designation[$i], 3, -9))); 
                         $signatory_ph_info = $studentClearance->getDesignationId($designee);

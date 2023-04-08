@@ -83,9 +83,9 @@
                     <td><?php echo $row['end_date']; ?></td>
                     <td><?php echo ucfirst($row['status']);  ?></td>  
                     <td>
-                        <a href="modify_clearance.php?id=<?php echo $row['id'] ?>" class="btn btn-primary btn-sm" type="submit" name="submitEdit">Edit</a>
-                        <a href="../includes/start_clearance.inc.php?clearance_id=<?php echo $row['id'] ?>" class="btn btn-success btn-sm" type="submit" name="submitStart">Start</a>
-                        <a href="../includes/end_clearance.inc.php?clearance_id=<?php echo $row['id'] ?>" class="btn btn-danger btn-sm"  name="SubmitEnd">End</a>
+                        <a href="modify_clearance.php?id=<?php echo $row['id'] ?>" class="btn btn-wrap btn-primary btn-sm" type="submit" name="submitEdit">Edit</a>
+                        <a href="../includes/start_clearance.inc.php?clearance_id=<?php echo $row['id'] ?>" class="btn btn-wrap btn-success btn-sm" type="submit" name="submitStart">Start</a>
+                        <a href="../includes/end_clearance.inc.php?clearance_id=<?php echo $row['id'] ?>" class="btn btn-wrap btn-danger btn-sm"  name="SubmitEnd">End</a>
                     </td>
                 </tr>
                 <?php endwhile ?>

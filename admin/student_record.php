@@ -36,7 +36,7 @@
     </div>
 
     <?php ?>
-    <div class="card min-vh-100 c-scroll">
+    <div class="card c-scroll">
         <div class="card-body d-flex flex-column">
             <table class="default-table table c-scroll text-center">
                 <tr>

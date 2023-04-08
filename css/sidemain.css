@@ -131,6 +131,9 @@
     transition: .4s all ease-in;
     cursor: pointer;
     margin-bottom: .1rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .space {
@@ -460,6 +463,11 @@
     align-items: center;
 }
 
+.sr-card {
+    height: 75vh;
+    overflow: auto;
+}
+
 .overlay {
     content: "";
     position: absolute;
@@ -597,6 +605,20 @@
         align-items: center;
         flex-direction: column !important;
     }
+    .rc-page-body {
+        flex-direction: column;
+    }
+    .img-req {
+        display: none !important;
+    }
+    .rc-col-1 {
+        width: 100% !important;
+    }
+
+    #rcCard {
+        padding: 0 !important;
+        margin-top: 20px;
+    }
     
 }
 
@@ -613,7 +635,19 @@
         flex-direction: column;
         gap: 10px !important;
     }
+
+    .btn-wrap {
+        width: 80px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        margin: 1px;
+    }
+    
 }
+
+
+/* --------------------------------------------------------------------- */
   
 /* Custom Select */
   .custom-select .select-btn {
@@ -700,7 +734,7 @@
 
   /* Download Saving */
   #clearance-download {
-    position: sticky;
+    position: fixed;
     z-index: 1;
     bottom: 12px;
     transition: all .3s ease;
@@ -723,5 +757,7 @@
        display: none;
     }
  }
+
+
 
 
