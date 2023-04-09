@@ -24,14 +24,35 @@
                                 echo ($request_row['status'] == "pending") ? '<span class="badge bg-warning">Pending</span>' : '<span class="badge bg-success">Issued</span>';
                             ?>
                         <td>
-                            <button data-id="<?php echo $request_row['id'] ?>" class="btn btn-view btn-primary btn-sm btn-wrap"><i class="fa-solid fa-envelope-open"></i></button>
+                            <button data-array='["<?php echo $request_row["id"] ?>", "<?php echo $request_row["clearance_type"] ?>", "<?php echo $request_row["date_requested"] ?>", "<?php echo $request_row["reason_of_request"] ?>", "<?php echo $request_row["status"] ?>"]' class="btn btn-view btn-primary btn-sm btn-wrap" data-bs-toggle="modal" data-bs-target="#request_modal"><i class="fa-solid fa-envelope-open"></i></button>
                             <button data-id="<?php echo $request_row['id'] ?>" class="btn btn-cancel btn-danger btn-sm btn-wrap"><i class="fa-solid fa-ban"></i></button>
                         </td>
                     </tr>
                 <?php $count++; endwhile; ?>
-            </table>
+            </table><!-- Button trigger modal -->
 
             <script>
+                    $('.btn-view').click(function(){
+                        let requestData = $(this).data('array');
+                        $('#clearance-type').text(requestData[1]);
+                        let status = requestData[4];
+                        if(status == "pending") {
+                            $('#clearance-status').html('<span class="badge bg-warning">Pending</span>');
+                        }else if(status == "cancelled") {
+                            $('#clearance-status').html('<span class="badge bg-danger">Cancelled</span>');
+                        }else if(status == "rejected") {
+                            $('#clearance-status').html('<span class="badge bg-default">Rejected</span>');
+                        }else {
+                            $('#clearance-status').html('<span class="badge bg-success">Issued</span>');
+                        }
+                        
+                        let datetime = requestData[2];;
+                        let formattedDate = $.format.date(datetime, 'MMMM d, yyyy');
+                        let formattedTime = $.format.date(datetime, 'h:mm:ss a');
+                        $('#date-message').text(formattedDate + " at " + formattedTime);
+                        $('#modal-message').text(requestData[3]);
+                       
+                    });
                     $('.btn-cancel').click(function(){
                         let request_id = $(this).attr('data-id');
                         $.ajax({

@@ -44,12 +44,42 @@
                     <label class="form-label">Reason of request</label>
                     <textarea class="form-control" name="message" id="message" cols="30" rows="10"></textarea>
                 </div>
-                <button class="btn btn-default px-3" id="sendBtn">Send</button>
+                <button class="btn btn-default px-3" id="sendBtn">Send Request</button>
             </div>
             <div class="w-100 ps-3" id="rcCard">
                 <div class="card sr-card">
                     <div class="card-body" id="rcRecord">
 
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="request_modal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Request Information</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body ">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h1 class="fs-6" id="clearance-type">test</h1>
+                            </div>
+                            <div>
+                                <h1 class="fs-6" id="clearance-status"></h1>
+                            </div>
+                            <div>
+                                <h1 class="fs-6" id="date-message"></h1>
+                            </div>
+                        </div>
+                        <div><h1 class="display-6 fs-6">Messages</h1></div>
+                        <div> <textarea class="form-control" id="modal-message" style="height: 100px; resize: none;" disabled></textarea></div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
                     </div>
                 </div>
             </div>

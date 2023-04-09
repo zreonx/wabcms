@@ -468,6 +468,10 @@
     overflow: auto;
 }
 
+.rcmessage-text {
+    height: 300px !important;
+}
+
 .overlay {
     content: "";
     position: absolute;
