@@ -179,7 +179,7 @@ public function getStudentClearance($id=null) {
 
     public function getAllRequest() {
         try{
-            $sql = "SELECT *, cr.status as 'cr_status', (SELECT ct.clearance_type FROM clearance_type ct WHERE ct.clearance_type_id = cr.clearance_type_id) as 'clearance_type_name' FROM clearance_request cr INNER JOIN students s ON s.student_id = cr.student_id WHERE cr.status IN ('pending','issued','cancelled') ORDER BY cr.status LIMIT $this->startingPage ,$this->page; ";
+            $sql = "SELECT *, cr.status as 'cr_status', (SELECT ct.clearance_type FROM clearance_type ct WHERE ct.clearance_type_id = cr.clearance_type_id) as 'clearance_type_name' FROM clearance_request cr INNER JOIN students s ON s.student_id = cr.student_id WHERE cr.status IN ('pending','issued','cancelled') ORDER BY cr.date_requested DESC LIMIT $this->startingPage ,$this->page; ";
             $result = $this->conn->query($sql);
 
             $count = $result->rowCount();
