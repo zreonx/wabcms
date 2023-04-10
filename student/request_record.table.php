@@ -20,20 +20,23 @@
                         <td><?php echo $request_row['clearance_type']; ?></td>
                         <td><?php echo $request_row['date_requested']; ?></td>
                         <td>
-                            <?php
-                                echo ($request_row['status'] == "pending") ? '<span class="badge bg-warning">Pending</span>' : '<span class="badge bg-success">Issued</span>';
-                            ?>
+
+                               <?php if($request_row['status'] == "issued"){ echo '<span class="badge bg-success">Issued</span>'; }else if($request_row['status'] == "pending"){ echo '<span class="badge bg-warning">Pending</span>';}else if($request_row['status'] == "cancelled"){ echo '<span class="badge bg-danger">Cancelled</span>'; } else { echo '<span class="badge btn-default">Rejected</span>';} ?>
+
                         <td>
                             <button data-array='["<?php echo $request_row["id"] ?>", "<?php echo $request_row["clearance_type"] ?>", "<?php echo $request_row["date_requested"] ?>", "<?php echo $request_row["reason_of_request"] ?>", "<?php echo $request_row["status"] ?>"]' class="btn btn-view btn-primary btn-sm btn-wrap" data-bs-toggle="modal" data-bs-target="#request_modal"><i class="fa-solid fa-envelope-open"></i></button>
-                            <button data-id="<?php echo $request_row['id'] ?>" class="btn btn-cancel btn-danger btn-sm btn-wrap" <?php if($request_row['status'] == 'cancelled' || $request_row['status'] == 'issued'){ echo 'disabled'; } ?>><i class="fa-solid fa-ban"></i></button>
+                            <button data-id="<?php echo $request_row['id'] ?>" class="btn btn-cancel btn-danger btn-sm btn-wrap" <?php if($request_row['status'] == 'cancelled' || $request_row['status'] == 'issued' || $request_row['status'] == 'rejected'){ echo 'disabled'; } ?>><i class="fa-solid fa-ban"></i></button>
                         </td>
                     </tr>
                 <?php $count++; endwhile; ?>
             </table><!-- Button trigger modal -->
 
             <script>
+                $(document).ready(function(){
+                    let requestData;
+
                     $('.btn-view').click(function(){
-                        let requestData = $(this).data('array');
+                        requestData = $(this).data('array');
                         $('#clearance-type').text(requestData[1]);
                         let status = requestData[4];
                         if(status == "pending") {
@@ -68,6 +71,7 @@
                             }
                         });
                     });
+                })
 
             </script>
         

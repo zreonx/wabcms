@@ -96,7 +96,7 @@
                     </div>
                     <div class="modal-footer">
                         <button id="btn-issue" class="btn btn-issue btn-success btn-wrap"><i class="fa-solid fa-pen-to-square"></i> Issue Clearance</button>
-                        <button type="button" class="btn btn-reject btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                     </div>
                 </div>

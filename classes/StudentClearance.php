@@ -142,7 +142,7 @@ class StudentClearance {
 
     public function getRequest($student_id) {
         try{
-            $sql = "SELECT * FROM clearance_request cr INNER JOIN clearance_type ct ON cr.clearance_type_id = ct.clearance_type_id WHERE cr.student_id = '$student_id' AND cr.status IN ('pending','issued'); ";
+            $sql = "SELECT *, (SELECT ct.clearance_type FROM clearance_type ct WHERE ct.clearance_type_id = cr.clearance_type_id) AS 'clearance_type' FROM clearance_request cr  WHERE cr.student_id = '$student_id' AND cr.status IN ('pending','issued','cancelled','rejected'); ";
             $result = $this->conn->query($sql);
 
             return $result;
