@@ -231,6 +231,15 @@ public static function add_signatory_message() {
         Signatory has been added.
         </div>";
 }
+
+//request list
+public static function rejected_clearance() {
+  echo 
+      "<div class='alert alert-success alert-dismissible'>
+          <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+        Response has been updated.
+        </div>";
+}
     
 }
 

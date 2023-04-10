@@ -17,8 +17,8 @@
 
     
 ?>
-
 <div class="panel p-3">
+<?php if (isset($_GET['message']) && $_GET['message'] == "rejected") { Errormessage::rejected_clearance(); } ?>
     <h1 class="panel-title">Clearance Request List</h1>
     <div class="d-flex search-bar mb-2">
     </div>
@@ -43,7 +43,7 @@
                         <td><?php echo $rc_row['year_level']; ?></td>
                         <td><?php echo $rc_row['program_course']; ?></td>
                         <td><?php echo $rc_row['date_requested']; ?></td>
-                        <td><?php echo ($rc_row['cr_status'] == "issued") ? '<span class="badge bg-success">Issued</span>' : ((($rc_row['cr_status'] == "pending") ? '<span class="badge bg-warning">Pending</span>' : (($rc_row['cr_status'] == "cancelled"))) ? '<span class="badge bg-danger">Cancelled</span>' : '<span class="badge btn-default">Rejected</span>'); ?></td>
+                        <td><?php if($rc_row['cr_status'] == "issued"){ echo '<span class="badge bg-success">Issued</span>'; }else if($rc_row['cr_status'] == "pending"){ echo '<span class="badge bg-warning">Pending</span>';}else if($rc_row['cr_status'] == "cancelled"){ echo '<span class="badge bg-danger">Cancelled</span>'; } else { echo '<span class="badge btn-default">Rejected</span>';} ?></td>
                         <td>
                             <button data-array='["<?php echo $rc_row["id"] ?>", "<?php echo $rc_row["clearance_type_name"] ?>", "<?php echo $rc_row["date_requested"] ?>", "<?php echo $rc_row["reason_of_request"] ?>", "<?php echo $rc_row["cr_status"] ?>", "<?php echo $rc_row["last_name"] ?>, <?php echo $rc_row["first_name"] ?>, <?php echo substr($rc_row["middle_name"], 0, 1) ?>. ", "<?php echo $rc_row["year_level"] ?>", "<?php echo $rc_row["program_course"] ?>", "<?php echo $rc_row["request_id"] ?>", "<?php echo $rc_row["student_id"] ?>", "<?php echo $rc_row["clearance_type_id"] ?>" ]' class="btn btn-view btn-primary btn-sm btn-wrap" data-bs-toggle="modal" data-bs-target="#request_modal"><i class="fa-solid fa-envelope-open"></i></button>
                             <button data-id="<?php echo $rc_row['request_id']; ?>" class="btn btn-reject btn-danger btn-sm btn-wrap" <?php if($rc_row['cr_status'] == 'cancelled' || $rc_row['cr_status'] == 'issued' || $rc_row['cr_status'] == 'rejected'){ echo 'disabled'; } ?>><i class="fa-solid fa-ban"></i></button>
@@ -155,7 +155,7 @@
                             request_id: requestId,
                         },
                         success: function(result) {
-                            console.log(result)
+                            window.location.replace(result)
                         }
                        })
                     })
