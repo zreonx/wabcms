@@ -43,7 +43,7 @@
             <button class="btn btn-light btn-sm btn-search" onclick="this.blur();" type="submit">Search</button>
         </form>
     </div>
-    <div class="card min-vh-100 c-scroll">
+    <div class="card c-scroll">
         <div class="card-body d-flex flex-column">
             <table class="default-table table text-center">
                 <tr>
@@ -75,7 +75,7 @@
                         <!-- Beneficiaries -->
                     <td>
                         <?php 
-                            echo $row['beneficiary_type'];
+                            echo ($row['beneficiaries'] == '1') ? "All Student" : $row['beneficiaries'] ;
                         ?>
                     </td>
                     <td><?php echo $row['date_created']; ?></td>

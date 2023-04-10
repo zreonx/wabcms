@@ -42,7 +42,6 @@
             <table class="default-table table c-scroll text-center">
                 <tr>
                     <td>#</td>
-                    <td>Signatory ID</td>
                     <td>Name</td>
                     <td>Email</td>
                     <td>Designation</td>
@@ -59,7 +58,6 @@
                 ?>
                 <tr>
                     <td><?php echo $count; $count++ ?></td>
-                    <td><?php echo $designation_row['id'] ?></td>
                     <td><?php echo $designation_row['first_name'] . " " . $designation_row['middle_name'] . " " . $designation_row['last_name'] ?></td>
                     <td><?php echo $designation_row['email'] ?></td>
                     <td><?php echo $designation_row['designation'] ?></td>

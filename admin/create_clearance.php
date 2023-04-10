@@ -20,10 +20,15 @@
                     </div>
                     <div class="col-lg-2 ">
                         <select name="beneficiaries" class="form-select sm-in">
-                            <option value="0">Select</option>
                             <?php
                                 while ($row_beneficiary = $beneficiaries->fetch(PDO::FETCH_ASSOC)) { ?>
-                                <option value="<?php echo $row_beneficiary['beneficiary_id']; ?>"><?php echo $row_beneficiary['beneficiary_type'] ?></option>
+                            
+                                    <?php if(isset($_GET['student_id'])) {
+                                            echo '<option value="'. $_GET['student_id'].'" selected>'. $_GET['student_id'].'</option>';
+                                            continue;
+                                    } ?>
+
+                                    <option value="<?php echo $row_beneficiary['beneficiary_id']; ?>"><?php echo $row_beneficiary['beneficiary_type'] ?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -33,15 +38,23 @@
                         <label class="form-label">Clearance Type</label>
                     </div>
                     <div class="col-lg-2 ">
-                        <select id="disabledSelect" name="clearance_type" class="form-select">
-                            <option value="0">Select</option>
-                            <?php
-                            while ($clearance_row = $clearance_type->fetch(PDO::FETCH_ASSOC)) { ?>
-                                <option value="<?php echo $clearance_row['clearance_type_id']; ?>" ><?php echo $clearance_row['clearance_type'] ?></option>
-                               
-                            <?php } 
-                            ?>
-                        </select>
+                        <?php if(!isset($_GET['clearance_type_id'])): ?>
+                            <select id="disabledSelect" name="clearance_type" class="form-select">
+                                <option value="0">Select</option>
+                                <?php while ($clearance_row = $clearance_type->fetch(PDO::FETCH_ASSOC)) { ?>
+                                        <option value="<?php echo $clearance_row['clearance_type_id']; ?>" ><?php echo $clearance_row['clearance_type'] ?></option>            
+                                <?php } ?>
+                            </select>
+                        <?php else: ?>
+                            <select id="disabledSelect" name="clearance_type" class="form-select">
+                                <?php while ($clearance_row = $clearance_type->fetch(PDO::FETCH_ASSOC)) { ?>
+                                        <?php if($_GET['clearance_type_id'] == $clearance_row['clearance_type_id']) : ?>
+                                            <option value="<?php echo $_GET['clearance_type_id']; ?>" ><?php echo ($_GET['clearance_type_id'] == $clearance_row['clearance_type_id']) ? $clearance_row['clearance_type']: ''; ?></option>
+                                            <?php continue; ?>
+                                        <?php endif; ?>            
+                                <?php } ?>
+                            </select>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="row mb-2">
@@ -59,6 +72,7 @@
                     <div class="col-lg-2 ">
                         <input type="text" class="form-control" placeholder="1-2" name="semester" required>
                     </div>
+                    <input type="hidden" name="request_id" value="<?php if(isset($_GET['request_id'])) { echo $_GET['request_id']; } ?>">
                 </div>
                 <div class="row mb-2">
                     <div class="col-lg-2 ">

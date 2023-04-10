@@ -269,6 +269,20 @@ class Clearance  {
             echo "ERROR: " . $e->getMessage();
         }
     }
+    public function insertStudentRequestedClearance($clearance_id, $student_id) {
+        try{
+            $insertQuery = "INSERT INTO student_clearance (student_id, clearance_id) VALUES (:stud_id, :clearance_id);";
+            $stmt = $this->conn->prepare($insertQuery);
+            $stmt->bindparam(':stud_id', $student_id);
+            $stmt->bindparam(':clearance_id', $clearance_id);
+            $stmt->execute();
+
+            return true;
+
+        }catch(PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+        }
+    }
 
     public function getClearanceByColumn($column_name, $variable) {
         try{
@@ -293,6 +307,34 @@ class Clearance  {
             $stmt->bindparam(':id', $id);
             $stmt->execute();
 
+            return true;
+
+        }catch(PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function updateRequestStatus($request_id) {
+        try {
+            $sql = "UPDATE clearance_request SET status = 'issued' WHERE id = :request_id ;";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindparam(':request_id', $request_id);
+            $stmt->execute();
+            return true;
+
+        }catch(PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function rejectRequestedClearance($request_id) {
+        try {
+            $sql = "UPDATE clearance_request SET status = 'rejected' WHERE id = :request_id ;";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindparam(':request_id', $request_id);
+            $stmt->execute();
             return true;
 
         }catch(PDOException $e) {

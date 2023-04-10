@@ -8,7 +8,7 @@ class StudentClearance {
 
     public function displayClearance() {
         try {
-            $sql = "SELECT c.*, (SELECT clearance_type FROM clearance_type WHERE clearance_type_id = type) as 'type_name' FROM clearance c WHERE status = 'started'";
+            $sql = "SELECT c.*, (SELECT clearance_type FROM clearance_type WHERE clearance_type_id = type) as 'type_name' FROM clearance c WHERE status = 'started' AND beneficiaries = '1'";
             $result = $this->conn->query($sql);
             return $result;
 
@@ -16,6 +16,18 @@ class StudentClearance {
             echo $e->getMessage();
         }
     }
+
+    public function displayRequestedClearance($student_id) {
+        try {
+            $sql = "SELECT c.*, (SELECT clearance_type FROM clearance_type WHERE clearance_type_id = type) as 'type_name' FROM clearance c WHERE status = 'started' AND beneficiaries = '$student_id'";
+            $result = $this->conn->query($sql);
+            return $result;
+
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
 
     //This will get all the column name of the student_clearance
 

@@ -25,7 +25,7 @@
                             ?>
                         <td>
                             <button data-array='["<?php echo $request_row["id"] ?>", "<?php echo $request_row["clearance_type"] ?>", "<?php echo $request_row["date_requested"] ?>", "<?php echo $request_row["reason_of_request"] ?>", "<?php echo $request_row["status"] ?>"]' class="btn btn-view btn-primary btn-sm btn-wrap" data-bs-toggle="modal" data-bs-target="#request_modal"><i class="fa-solid fa-envelope-open"></i></button>
-                            <button data-id="<?php echo $request_row['id'] ?>" class="btn btn-cancel btn-danger btn-sm btn-wrap"><i class="fa-solid fa-ban"></i></button>
+                            <button data-id="<?php echo $request_row['id'] ?>" class="btn btn-cancel btn-danger btn-sm btn-wrap" <?php if($request_row['status'] == 'cancelled' || $request_row['status'] == 'issued'){ echo 'disabled'; } ?>><i class="fa-solid fa-ban"></i></button>
                         </td>
                     </tr>
                 <?php $count++; endwhile; ?>
